@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>“你好，世界！” - C Language Step by Step</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  <link href="../../resources/css/extra.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u201c\u4f60\u597d\uff0c\u4e16\u754c\uff01\u201d";
+    var mkdocs_page_input_path = "Basics of C Language\\Hello, world!.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> C Language Step by Step</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Intro/Intro/">序言</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">C语言基础</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">“你好，世界！”</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">来自程序的第一声问候</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#c">初探C语言</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#header-filepreprocessing-directiveinclude">头文件（header file）与预处理指令（preprocessing directive）#include</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#statement">语句（Statement）</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#function">函数（Function）</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#argumentfunction-call">参数（Argument）和函数调用（Function Call）</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#return-statement">返回语句（Return Statement）</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#main-function">主函数（Main Function）</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#keyword">关键字（Keyword）</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#comment">注释（Comment）</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#string-literal">字符串字面量（String Literal）</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#escape-sequence">转义序列（Escape Sequence）</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">动手实现，从修改这份代码开始</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_4">如果编译器报错了……</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_5">输出一些不一样的</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">我们还有一些没有讲的内容</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">预处理指令</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../preprocessing%20directive/include/">include</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">附录</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Appendix/C%20Standard%20Library/">C标准库列表</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">C Language Step by Step</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>C语言基础 &raquo;</li>
+        
+      
+    
+    <li>“你好，世界！”</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">“你好，世界！”<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
+<h2 id="_2">来自程序的第一声问候<a class="headerlink" href="#_2" title="Permanent link">#</a></h2>
+<p>下面是一个简单的C语言程序：</p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    printf(&quot;Hello, world!&quot;); /*print Hello, world!*/
+    return 0;
+}
+</code></pre>
+<p>我们把这份代码保存在<code>hello_world.c</code>（或者其他文件名）中。
+如果你正确地安装了IDE，编译并运行了程序，那么你可以看到以下的结果：</p>
+<pre><code class="language-text">Hello, world!
+</code></pre>
+<p>我们借着这个例子来初探C语言中的一些内容：</p>
+<h2 id="c">初探C语言<a class="headerlink" href="#c" title="Permanent link">#</a></h2>
+<h3 id="header-filepreprocessing-directiveinclude">头文件（header file）与预处理指令（preprocessing directive）<code>#include</code><a class="headerlink" href="#header-filepreprocessing-directiveinclude" title="Permanent link">#</a></h3>
+<p>上面程序的第一行是一个<em>预处理指令</em>：</p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+</code></pre>
+<p>预处理指令告诉编译器的指令，它告诉编译器除了代码本身以外一些额外的信息，指导编译器翻译。
+预编译指指令通常以<code>#</code>开头，以<strong>换行结束</strong>。</p>
+<p>这里我们的<code>#include</code>是一个预编译指令，表示头文件（以及对应源文件）的<em>包含</em>。
+它告诉编译器我们需要将<code>stdio.h</code>这个文件包含到我们的文件中去。</p>
+<div class="admonition grammar">
+<p class="admonition-title">语法：<code>#include</code></p>
+<ol>
+<li class="gram">#include &lt;<em>文件名</em>&gt;</li>
+<li class="gram">#include "<em>文件名</em>"</li>
+</ol>
+<p>其中：1.的语法适用于标准库<sup id="fnref:implementation-defined-header"><a class="footnote-ref" href="#fn:implementation-defined-header">1</a></sup>的头文件；
+2.的语法适用于其他头文件。</p>
+</div>
+<div class="admonition detail">
+<p class="admonition-title">详情</p>
+<p>关于<code>#include</code>的详细信息，
+见<a href="../preprocessing%20directive/include/">预处理指令/include</a>。</p>
+</div>
+<p>而头文件就是这样一个被包含的文件，它通常以.h为后缀名，内部有一些符号的声明。</p>
+<div class="admonition hint">
+<p class="admonition-title"><code>stdio.h</code>有什么功能，为什么我们需要包含它？</p>
+<p><code>stdio.h</code>是提供
+<em>标准输入输出（<u>St</u>an<u>d</u>ard <u>I</u>nput and <u>O</u>utput）</em>
+功能的头文件。它对输入/输出提供支持。
+在这里，我们使用了其中的一个函数<code>printf()</code>，来讲我们的字符串输出到屏幕上，
+所以需要引用这一个头文件。</p>
+</div>
+<p>尽管不是所有程序都需要<code>#include</code>，但是大部分情况我们需要这样一些定义好的一些文件，
+来使用它们中的一些功能。</p>
+<div class="admonition hint">
+<p class="admonition-title">什么是C标准库？</p>
+<p>简而言之，C标准库是C标准中提供的一系列标准功能的总称。它们以头文件的形式提供这些功能。
+所有标准C编译器都需要支持这些头文件。</p>
+</div>
+<div class="admonition detail">
+<p class="admonition-title">详情</p>
+<p>关于C标准库的详细信息，见<a href="../../Appendix/C%20Standard%20Library/">附录/C标准库列表</a>。</p>
+</div>
+<h3 id="statement">语句（Statement）<a class="headerlink" href="#statement" title="Permanent link">#</a></h3>
+<p>语句是C语言的最小单位，是程序执行的内容。一般来说，语句都会以<code>;</code>（分号）结束。
+中间可以<strong>有换行</strong>。</p>
+<div class="admonition grammar">
+<p class="admonition-title">语法：表达式语句</p>
+<p class="gram"><em>表达式</em>;</p>
+</div>
+<p>上面的程序有两条语句：</p>
+<pre><code class="language-C">printf(&quot;Hello, world!&quot;);
+return 0;
+</code></pre>
+<p>我们等会会说明这两条语句的意义。</p>
+<p>这几条语句可以每个占一行（或多行），也可以写到一行里。
+但是为了阅读上的便利，我们通常会让它们每个占一行（或多行）。</p>
+<p>多条语句可以由大括号<code>{}</code>围起来，这样就形成了<em>复合语句（compound statements）</em>，
+又称<em>块（block）</em>。</p>
+<div class="admonition grammar">
+<p class="admonition-title">语法：复合语句</p>
+<p class="gram">{<em>语句...</em>}</p>
+</div>
+<div class="admonition detail">
+<p class="admonition-title">详情</p>
+<p>关于语句的详细信息，见<a href="">语句</a>。</p>
+</div>
+<h3 id="function">函数（Function）<a class="headerlink" href="#function" title="Permanent link">#</a></h3>
+<p>函数的是C语言的一个单元。</p>
+<div class="admonition grammar">
+<p class="admonition-title">语法：函数定义</p>
+<p class="gram"><em>返回类型</em> <em>函数名</em>(<em>形参列表</em>) <em>复合语句</em></p>
+</div>
+<p>函数有两重含义。首先它能像数学中的函数一样<em>返回（return）</em>一个值。
+其次它能执行某种<strong>功能</strong>（如同英语中Function的含义）。</p>
+<p>在上面的程序中我们<em>定义（define）</em>了一个函数：</p>
+<pre><code class="language-C">int main(void)
+{
+    ...
+}
+</code></pre>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>在函数定义中，形参列表的<code>)</code>后面没有<code>;</code>。（因为它不是语句）</p>
+</div>
+<p>对照上面的的语法我们可以得到以下的信息：</p>
+<ul>
+<li>这个函数的返回类型: <code>int</code></li>
+<li>这个函数的函数名: <code>main</code></li>
+<li>这个函数的形参（形式参数）列表: <code>void</code></li>
+<li>这个函数的复合语句: 夹在<code>{}</code>之间的内容</li>
+</ul>
+<p>一个函数所拥有的复合语句（也就是大括号之间的内容）叫做<em>函数体（function body）</em>，
+它指出了函数具体要执行哪些语句。<code>main()</code>这个函数拥有的函数体是：</p>
+<pre><code class="language-C">{
+    printf(&quot;Hello, world!&quot;);
+    return 0;   
+}
+</code></pre>
+<h4 id="argumentfunction-call">参数（Argument）和函数调用（Function Call）<a class="headerlink" href="#argumentfunction-call" title="Permanent link">#</a></h4>
+<div class="admonition grammar">
+<p class="admonition-title">语法：函数调用表达式</p>
+<p class="gram"><em>函数名</em>(<em>实参列表</em>)</p>
+</div>
+<pre><code class="language-C">printf(&quot;Hello, world!&quot;);
+</code></pre>
+<p>我们在这一行执行了函数调用。函数调用就是将其他地方写好的函数“调”出来使“用”，
+程序会在此时进入到被调用函数的函数体中执行语句。
+这里我们调用了名叫“printf”的函数，用来在控制台上输出内容。</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>“printf”是格式化输出（<u>print</u> <u>f</u>ormat）的缩写。</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title"><code>printf()</code>在哪里呢？</p>
+<p>上文说过，在<code>stdio.h</code>中。</p>
+</div>
+<p>括号中是实参（实际参数）列表，就像数学式 <span class="arithmatex">\(f(x)\)</span> 当中那样，把参数写在<code>()</code>（小括号）中，
+“传递”到这个函数中。不难看出<code>prinf</code>就相当于这里的 <span class="arithmatex">\(f\)</span>，
+而<code>"Hello, world!"</code>就相当于这里的 <span class="arithmatex">\(x\)</span>。</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>C语言中的符号都应该是英文（半角）符号，不要成中文（全角）符号。</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>函数调用表达式是<strong>表达式</strong>，要想变成语句，
+需要后附<code>;</code>（参见上文的<a href="#statement">语句语法</a>）</p>
+</div>
+<h4 id="return-statement">返回语句（Return Statement）<a class="headerlink" href="#return-statement" title="Permanent link">#</a></h4>
+<p>函数通过返回语句会返回一个值。在这个语句之后，程序会离开当前的函数，返回到调用它的地方，
+并把值传回。</p>
+<div class="admonition grammar">
+<p class="admonition-title">语法：返回语句</p>
+<p class="gram">return <em>表达式</em>;</p>
+</div>
+<p>我们的<code>main()</code>函数通过下面的语句返回了0。</p>
+<pre><code class="language-C">return 0;
+</code></pre>
+<h4 id="main-function">主函数（Main Function）<a class="headerlink" href="#main-function" title="Permanent link">#</a></h4>
+<p><code>main()</code>是一个特殊的函数。它的调用者能<strong>只能是操作系统<sup id="fnref:main-caller"><a class="footnote-ref" href="#fn:main-caller">2</a></sup></strong>，
+而在代码中不能调用它。它是整个程序的“入口”<sup id="fnref:main-start"><a class="footnote-ref" href="#fn:main-start">3</a></sup>。如果程序运行没有错误，
+我们就在主函数中返回0并结束程序。</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>注意不要写成mian。</p>
+</div>
+<h3 id="keyword">关键字（Keyword）<a class="headerlink" href="#keyword" title="Permanent link">#</a></h3>
+<p>关键字是C语言中特殊的单词，表示一定的<strong>语法意义</strong>。
+在C语言代码的命名中<strong>不能以关键字作为名字</strong>。</p>
+<p>程序中的<code>int</code>、<code>void</code>和<code>return</code>都是关键字。换言之，我们不能定义一个叫<code>return()</code>的函数。</p>
+<h3 id="comment">注释（Comment）<a class="headerlink" href="#comment" title="Permanent link">#</a></h3>
+<div class="admonition grammar">
+<p class="admonition-title">语法：返回语句</p>
+<ol>
+<li class="gram">/*<em>注释内容</em>*/</li>
+<li class="gram">// <em>注释内容</em></li>
+</ol>
+<p>其中，1.的注释可以出现在程序任何地方；2.只能出现在行尾。</p>
+</div>
+<p>注释是给代码提供注解，帮助人更好地理解代码的方式。注释的内容在编译时<strong>会从代码移除</strong>。</p>
+<p>注释被包括在<code>/**/</code>中，换言之，在<code>/**/</code>中的所有内容都会被编译器去除掉。
+你可以在里面任意的写内容，不需要遵照程序语言语法。</p>
+<p><code>//</code>也可以注释内容，但是它的作用范围只能到<strong>换行处</strong>，而<code>/**/</code>中可以有换行。</p>
+<div class="admonition good_practice">
+<p class="admonition-title">好习惯</p>
+<p>程序开发中应该勤写<strong>有意义的注释</strong>，帮助他人和自己理解代码内容。</p>
+</div>
+<h3 id="string-literal">字符串字面量（String Literal）<a class="headerlink" href="#string-literal" title="Permanent link">#</a></h3>
+<div class="admonition grammar">
+<p class="admonition-title">语法：字符串字面量</p>
+<p class="gram">"<em>字符序列</em>"</p>
+<p>其中，<em>字符序列</em>是除了<strong>换行以外</strong>的字符组成的序列，这包括转义序列。</p>
+</div>
+<p>我们将<em>字符（Character）</em>的序列称为<em>字符串（String）</em>。
+在C语言中，可以使用双引号<code>""</code>包围的字符序列表示一个字符串（称之为字符串字面量）。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>字符串字面量和关键字是<strong>不冲突</strong>的（因为它不是命名）。
+我们完全可以定义一个叫<code>"return"</code>的字符串字面量。</p>
+</div>
+<p>如上面语法所说的那样，不能在字符串字面量中使用换行。那么，
+如果我们需要在字符串中写入一个换行怎么办？</p>
+<h4 id="escape-sequence">转义序列（Escape Sequence）<a class="headerlink" href="#escape-sequence" title="Permanent link">#</a></h4>
+<p>在C语言中，如果遇到一些特殊的字符无法写入字符串字面量的，可以使用转义序列来表示。
+转义序列是由<code>\</code>开始，后随一个字母或几个数字的序列。
+比如，换行符就可以使用<code>\n</code>表示。以下列举一些常见的转义序列。</p>
+<table>
+<thead>
+<tr>
+<th>转义序列</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\0</code></td>
+<td>空终止字符<sup id="fnref:null_end"><a class="footnote-ref" href="#fn:null_end">4</a></sup></td>
+</tr>
+<tr>
+<td><code>\'</code></td>
+<td>单引号</td>
+</tr>
+<tr>
+<td><code>\"</code></td>
+<td>双引号</td>
+</tr>
+<tr>
+<td><code>\?</code></td>
+<td>问号</td>
+</tr>
+<tr>
+<td><code>\\</code></td>
+<td>反斜杠</td>
+</tr>
+<tr>
+<td><code>\a</code></td>
+<td>响铃</td>
+</tr>
+<tr>
+<td><code>\b</code></td>
+<td>退格</td>
+</tr>
+<tr>
+<td><code>\f</code></td>
+<td>换页</td>
+</tr>
+<tr>
+<td><code>\n</code></td>
+<td>换行</td>
+</tr>
+<tr>
+<td><code>\r</code></td>
+<td>回车</td>
+</tr>
+<tr>
+<td><code>\t</code></td>
+<td>水平制表</td>
+</tr>
+<tr>
+<td><code>\v</code></td>
+<td>垂直制表</td>
+</tr>
+</tbody>
+</table>
+<p>（摘自<a href="https://zh.cppreference.com/w/c/language/escape">zh.cppreference.com</a>）</p>
+<h2 id="_3">动手实现，从修改这份代码开始<a class="headerlink" href="#_3" title="Permanent link">#</a></h2>
+<h3 id="_4">如果编译器报错了……<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
+<p>……那就仔细看看它是怎么说的。</p>
+<p>在开发过程中，我们很容易遇到某些由于误写导致的语法错误。由于编译器无法准确识别你的语法，
+它就会报错，不生成程序。幸运的是，编译器提示我们哪里出错了，帮助我们改正。</p>
+<p>要注意一点，由于一份文档中可能不止有一个错误，所以有可能在照着编译器提示修改了一遍之后，
+它还会报告新的错误。通常现代的编译器都会“尽力而为”，尽可能找出所有错误。
+但是由于语法错误引起的语法结构崩坏使得编译器无法很好地分析接下来的内容。
+<strong>修改、尝试、再修改、再尝试，这是程序开发的必经之路。</strong></p>
+<div class="admonition hint">
+<p class="admonition-title">既然编译器都知道我错在哪里了，为什么不帮我修正？</p>
+<p>编译器<strong>仅仅知道在这里无法匹配语法规则</strong>，并不能知道<strong>具体怎么修正</strong>。
+编译器的提示仅仅是它自己的<strong>“猜测”</strong>，并不能清晰的知道你的真正意图。
+编程语言要求的式<strong>简洁无歧义</strong>。如果能根据上下文理解修改，那么这样的理解会存在<strong>歧义</strong>，
+也违反了简洁性要求（因为简洁性就是要<strong>尽可能少地依赖上下文</strong>）。</p>
+</div>
+<p>如果我们编译下面的程序：</p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+int main(void)
+printf(&quot;Hello, world!&quot;);
+return 0;
+</code></pre>
+<p>编译器会提示以下错误：</p>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>应输入“{” (hello_world.c:3)</p>
+</div>
+<p>（根据不同的编译器，提示的格式和内容都会有区别）</p>
+<p>这里提示我们<code>hello_world.c</code>的第<strong>3</strong>行出了错误，那么是什么错误？它提示我们应输入<code>{</code>。
+如果你还记得<a href="#function">函数</a>和<a href="#statement">复合语句</a>语法的话，
+可以知道函数定义在<code>)</code>后是复合语句，而复合语句是被<code>{}</code>包围的。这就是它如此提示的原因。</p>
+<p>如果我们编译下面的程序：</p>
+<pre><code class="language-C">int main(void)
+{
+    printf(&quot;Hello, world!&quot;);
+    return 0;
+}
+</code></pre>
+<p>编译器会提示以下错误<sup id="fnref:stdio-missing"><a class="footnote-ref" href="#fn:stdio-missing">5</a></sup>：</p>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>未定义的标识符“printf” (hello_world.c:3)</p>
+</div>
+<p>这是因为编译器找不到<code>printf</code>的定义。它的定义在<code>stdio.h</code>中，而你没有<code>#include</code>它。</p>
+<div class="admonition try-this">
+<p class="admonition-title">Try-this</p>
+<p>试一试编译以下程序，看看编译器输出什么错误，你能发现怎么修改它吗？</p>
+<pre><code>#include &lt;stdio&gt;
+int main(void)
+{
+    printf("Hello, world!");
+    return 0;
+}
+</code></pre>
+</div>
+<h3 id="_5">输出一些不一样的<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
+<p>我们稍稍修改一些在双引号之间的内容。</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">代码</label><div class="tabbed-content">
+<pre><code>#include &lt;stdio.h&gt;
+int main(void)
+{
+    printf("My C Program!");
+    return 0;
+}
+</code></pre>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">输出</label><div class="tabbed-content">
+<pre><code>My C Program!
+</code></pre>
+</div>
+</div>
+<p>你也可以自己输入一些内容看看。</p>
+<h2 id="_6">我们还有一些没有讲的内容<a class="headerlink" href="#_6" title="Permanent link">#</a></h2>
+<p>如果你仔细地看过本章内容，会发现我们其实有一些术语还没阐释明白：</p>
+<ul>
+<li>表达式</li>
+<li>类型</li>
+<li>形式参数和实际参数</li>
+<li>字符</li>
+<li>字面量</li>
+</ul>
+<p>稍安勿躁，我们后面会一步一步的讲解它们。而且对于这一章的所有概念，我们都会在后面详细介绍，
+并且了解它的具体用法。</p>
+<p>留一个练习吧：</p>
+<div class="admonition exercise">
+<p class="admonition-title">Exercise</p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">问题</label><div class="tabbed-content">
+<p>实现一个程序，分两行输出“hello”和“world”</p>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">参考实现</label><div class="tabbed-content">
+<pre><code>#include &lt;stdio.h&gt;
+int main(void)
+{
+    printf("hello\nworld");
+    return 0;
+}
+</code></pre>
+</div>
+</div>
+</div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:implementation-defined-header">
+<p>准确来说，
+是实现控制下的文件，通常包含标准库及其他在标准包含目录。&#160;<a class="footnote-backref" href="#fnref:implementation-defined-header" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:main-caller">
+<p>也包括其他有宿主的情况。
+而任何独立程序（引导程序、操作系统核心等）的入口点可能不是<code>main()</code>。&#160;<a class="footnote-backref" href="#fnref:main-caller" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:main-start">
+<p>在程序运行开始时，程序会先做一些初始化的工作，然后调用<code>main()</code>。&#160;<a class="footnote-backref" href="#fnref:main-start" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:null_end">
+<p>这是八进制转义序列的一个特例。&#160;<a class="footnote-backref" href="#fnref:null_end" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:stdio-missing">
+<p>有些编译器不会为此报错，如MSVC。但是你最好还是<code>#include &lt;stdio.h&gt;</code>。&#160;<a class="footnote-backref" href="#fnref:stdio-missing" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../preprocessing%20directive/include/" class="btn btn-neutral float-right" title="include">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../Intro/Intro/" class="btn btn-neutral" title="序言"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../Intro/Intro/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../preprocessing%20directive/include/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

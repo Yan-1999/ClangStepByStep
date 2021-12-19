@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>C标准库列表 - C Language Step by Step</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  <link href="../../resources/css/extra.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "C\u6807\u51c6\u5e93\u5217\u8868";
+    var mkdocs_page_input_path = "Appendix\\C Standard Library.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> C Language Step by Step</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Intro/Intro/">序言</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">C语言基础</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Basics%20of%20C%20Language/Hello%2C%20world%21/">“你好，世界！”</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">预处理指令</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../Basics%20of%20C%20Language/preprocessing%20directive/include/">include</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">附录</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">C标准库列表</a>
+    <ul class="current">
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">C Language Step by Step</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>附录 &raquo;</li>
+        
+      
+    
+    <li>C标准库列表</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="c">C标准库列表<a class="headerlink" href="#c" title="Permanent link">#</a></h1>
+<p>（此处参考<a href="https://zh.cppreference.com/w/c/header">zh.cppreference.com</a>）</p>
+<table>
+<thead>
+<tr>
+<th>头文件名</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt;assert.h></td>
+<td>条件编译宏，将参数与零比较</td>
+</tr>
+<tr>
+<td>&lt;complex.h></td>
+<td>(C99)    复数运算</td>
+</tr>
+<tr>
+<td>&lt;ctype.h></td>
+<td>用来确定包含于字符数据中的类型的函数</td>
+</tr>
+<tr>
+<td>&lt;errno.h></td>
+<td>报告错误条件的宏</td>
+</tr>
+<tr>
+<td>&lt;fenv.h></td>
+<td>(C99)   浮点环境</td>
+</tr>
+<tr>
+<td>&lt;float.h></td>
+<td>浮点类型的极限</td>
+</tr>
+<tr>
+<td>&lt;inttypes.h></td>
+<td>(C99)   整数类型的格式转换</td>
+</tr>
+<tr>
+<td>&lt;iso646.h></td>
+<td>(C95)     运算符的替代写法</td>
+</tr>
+<tr>
+<td>&lt;limits.h></td>
+<td>整数类型的范围</td>
+</tr>
+<tr>
+<td>&lt;locale.h></td>
+<td>本地化工具</td>
+</tr>
+<tr>
+<td>&lt;math.h></td>
+<td>常用数学函数</td>
+</tr>
+<tr>
+<td>&lt;setjmp.h></td>
+<td>非局部跳转</td>
+</tr>
+<tr>
+<td>&lt;signal.h></td>
+<td>信号处理</td>
+</tr>
+<tr>
+<td>&lt;stdalign.h></td>
+<td>(C11)   alignas 与 alignof 便利宏</td>
+</tr>
+<tr>
+<td>&lt;stdarg.h></td>
+<td>可变参数</td>
+</tr>
+<tr>
+<td>&lt;stdatomic.h></td>
+<td>(C11)  原子类型</td>
+</tr>
+<tr>
+<td>&lt;stdbool.h></td>
+<td>(C99)    布尔类型的宏</td>
+</tr>
+<tr>
+<td>&lt;stddef.h></td>
+<td>常用宏定义</td>
+</tr>
+<tr>
+<td>&lt;stdint.h></td>
+<td>(C99)     定宽整数类型</td>
+</tr>
+<tr>
+<td>&lt;stdio.h></td>
+<td>输入/输出</td>
+</tr>
+<tr>
+<td>&lt;stdlib.h></td>
+<td>基础工具：内存管理、程序工具、字符串转换、随机数、算法</td>
+</tr>
+<tr>
+<td>&lt;stdnoreturn.h></td>
+<td>(C11)    noreturn 便利宏</td>
+</tr>
+<tr>
+<td>&lt;string.h></td>
+<td>字符串处理</td>
+</tr>
+<tr>
+<td>&lt;tgmath.h></td>
+<td>(C99)     泛型数学（包装 math.h 和 complex.h 的宏）</td>
+</tr>
+<tr>
+<td>&lt;threads.h></td>
+<td>(C11)    线程库</td>
+</tr>
+<tr>
+<td>&lt;time.h></td>
+<td>时间/日期工具</td>
+</tr>
+<tr>
+<td>&lt;uchar.h></td>
+<td>(C11)  UTF-16 和 UTF-32 字符工具</td>
+</tr>
+<tr>
+<td>&lt;wchar.h></td>
+<td>(C95)  扩展多字节和宽字符工具</td>
+</tr>
+<tr>
+<td>&lt;wctype.h></td>
+<td>(C95)     用来确定包含于宽字符数据中的类型的函数</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../../Basics%20of%20C%20Language/preprocessing%20directive/include/" class="btn btn-neutral" title="include"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../Basics%20of%20C%20Language/preprocessing%20directive/include/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

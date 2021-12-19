@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>序言 - C Language Step by Step</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  <link href="../../resources/css/extra.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u5e8f\u8a00";
+    var mkdocs_page_input_path = "Intro\\Intro.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> C Language Step by Step</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">序言</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#code">什么是代码（code）？</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#c">C语言代码是怎么最终被计算机执行的？</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_2">编译</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_3">链接</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_4">执行</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#c_1">我要怎么开发C语言程序？</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#c_2">说了这么多，C语言究竟能干什么？</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cc-standard">什么是C标准（C standard）？它和我的开发有什么关系？</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">C语言基础</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Basics%20of%20C%20Language/Hello%2C%20world%21/">“你好，世界！”</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">预处理指令</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../Basics%20of%20C%20Language/preprocessing%20directive/include/">include</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">附录</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Appendix/C%20Standard%20Library/">C标准库列表</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">C Language Step by Step</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>序言</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">序言<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
+<h2 id="code">什么是代码（code）？<a class="headerlink" href="#code" title="Permanent link">#</a></h2>
+<p>代码，字面意义上来说是“用来替代的符号（系统）”。那么这个符号系统究竟是用来代替什么呢？</p>
+<p>从CPU的角度来看，它所能理解的“语言”统统都是指令。指令很简单，一个指令只能执行一步操作（如“加、减、乘、除、移动”等），然后指定操作数和结果。</p>
+<p>但是试想这样的一个表达式 <span class="arithmatex">\(a = 2 + 3 \times (5 + 7)\)</span> 用指令写出来会是什么感觉（用r1、r2代表中间结果）：</p>
+<pre><code>ADD: 5, 7 -&gt; r1
+MULTIPLY: 3, r1 -&gt; r2
+ADD: 2, r2 -&gt; a
+</code></pre>
+<p>（上面不是不是真实的指令，真实的指令都是二进制形式的，比这还要难以理解）</p>
+<p>就几个符号的算式还要调整计算顺序，添加中间结果。那处理一些稍微复杂的计算岂不是头脑体操？
+代码就是一种以<strong>人类能够理解</strong>的方式<strong>替代和表达</strong>程序计算方式的<strong>符号</strong>。</p>
+<p>相比指令而言，它更加贴近<strong>人类的语言和逻辑</strong>。同时代码还保证了 <strong>简洁性和无歧义性</strong>，这是人类语言所不具有的。
+代码最终会被<em>编译（compile）</em>为计算机指令，最终进入内存中被计算机<em>执行(execute)</em>。从这点来看，代码就是人类和计算机沟通的“桥梁”。</p>
+<p>我们把代码所用到的符号系统称为<em>编程语言（programming language）</em>。</p>
+<h2 id="c">C语言代码是怎么最终被计算机执行的？<a class="headerlink" href="#c" title="Permanent link">#</a></h2>
+<p>和绝大多数程序语言一样，C语言代码是<strong>文本文件</strong>，意味着它就是一串文本。它的文件名后缀通常为.c（源文件）或者.h（头文件）。要想被计算机执行，需要经历以下步骤：</p>
+<h3 id="_2">编译<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
+<p><em>编译器（compiler）</em>会把我们的C语言代码中的逐字逐句地翻译成为机器指令。如果代码的语法正确，编译器会产出<em>目标文件（object file）</em>（文件名后缀：.obj）。否则，编译器会报错，引导我们修正。</p>
+<h3 id="_3">链接<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
+<p>有时，我们的代码<strong>引用</strong>了其他代码编写的功能。在编译阶段过后，需要<strong>整合</strong>多份目标文件。<em>链接器（linker）</em>会帮我们<strong>寻找引用</strong>并把他们正确地<strong>拼合</strong>到一起去。更通常的情况是，我们的代码使用<strong>操作系统提供</strong>的一些功能（如输入输出，文件读写等）。我们也需要<strong>链接器</strong>帮我们寻找功能引用并且链接到一起，这样程序才能找到这些功能的入口。如果链接成功，则链接器会生成<em>可执行文件（executable file）</em>（文件名后缀：.exe等），这个文件可以被计算机<strong>执行</strong>。如果链接失败（比如无效的引用等），链接器会报错，引导我们修正。</p>
+<h3 id="_4">执行<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
+<p>我们双击（或者以其他方式）<strong>运行</strong>生成好的可执行文件，这时候可执行文件的内容会进入内存，并最终让CPU“看到”。可执行文件的内部是一系列的指令，CPU会依次执行这些指令。</p>
+<p>一般编译器会将前两步合在一起处理。也就是说，向编译器输入代码文件，输出的就是可执行文件。</p>
+<h2 id="c_1">我要怎么开发C语言程序？<a class="headerlink" href="#c_1" title="Permanent link">#</a></h2>
+<p>前面我们提过，C语言代码是文本文件。所以你可以使用<strong>文本编辑器</strong>编辑C语言文件，然后使用编译器编译。此外你还可以使用 <em>调试器（debugger）</em>来探查程序的中间信息、或是单步执行，方便找出程序中的任何bug。</p>
+<p>但是一个个地调用工具实在太过麻烦。通常我们使用<em>集成开发环境（Intergrated Development Environment, IDE）</em>来进行开发。一般来说，IDE有以下的功能：</p>
+<ol>
+<li>集成文本编辑器、编译器和调试器于一身，方便程序生成和调试。</li>
+<li>语法高亮（syntax highlighting）。将代码不同语法类型的部分用不同颜色区分，方便开发者阅读。</li>
+<li>语法错误检查、自动补全……</li>
+</ol>
+<p>可见集成开发环境极大地方便了程序开发。</p>
+<h2 id="c_2">说了这么多，C语言究竟能干什么？<a class="headerlink" href="#c_2" title="Permanent link">#</a></h2>
+<p>很多初次听说编程语言的人都可能对于编程语言有一个狭隘的认知，比如A语言可以做某事，而B语言可以做另外某事。“某物是用来做某事的”，这对于日常工具看起来没有问题，譬如杯子是用来盛水的，碗是用来盛饭的。</p>
+<p>但是仔细想想，你手上的计算机能够做什么呢？好像能够做很多事：处理文档、收发邮件、收看视频、游玩游戏……但是计算机能做的无外乎两件事：<strong>计算数据</strong>、<strong>转移数据</strong>。之所以计算机能够这么“万能”，是因为我们的计算机是<em>“通用计算机（general purpose computer）”</em>，设计出来就不是为了某一专一目的而计算，而是将所有功能都转化成了计算和转移操作。</p>
+<p>使用程序语言开发程序，就是设计一系列的数据计算和转移，让目标计算机完成某一功能。不管是哪种高级程序语言，其能实现的功能和目标计算机的功能是<strong>相同的</strong>。由此来看，C语言既是“专一的”，又是“万能的”。</p>
+<h2 id="cc-standard">什么是C标准（C standard）？它和我的开发有什么关系？<a class="headerlink" href="#cc-standard" title="Permanent link">#</a></h2>
+<p>C标准规定了C语言的<strong>组成</strong>、<strong>语法</strong>、以及<strong>实现</strong>。我们可以从多种角度理解这件事：</p>
+<ul>
+<li>C标准使得C语言能在每一台计算机、每一种操作系统上都有<strong>一致无误</strong>的实现。</li>
+<li>C标准使得C语言<strong>无歧义</strong>，指导我们怎么去使用语言。</li>
+<li>C标准规范了编译器的行为，也规定了每种C语言编译器都应该<strong>至少</strong>实现什么功能。</li>
+</ul>
+<p>C标准现在由国际标准化组织（International Organization for Standardization, ISO）出版并维护，其编号为：<a href="https://www.iso.org/standard/74528.html">ISO/IEC 9899</a>。它是一个动态的标准，意味着它有版本的迭代升级。常见的标准有：C89、C95、C99、C11、C17等。</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../Basics%20of%20C%20Language/Hello%2C%20world%21/" class="btn btn-neutral float-right" title="“你好，世界！”">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+      <span><a href="../../Basics%20of%20C%20Language/Hello%2C%20world%21/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

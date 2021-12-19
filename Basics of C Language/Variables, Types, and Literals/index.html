@@ -57,11 +57,27 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">变量、类型和字面量</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#eg">一个例子</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#variable">变量（Variable）</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#declaration">变量的声明（declaration）</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#_2">变量的作用域（）</a>
+    <li class="toctree-l3"><a class="reference internal" href="#identifier">标识符（identifier）</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#scope">标识符的作用域（scope）</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#type">类型（Type）</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#arithmetic">算术（Arithmetic）类型</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#integer">整数（Integer）类型</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#floating-point">浮点（Floating Point）类型</a>
+    </li>
+        </ul>
     </li>
         </ul>
     </li>
@@ -117,9 +133,12 @@
             <div class="section">
               
                 <h1 id="_1">变量、类型和字面量<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
+<h2 id="eg">一个例子<a class="headerlink" href="#eg" title="Permanent link">#</a></h2>
 <p>变量、类型和字面量在C语言中处于重要的地位，不过在仔细理解这些概念之前，不妨先看一个例子：</p>
 <div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">代码</label><div class="tabbed-content">
-<pre><code>#include &lt;stdio.h&gt;
+<pre><code>/*var.c*/
+#include &lt;stdio.h&gt;
+
 int main(void)
 {
     int var;
@@ -139,6 +158,11 @@ int main(void)
 </div>
 <p>直观的理解这段代码，我们让<code>var</code>“等于”了两个数。第一次是10、第二次是20。
 两次的<code>printf()</code>输出似乎也告诉我们这两个<code>var</code>有不一样的数值。这是怎么做到的呢？</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>我们在这个例子也看到了<code>printf()</code>的一个新用法：打印一个数值。
+我们<a href="#printf_val">下面</a>会看看到底怎么做。</p>
+</div>
 <h2 id="variable">变量（Variable）<a class="headerlink" href="#variable" title="Permanent link">#</a></h2>
 <p>从数学上来讲，变量是一个“可以变化的量”。譬如 <span class="arithmatex">\(y = x + 3\)</span> 中的 <span class="arithmatex">\(x\)</span>。
 从编程语言的角度来说确实如此。但是对于编程语言，我们还可以从另一个角度理解这个事情：</p>
@@ -155,8 +179,7 @@ int main(void)
 <div class="admonition grammar">
 <p class="admonition-title">语法：变量的声明</p>
 <p class="gram"><em>类型</em> <em>变量名</em>;</p>
-<p>其中，<em>变量名</em>是以大写字母、小写字母、数字和下划线<code>_</code>组成的字符串，且<strong>数字不能在开头</strong>。
-<em>变量名</em>亦<strong>不能是关键词</strong>。</p>
+<p>其中，<em>变量名</em>是一个标识符。</p>
 </div>
 <p>上述程序的第四行：</p>
 <pre><code class="language-C">int var;
@@ -169,9 +192,16 @@ int main(void)
 <p class="admonition-title">地址是什么？</p>
 <p>内存中的一个位置叫地址。通常是用一个整数表示。有点像门牌号。</p>
 </div>
-<p>变量的名字是我们随意取的，如果你把上面的<code>var</code>统统改成<code>x</code>，结果不会有什么不同。</p>
-<p>变量名是一种<em>标识符（identifier）</em>，它标识了C语言中变量或和其他需要命名的实体。
-顺带一提，函数名也是标识符。所以我们之前提到的命名约束对函数名也有效。</p>
+<h3 id="identifier">标识符（identifier）<a class="headerlink" href="#identifier" title="Permanent link">#</a></h3>
+<p>标识符标识了C语言中变量或和其他需要<strong>命名</strong>的实体，变量名就是一种标识符。</p>
+<p>标识符是以大写字母、小写字母、数字和下划线<code>_</code>组成的字符串，且<strong>数字不能在开头</strong>。
+标识符亦<strong>不能是关键词</strong>。例如，你不能取一个名叫<code>return</code>的变量。</p>
+<p>标识符是我们随意取的，如果你把上面程序的<code>var</code>统统改成<code>x</code>，结果不会有什么不同。</p>
+<div class="admonition good-practice">
+<p class="admonition-title">Good-practice</p>
+<p>给变量取<strong>能代表变量意义的名字</strong>是一种好习惯。比如某变量表示长度，就给他命名为<code>length</code>。</p>
+</div>
+<p>顺带一提，函数名也是标识符。所以我们之前提到的命名约束对函数名也有效。</p>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>C语言对标识符长度没有限制，但是规定了有效起始字符为63个（C99）。
@@ -186,7 +216,216 @@ int main(void)
 <p>C语言是大小写敏感（case sensitive）的。如果两个标识符大小写不一样，
 那么它们就是不同标识符。如<code>Var</code>和<code>var</code>。</p>
 </div>
-<h3 id="_2">变量的作用域（）<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
+<h3 id="scope">标识符的作用域（scope）<a class="headerlink" href="#scope" title="Permanent link">#</a></h3>
+<p>一个标识符有它的作用域。作用域就相当于一个标识符的“作用范围”。
+超出了这个作用范围，标识符就失效了。</p>
+<p>对于一个变量来说，它的标识符所对应的作用域是：
+<strong>从这个变量的声明开始，到这个声明所在的块结束</strong>。</p>
+<p>在<a href="#eg">上面程序</a>中我们的标识符<code>var</code>作用域是从声明：</p>
+<pre><code class="language-C">int var;
+</code></pre>
+<p>开始，到<code>main()</code>的右括号结束。</p>
+<p>我们现在“做点手脚”，把声明移到别的块中，看看会怎么样。</p>
+<pre><code class="language-C">/*var.c*/
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    {
+        int var;
+        var = 10;
+    }
+    printf(&quot;%d&quot;, var);
+    return 0;
+}
+</code></pre>
+<p>结果是编译器的一个报错。</p>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>未定义标识符 "var" (var.c:10) </p>
+</div>
+<p>这是因为<code>var</code>的声明在内部的一个块中，等到下边使用<code>var</code>时，已经不在变量标识符的作用域中了。
+编译器找不到<code>var</code>。</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p><strong>同一个作用域</strong>中不能<strong>重复声明同一个标识符</strong>。</p>
+</div>
+<p>例如下面的例子：</p>
+<pre><code class="language-C">/*var.c*/
+
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int var;
+    int var;
+    var = 10;
+    printf(&quot;%d&quot;, var);
+    return 0;
+}
+</code></pre>
+<p>会产生一个报错：</p>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>“int var”: 重定义 (var.c:8)    </p>
+</div>
+<p>这样的代码虽然不会引发上面的错误（因为两个<code>var</code>声明的块不一样，不是同一个变量）：</p>
+<pre><code class="language-C">/*var.c*/
+
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int var;
+    var = 10;
+    {
+        int var;
+        var = 20;
+        printf(&quot;%d&quot;, var); /*print 20*/
+    }
+    return 0;
+}
+</code></pre>
+<p>但是程序打印出来是20。因为：</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>如果给<strong>内部块</strong>声明一个和外部块某个标识符<strong>一样的标识符</strong>会<strong>掩盖</strong>外部块的那个标识符。</p>
+</div>
+<h2 id="type">类型（Type）<a class="headerlink" href="#type" title="Permanent link">#</a></h2>
+<p>类型是C语言中一个重要的概念。类型表示了一个值到底要<strong>如何存储</strong>、<strong>占多大空间</strong>，
+以及<strong>运算的规则</strong>。</p>
+<div class="admonition hint">
+<p class="admonition-title">什么是静态类型（static typed）语言</p>
+<p>如果一个语言如果在编译时检查类型，变量声明时必须声明类型，声明后不能做类型改变，
+就是静态类型语言。C语言的变量声明是必须带着类型，且声明后不能做类型改变，
+所以是静态类型语言。而有些语言声明变量时可以只声明变量名，运行时可以改变类型，
+则称为动态（dynamic typed）语言。</p>
+<p>相比于动态类型语言，静态类型语言不需要储存类型信息，且也较易检查错误。
+但是变量改变的自由度较小。</p>
+</div>
+<p>C语言的类型分为四大类：<em>算术（Arithmetic）类型</em>、<em>枚举（Enumerate）类型</em>、
+<em>派生（Derived）类型</em>以及<em><code>void</code>（空类型）</em>。</p>
+<p>关于<code>void</code>，C语言中将他视作一个类型占位符。它的意思可以是“无”，又或者是“任意类型”。不过：</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p><code>void</code>不能作为变量的类型。</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>到目前位置我们见过两个类型：<code>int</code>和<code>void</code>。前者在我们本章的大量例子中，
+都是以它来声明变量的。同时注意到<code>int</code>还是<code>main()</code>的返回类型。
+（所以我们可以推出0是一个<code>int</code>类型的值。）<code>void</code>存在于<code>main()</code>的参数列表中，
+表示这个函数“没有参数”。</p>
+</div>
+<p>接下来我们详细说说算术类型：</p>
+<h3 id="arithmetic">算术（Arithmetic）类型<a class="headerlink" href="#arithmetic" title="Permanent link">#</a></h3>
+<p>算术类型是一类能够执行算术操作的类型。
+它们分为两个大类：整数类型和浮点类型。</p>
+<h4 id="integer">整数（Integer）类型<a class="headerlink" href="#integer" title="Permanent link">#</a></h4>
+<p>顾名思义，整数类型的变量能够存储整数。一个整数类型除了决定它的位宽（占内存位数）以外，
+还决定了它是否“有符号”。“有符号”表示这个类型能存储负数，“无符号”表示这个类型只能存储正数和0。
+其中，整数类型中最基础的类型是<code>int</code>。它代表一个<strong>定长，有符号</strong>的整数。
+在C标准中它至少有16位，不过现在通常64位的CPU能够支持的<code>int</code>位宽为32位。</p>
+<div class="admonition hint">
+<p class="admonition-title">整数在计算机内部是如何表示的</p>
+<p>整数通常在计算机内部以二进制存储。假设一个长度为 <span class="arithmatex">\(N\)</span> 位的无符号整数，
+能够存储<span class="arithmatex">\([0, 2 ^ N - 1]\)</span>区间内的整数。对于有符号整数，要拿出一位当符号位区分正负。
+所以通常能够存储<span class="arithmatex">\([-2 ^ {N - 1}, 2 ^ {N - 1} - 1]\)</span>区间内的整数。</p>
+</div>
+<p><code>int</code>类型前面可以加以下的长度修饰符：<code>short</code>、<code>long</code>和<code>long long</code>。
+其中<code>short int</code>比<code>int</code>更短，而<code>long int</code>和<code>long long int</code>比<code>int</code>更长。
+这些类型中的<code>int</code>也可以不写，直接写成<code>short</code>、<code>long</code>和<code>long long</code>。</p>
+<p>还有一种类型我们通常也归为整数类型：字符类型<code>char</code>。字符类型可以储存<em>美国信息交换标准代码
+（American Standard Code for Information Interchange, ASCII）</em>表中的任意一个字符，
+如<code>a</code>、<code>A</code>、<code>1</code>、<code>+</code>、<code>(</code>等。<code>char</code>通常比<code>short int</code>更短。占一个字节，一般是8位。</p>
+<div class="admonition hint">
+<p class="admonition-title">字符为什么可以视为整数？</p>
+<p>ASCII码表规定了127个字符（包括控制字符）与0到127的整数的对应关系，在计算机内部，
+这些字符就是以对应的整数存储的。</p>
+</div>
+<p><code>char</code>、<code>int</code>、<code>long</code>和<code>long long</code>都可以前面加<code>unsigned</code>表示同样位宽的无符号整数。
+特别的，<code>signed char</code>表示一个字节的有符号整数。
+而<code>char</code>本身是有符号还是无符号则是实现定义的。</p>
+<div class="admonition good-practice">
+<p class="admonition-title">Good-practice</p>
+<p>尽量不要使用<code>unsigned</code>，除非特殊情况。</p>
+</div>
+<p>以下是整数类型的位宽：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>位宽（C标准）</th>
+<th>32位机器上通常的位宽</th>
+<th>64位机器上通常的位宽</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>char</code></td>
+<td>至少8</td>
+<td>8</td>
+<td>8</td>
+</tr>
+<tr>
+<td><code>short</code></td>
+<td>至少16</td>
+<td>16</td>
+<td>16</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td>至少16</td>
+<td>32</td>
+<td>32</td>
+</tr>
+<tr>
+<td><code>long</code></td>
+<td>至少32</td>
+<td>32</td>
+<td>32或64</td>
+</tr>
+<tr>
+<td><code>long long</code></td>
+<td>至少64</td>
+<td>64</td>
+<td>64</td>
+</tr>
+</tbody>
+</table>
+<p>（摘自<a href="https://zh.cppreference.com/w/c/language/arithmetic_types">zh.cppreference.com</a>）</p>
+<p>C语言规定了：所有整数类型位宽一定是<strong>字节的整数倍</strong>。且对于位宽，有：
+<code>char</code> <span class="arithmatex">\(\leq\)</span> <code>short</code> <span class="arithmatex">\(\leq\)</span> <code>int</code> <span class="arithmatex">\(\leq\)</span> <code>long</code> <span class="arithmatex">\(\leq\)</span> <code>long long</code>。
+（极端情况下，允许一个机器的字节宽位64位，使得所有上述类型宽位都是64。）</p>
+<p>C99标准中，还增加了<code>_Bool</code>类型表示布尔值。它亦可以看作一个整数类型。
+它的长度足以存储0和1二值之一。其长度可能是一个字节，而非通常认为的1位。</p>
+<h4 id="floating-point">浮点（Floating Point）类型<a class="headerlink" href="#floating-point" title="Permanent link">#</a></h4>
+<p>浮点类型能保存<em>浮点值</em>的类型。</p>
+<div class="admonition hint">
+<p class="admonition-title">浮点值是什么？</p>
+<p>通常意义上理解，浮点值可以保存小数。浮点值得名于“浮动的小数点”。
+不同于“定点值”只能表示固定整数位长度和小数位长度的情况，
+浮点值使用了二进制的科学计数法<span class="arithmatex">\(f = a \times 2 ^ p\)</span>，
+然后存储尾数<span class="arithmatex">\(a\)</span>和指数<span class="arithmatex">\(p\)</span>（还有符号）。这样可以既可以表示绝对值很小的数
+（如<span class="arithmatex">\(1.25 \times 2 ^ {-15}\)</span>），也可以表示绝对值很大的数
+（如<span class="arithmatex">\(2.5 \times 2 ^ {30}\)</span>），只需调整一下指数就可以了。因为小数点不是固定的，
+故称浮点值。浮点值的格式标准是IEEE-754。</p>
+</div>
+<p>浮点值一共有三种类型，从小到大分别是<code>float</code>（单精度浮点值）、
+<code>double</code>（双精度浮点值）和<code>long double</code>。</p>
+<p>浮点值还支持<code>-0.0</code>（负零）、<code>INFINITY</code>（正无穷大）、
+<code>-INFINITY</code>（负无穷大）和<code>NaN</code>（非数，Not a Number）这四个特殊值，它们有特殊的意义。</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>浮点值<strong>不是精确值</strong>，它们不能<strong>用作精确计算</strong>。可以尝试使用整数值进行精确计算，
+再将它们用处理成小数的表示。</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>C标准中除了上述的实浮点类型以外，还有一类复浮点类型，可以表示虚数和复数。
+但是C标准允许编译器<strong>选择性</strong>的支持这些类型，换言之，有些编译器可能不支持。
+故在此不做阐述。</p>
+</div>
 <div class="footnote">
 <hr />
 <ol>

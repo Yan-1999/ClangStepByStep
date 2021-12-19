@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>变量、类型和字面量 - C Language Step by Step</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  <link href="../../resources/css/extra.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u53d8\u91cf\u3001\u7c7b\u578b\u548c\u5b57\u9762\u91cf";
+    var mkdocs_page_input_path = "Basics of C Language\\Variables, Types, and Literals.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> C Language Step by Step</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Intro/Intro/">序言</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">C语言基础</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../Hello%2C%20world%21/">“你好，世界！”</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">变量、类型和字面量</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#variable">变量（Variable）</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#declaration">变量的声明（declaration）</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_2">变量的作用域（）</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">预处理指令</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../preprocessing%20directive/include/">include</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">附录</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Appendix/C%20Standard%20Library/">C标准库列表</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">C Language Step by Step</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>C语言基础 &raquo;</li>
+        
+      
+    
+    <li>变量、类型和字面量</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">变量、类型和字面量<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
+<p>变量、类型和字面量在C语言中处于重要的地位，不过在仔细理解这些概念之前，不妨先看一个例子：</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">代码</label><div class="tabbed-content">
+<pre><code>#include &lt;stdio.h&gt;
+int main(void)
+{
+    int var;
+    var = 10;
+    printf("%d", a);
+    var = 20;
+    printf("%d", a);
+    return 0;
+}
+</code></pre>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">输出</label><div class="tabbed-content">
+<pre><code>10
+20
+</code></pre>
+</div>
+</div>
+<p>直观的理解这段代码，我们让<code>var</code>“等于”了两个数。第一次是10、第二次是20。
+两次的<code>printf()</code>输出似乎也告诉我们这两个<code>var</code>有不一样的数值。这是怎么做到的呢？</p>
+<h2 id="variable">变量（Variable）<a class="headerlink" href="#variable" title="Permanent link">#</a></h2>
+<p>从数学上来讲，变量是一个“可以变化的量”。譬如 <span class="arithmatex">\(y = x + 3\)</span> 中的 <span class="arithmatex">\(x\)</span>。
+从编程语言的角度来说确实如此。但是对于编程语言，我们还可以从另一个角度理解这个事情：</p>
+<p>变量是内存（main memory）中的一块有名字的、固定大小的存储空间。
+这块空间可以被程序写入数据，也可以被程序读取数据，这就是它为什么可以变化。</p>
+<div class="admonition hint">
+<p class="admonition-title">如果你不了解什么是内存……</p>
+<p>内存是计算机中一块可以读写数据的储存空间。CPU可以直接读写其中的数据，
+故程序的<strong>所有数据都会存储在这里</strong><sup id="fnref:memory"><a class="footnote-ref" href="#fn:memory">1</a></sup>。不同于储存文件的<em>外存</em>，它容量较小，
+在断电后数据会消失。但是它具有存取速度快的特性，这点是外存无法比拟的。</p>
+</div>
+<h3 id="declaration">变量的声明（declaration）<a class="headerlink" href="#declaration" title="Permanent link">#</a></h3>
+<p>在使用变量之前，我们先要进行变量声明。</p>
+<div class="admonition grammar">
+<p class="admonition-title">语法：变量的声明</p>
+<p class="gram"><em>类型</em> <em>变量名</em>;</p>
+<p>其中，<em>变量名</em>是以大写字母、小写字母、数字和下划线<code>_</code>组成的字符串，且<strong>数字不能在开头</strong>。
+<em>变量名</em>亦<strong>不能是关键词</strong>。</p>
+</div>
+<p>上述程序的第四行：</p>
+<pre><code class="language-C">int var;
+</code></pre>
+<p>这一行声明了一个以<code>int</code>作为类型、<code>var</code>作为名称的变量。</p>
+<p>这个变量的声明就是告诉编译器：
+“我们需要在内存中有一个<code>int</code>类型大小的空间，请你在编译时预留这样的一个空间。
+并且我们把这个空间叫做<code>var</code>，请你在编译的时候将这个名字翻译成一个内存的地址（Adderss）。”</p>
+<div class="admonition hint">
+<p class="admonition-title">地址是什么？</p>
+<p>内存中的一个位置叫地址。通常是用一个整数表示。有点像门牌号。</p>
+</div>
+<p>变量的名字是我们随意取的，如果你把上面的<code>var</code>统统改成<code>x</code>，结果不会有什么不同。</p>
+<p>变量名是一种<em>标识符（identifier）</em>，它标识了C语言中变量或和其他需要命名的实体。
+顺带一提，函数名也是标识符。所以我们之前提到的命名约束对函数名也有效。</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>C语言对标识符长度没有限制，但是规定了有效起始字符为63个（C99）。
+换言之，如果两个变量的起始63个字符一样，那就是一样的标识符。</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>尽量不要以<code>_</code>（下划线）开头命名标识符，那是为库和其他内部标识符预留的。</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>C语言是大小写敏感（case sensitive）的。如果两个标识符大小写不一样，
+那么它们就是不同标识符。如<code>Var</code>和<code>var</code>。</p>
+</div>
+<h3 id="_2">变量的作用域（）<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:memory">
+<p>准确的来说，程序的所有数据都会存储在“虚拟内存”中。
+现代计算机操作系统可能会将一部分暂时不用的数据写到外存中，要用的时候再调回来。
+这结合了外存存储空间大和内存速度快的两方优点，给程序营造出一个“又快又大的内存”。&#160;<a class="footnote-backref" href="#fnref:memory" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../preprocessing%20directive/include/" class="btn btn-neutral float-right" title="include">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Hello%2C%20world%21/" class="btn btn-neutral" title="“你好，世界！”"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Hello%2C%20world%21/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../preprocessing%20directive/include/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

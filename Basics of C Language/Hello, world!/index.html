@@ -51,6 +51,10 @@
                     <li class="toctree-l1"><a class="reference internal" href="../../Intro/Intro/">序言</a>
                     </li>
                 </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Intro/Notions/">记号</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">C语言基础</span></p>
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">“你好，世界！”</a>
@@ -82,6 +86,8 @@
     <li class="toctree-l4"><a class="reference internal" href="#escape-sequence">转义序列（Escape Sequence）</a>
     </li>
         </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#basic-source-character-set">基本源字符集（Basic Source Character Set）</a>
     </li>
         </ul>
     </li>
@@ -183,7 +189,7 @@ int main(void)
 2.的语法适用于其他头文件。</p>
 </div>
 <div class="admonition detail">
-<p class="admonition-title">详情</p>
+<p class="admonition-title">Detail</p>
 <p>关于<code>#include</code>的详细信息，
 见<a href="../preprocessing%20directive/include/">预处理指令/include</a>。</p>
 </div>
@@ -410,6 +416,16 @@ return 0;
 </tbody>
 </table>
 <p>（摘自<a href="https://zh.cppreference.com/w/c/language/escape">zh.cppreference.com</a>）</p>
+<h3 id="basic-source-character-set">基本源字符集（Basic Source Character Set）<a class="headerlink" href="#basic-source-character-set" title="Permanent link">#</a></h3>
+<p>除了字符串以外，一份C语言代码由以下字符构成，
+他们叫做基本源字符集：</p>
+<ul>
+<li>5 个空白字符（空格、水平制表、垂直制表、换页、换行）</li>
+<li>10 个数字字符，从 <code>0</code> 到 <code>9</code></li>
+<li>52 个字母，从 <code>A</code> 到 <code>Z</code> 以及从 <code>a</code> 到 <code>z</code></li>
+<li>29 个标点字符： <code>_ { } [ ] # ( ) &lt; &gt; % : ; . ? * + - / ^ &amp; | ~ ! = , \ " '</code></li>
+</ul>
+<p>（摘自<a href="https://zh.cppreference.com/w/c/language/translation_phases">zh.cppreference.com</a>）</p>
 <h2 id="_3">动手实现，从修改这份代码开始<a class="headerlink" href="#_3" title="Permanent link">#</a></h2>
 <h3 id="_4">如果编译器报错了……<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
 <p>……那就仔细看看它是怎么说的。</p>
@@ -542,7 +558,7 @@ int main(void)
         <a href="../Variables%2C%20Types%2C%20and%20Literals/" class="btn btn-neutral float-right" title="变量、类型和字面量">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../Intro/Intro/" class="btn btn-neutral" title="序言"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../Intro/Notions/" class="btn btn-neutral" title="记号"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -568,7 +584,7 @@ int main(void)
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../../Intro/Intro/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../../Intro/Notions/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../Variables%2C%20Types%2C%20and%20Literals/" style="color: #fcfcfc">Next &raquo;</a></span>

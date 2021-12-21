@@ -51,6 +51,10 @@
                     <li class="toctree-l1"><a class="reference internal" href="../../Intro/Intro/">序言</a>
                     </li>
                 </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Intro/Notions/">记号</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">C语言基础</span></p>
                 <ul class="current">
                     <li class="toctree-l1"><a class="reference internal" href="../Hello%2C%20world%21/">“你好，世界！”</a>
@@ -84,6 +88,12 @@
     <li class="toctree-l2"><a class="reference internal" href="#printf">使用printf()函数输出数值的字符串表达</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#assignment-operator">赋值运算符（Assignment Operator）</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#implicit-conversion">隐式转换（Implicit Conversion）</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_2">整数转换</a>
+    </li>
+        </ul>
     </li>
     </ul>
                     </li>
@@ -147,9 +157,9 @@ int main(void)
 {
     int var;
     var = 10;
-    printf("%d", a);
+    printf("%d\n", a);
     var = 20;
-    printf("%d", a);
+    printf("%d\n", a);
     return 0;
 }
 </code></pre>
@@ -174,6 +184,12 @@ int main(void)
 <p>内存是计算机中一块可以读写数据的储存空间。CPU可以直接读写其中的数据，
 故程序的<strong>所有数据都会存储在这里</strong><sup id="fnref:memory"><a class="footnote-ref" href="#fn:memory">1</a></sup>。不同于储存文件的<em>外存</em>，它容量较小，
 在断电后数据会消失。但是它具有存取速度快的特性，这点是外存无法比拟的。</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">C语言中的对象（Objects）</p>
+<p id="object">对象是内存中的一块存储空间。对象有其大小、类型、生存期等特性，可以表示一个值。
+C语言每一个对象都是由整数个<em>字节（byte）</em>组成。根据这个定义，<strong>变量是一个对象</strong>。
+（注意，这和“面向对象（Object-oriented）”中的“对象”定义有区别。）</p>
 </div>
 <h3 id="declaration">变量的声明（declaration）<a class="headerlink" href="#declaration" title="Permanent link">#</a></h3>
 <p>在使用变量之前，我们先要进行变量声明。</p>
@@ -345,8 +361,11 @@ int main(void)
 这些字符就是以对应的整数存储的。</p>
 </div>
 <p><code>char</code>、<code>int</code>、<code>long</code>和<code>long long</code>都可以前面加<code>unsigned</code>表示同样位宽的无符号整数。
-特别的，<code>signed char</code>表示一个字节的有符号整数。
-而<code>char</code>本身是有符号还是无符号则是实现定义的。</p>
+特别的，<code>signed char</code>表示一个字节的有符号整数。</p>
+<div class="admonition implementation-defined">
+<p class="admonition-title">Implementation-defined</p>
+<p><code>char</code>本身是有符号还是无符号则是实现定义的。</p>
+</div>
 <div class="admonition good-practice">
 <p class="admonition-title">Good-practice</p>
 <p>尽量不要使用<code>unsigned</code>，除非特殊情况。</p>
@@ -522,12 +541,13 @@ int main(void)
 <tbody>
 <tr>
 <td><code>e</code>或<code>f</code></td>
-<td><code>double</code>（和<code>float</code><sup id="fnref:float-printf"><a class="footnote-ref" href="#fn:float-printf">2</a></sup>）</td>
+<td><code>double</code>（和<code>float</code><sup id="fnref2:dap-printf"><a class="footnote-ref" href="#fn:dap-printf">2</a></sup>）</td>
 <td><code>long double</code></td>
 </tr>
 </tbody>
 </table>
 <p>（摘自<a href="https://zh.cppreference.com/w/c/io/fprintf">zh.cppreference.com</a>）</p>
+<p>如果要输出一个<code>char</code>类型的字符，则转换指定是<code>%c</code><sup id="fnref:dap-printf"><a class="footnote-ref" href="#fn:dap-printf">2</a></sup>。</p>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>在使用<code>printf()</code>时，请确保你除了格式字符串外<strong>传入的参数个数</strong>，
@@ -547,12 +567,66 @@ int main(void)
 详细了解：<a href="">变参数函数</a>。</p>
 </div>
 <h2 id="assignment-operator">赋值运算符（Assignment Operator）<a class="headerlink" href="#assignment-operator" title="Permanent link">#</a></h2>
-<p>赋值运算符是我们要接触的第一个运算符。它将一个值赋给一个变量。</p>
+<p>赋值运算符是我们要接触的第一个运算符。它将一个值赋与一个变量。</p>
 <div class="admonition grammar">
-<p class="admonition-title">语法：赋值运算符</p>
+<p class="admonition-title">语法：赋值运算符（表达式）</p>
 <p class="gram"><em>左值</em> = <em>表达式</em></p>
-<p>其中，_左值_是一个可以被修改的左值表达式。_表达式_必须能被表</p>
+<p>其中，<em>左值</em>是一个可以被修改的左值表达式。<em>表达式</em>必须能被表示成<em>左值</em>的类型。</p>
 </div>
+<div class="admonition hint">
+<p class="admonition-title">什么是左值（lvalue）和右值（rvalue）</p>
+<p>左值是一个<a href="#object">对象</a>的标识。凡是<strong>可以被赋值的（出现在赋值号左边）</strong>，都是<strong>左值</strong>。
+（反之<strong>不一定成立</strong>：有些左值虽然表示一个对象，但是不可更改。）
+而<strong>右值</strong>不标识对象，不可以被赋值，只能出现在赋值号的右边。</p>
+<p>变量就是一个典型的左值。</p>
+<p>左值/右值构成了表达式的值类别（value category），这是和类型独立的两个系统。
+换言之，所有类型的值都有可能是左值或者右值。</p>
+</div>
+<p>变量在赋值时，会将被赋值表达的值写入这个变量，其原有的内容会被<strong>清除</strong>。
+试一下<a href="#eg">开头那个例子</a>就知道了。</p>
+<p>下面的例子给出了两个变量之间的赋值：</p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int foo, bar;
+    foo = 10;
+    bar = 20;
+    printf(&quot;%d %d\n&quot;, foo, bar); /*10 20*/
+    foo = bar;
+    printf(&quot;%d %d\n&quot;, foo, bar); /*20 20*/
+    return 0;
+}  
+</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">如何交换两个变量之间的值？</p>
+<p>一个朴素的想法是把一个变量赋给另一个变量。
+但是把哪个变量赋给另一个变量都会导致原来的值丢失.这时候我们只需要一个临时变量，
+存放将要被覆盖的值，再通过这个变量把值取回来就可以了。
+下面是一个例子：</p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int foo, bar, temp;
+    foo = 10;
+    bar = 20;
+    printf("%d %d\n", foo, bar); /*10 20*/
+    temp = foo;
+    foo = bar;
+    bar = temp;
+    printf("%d %d\n", foo, bar); /*20 10*/
+    return 0;
+}
+</code></pre>
+</div>
+<h3 id="implicit-conversion">隐式转换（Implicit Conversion）<a class="headerlink" href="#implicit-conversion" title="Permanent link">#</a></h3>
+<p>尽管C语言不允许通过赋值取改变一个值的类型，也不允许类型不匹配的类型相互赋值。
+但是在不同的整型类型赋值时，或者整形和浮点相互赋值时，编译会允许这样的赋值。
+这是因为C语言<em>隐式地</em>使用了一个<em>类型转换（type cast）</em>，称为隐式转换。
+下面来看几种隐式转换：</p>
+<h3 id="_2">整数转换<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
+<p>任何整数类型的值可以隐式转换到任何其他整数类型。</p>
 <div class="footnote">
 <hr />
 <ol>
@@ -561,8 +635,8 @@ int main(void)
 现代计算机操作系统可能会将一部分暂时不用的数据写到外存中，要用的时候再调回来。
 这结合了外存存储空间大和内存速度快的两方优点，给程序营造出一个“又快又大的内存”。&#160;<a class="footnote-backref" href="#fnref:memory" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
-<li id="fn:float-printf">
-<p>这有赖于<code>float</code>到<code>double</code>默认参数提升。&#160;<a class="footnote-backref" href="#fnref:float-printf" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<li id="fn:dap-printf">
+<p>这有赖于默认参数提升。&#160;<a class="footnote-backref" href="#fnref:dap-printf" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:dap-printf" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

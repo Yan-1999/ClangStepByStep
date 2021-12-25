@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Arithmetic Operations anf Type Casting - C Language Step by Step</title>
+  <title>预处理指令 - C Language Step by Step</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -19,8 +19,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Arithmetic Operations anf Type Casting";
-    var mkdocs_page_input_path = "Basics of C Language\\Arithmetic Operations anf Type Casting.md";
+    var mkdocs_page_name = "\u9884\u5904\u7406\u6307\u4ee4";
+    var mkdocs_page_input_path = "Basics of C Language\\Preprocessing Directive.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -48,6 +48,10 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">首页</a>
+                    </li>
+                </ul>
+                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../Intro/Intro/">序言</a>
                     </li>
                 </ul>
@@ -56,21 +60,28 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">C语言基础</span></p>
-                <ul>
+                <ul class="current">
                     <li class="toctree-l1"><a class="reference internal" href="../Hello%2C%20world%21/">“你好，世界！”</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../Variables%2C%20Types%2C%20and%20Literals/">变量、类型和字面量</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="#">预处理指令</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../preprocessing%20directive/include/">include</a>
-                </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Operators%20and%20Type%20Conversions/">运算符与类型转换</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">预处理指令</a>
+    <ul class="current">
     </ul>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">附录</span></p>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../Appendix/C%20Standard%20Library/">C标准库列表</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">许可证</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../License/CC-BY-SA%203.0/">CC-BY-SA 3.0</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../License/GFDL/">GNU Free Documentation License</a>
                     </li>
                 </ul>
       </div>
@@ -93,8 +104,12 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>C语言基础 &raquo;</li>
+        
+      
     
-    <li>Arithmetic Operations anf Type Casting</li>
+    <li>预处理指令</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -106,17 +121,29 @@
           <div role="main">
             <div class="section">
               
-                <h3 id="implicit-conversion">隐式转换（Implicit Conversion）<a class="headerlink" href="#implicit-conversion" title="Permanent link">#</a></h3>
-<p>尽管C语言不允许通过赋值取改变一个值的类型，也不允许类型不匹配的类型相互赋值。
-但是在不同的整型类型赋值时，或者整形和浮点相互赋值时，编译会允许这样的赋值。
-这是因为C语言<em>隐式地</em>使用了一个<em>类型转换（type cast）</em>，称为隐式转换。
-下面来看几种隐式转换：</p>
-<h3 id="_1">整数转换<a class="headerlink" href="#_1" title="Permanent link">#</a></h3>
-<p>任何整数类型的值可以隐式转换到任何其他整数类型。</p>
+                <h2 id="include">#include<a class="headerlink" href="#include" title="Permanent link">#</a></h2>
+<div class="admonition grammar">
+<p class="admonition-title">语法：<code>#include</code></p>
+<ol>
+<li><strong>#include &lt;</strong><em>文件名</em><strong>.h&gt;</strong></li>
+<li><strong>#include "</strong><em>文件名</em><strong>.h"</strong></li>
+</ol>
+</div>
+<p>其中：1.的语法适用于标准库的（及其他在标准包含目录中的）头文件；2.的语法适用于其他头文件。</p>
+<p><code>#include</code>是一个预编译指令，表示头文件（以及对应源文件）的<em>包含</em>。</p>
               
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../Appendix/C%20Standard%20Library/" class="btn btn-neutral float-right" title="C标准库列表">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Operators%20and%20Type%20Conversions/" class="btn btn-neutral" title="运算符与类型转换"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -140,6 +167,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
+      <span><a href="../Operators%20and%20Type%20Conversions/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../Appendix/C%20Standard%20Library/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

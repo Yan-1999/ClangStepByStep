@@ -48,12 +48,20 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">首页</a>
+                    </li>
+                </ul>
+                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../Intro/">序言</a>
                     </li>
                 </ul>
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">记号</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">语法记号</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">其他记号</a>
+    </li>
     </ul>
                     </li>
                 </ul>
@@ -63,16 +71,21 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../Basics%20of%20C%20Language/Variables%2C%20Types%2C%20and%20Literals/">变量、类型和字面量</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="#">预处理指令</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../Basics%20of%20C%20Language/preprocessing%20directive/include/">include</a>
-                </li>
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Basics%20of%20C%20Language/Operators%20and%20Type%20Conversions/">运算符与类型转换</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Basics%20of%20C%20Language/Preprocessing%20Directive/">预处理指令</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">附录</span></p>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../Appendix/C%20Standard%20Library/">C标准库列表</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">许可证</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../License/CC-BY-SA%203.0/">CC-BY-SA 3.0</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../License/GFDL/">GNU Free Documentation License</a>
                     </li>
                 </ul>
       </div>
@@ -110,12 +123,35 @@
               
                 <h1 id="_1">记号<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
 <p>下面列举本教程中用到的记号：</p>
+<h2 id="_2">语法记号<a class="headerlink" href="#_2" title="Permanent link">#</a></h2>
 <div class="admonition grammar">
 <p class="admonition-title">Grammar</p>
 <p>代表了代码的语法，其中</p>
 <p class="gram"><em>斜体</em></p>
 <p>是语法结构中可替换的占位符。</p>
+<p class="gram"><em>(括号之间的内容)</em></p>
+<p>表示该部分可选。</p>
+<p class="gram"><em>用连接符-连接的符号</em></p>
+<p>表示两个替换之中没有空格地相连。</p>
 </div>
+<p>在语法替换符的描述过程中，为了表达简便，我们用<em>正则表达式（regular expression）</em>来表达一个串允许的组成。
+以下是我们会用到的正则表达式符号：</p>
+<ul>
+<li>+ 表示前面的符号一个或重复多个，如：<code>a</code>+表示：<code>a</code>、<code>aa</code>、<code>aaa</code>等。</li>
+<li>* 表示前面的符号零个或以上，如：<code>b</code> <code>a</code>*表示：<code>b</code>、<code>ba</code>、<code>baa</code>等。</li>
+<li>? 表示前面的符号零个或一个，如：<code>b</code> <code>a</code>?表示：<code>b</code>或<code>ba</code>。</li>
+<li>| 表示或者，如：<code>is</code>|<code>are</code>表示：<code>is</code>或<code>are</code>。</li>
+<li>[] 表示在其中的任意一个字符。如[<code>abc</code>]表示<code>a</code>或<code>b</code>或<code>c</code>。<ul>
+<li>其中可以使用-表示范围。如[<code>0</code>-<code>9</code>]表示<code>0</code>到<code>9</code>中的任意一个字符，
+    [<code>0</code>-<code>9</code> <code>A</code>-<code>F</code>]表示<code>0</code>到<code>9</code>，或<code>A</code>到<code>F</code>中的任意一个字符。</li>
+</ul>
+</li>
+<li>() 括号，如<code>a</code>(<code>t</code>|<code>re</code>)表示<code>at</code>或<code>are</code>。</li>
+<li>符号之间可以组合，如[<code>1</code>-<code>9</code>][<code>0</code>-<code>9</code>]*表示不以<code>0</code>开始的十进制数位串。</li>
+<li>为了直观，我们用<code>-</code>表示一个负号，以与-区分，这个标准的正则表达式（\-）不同。
+    同理的还有<code>+</code>。</li>
+</ul>
+<h2 id="_3">其他记号<a class="headerlink" href="#_3" title="Permanent link">#</a></h2>
 <div class="admonition detail">
 <p class="admonition-title">Detail</p>
 <p>详情。</p>

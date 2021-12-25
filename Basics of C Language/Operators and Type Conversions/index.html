@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>运算符与类型转换 - C Language Step by Step</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  <link href="../../resources/css/extra.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u8fd0\u7b97\u7b26\u4e0e\u7c7b\u578b\u8f6c\u6362";
+    var mkdocs_page_input_path = "Basics of C Language\\Operators and Type Conversions.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> C Language Step by Step</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">首页</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Intro/Intro/">序言</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Intro/Notions/">记号</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">C语言基础</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../Hello%2C%20world%21/">“你好，世界！”</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Variables%2C%20Types%2C%20and%20Literals/">变量、类型和字面量</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">运算符与类型转换</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#eg">一个例子</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#operatorexpression">运算符（Operator）和表达式（Expression）</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#arithmetic-operation">算术运算（Arithmetic Operation）</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#type-conversion">类型转换（Type Conversion）</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#implicit-conversion">隐式转换（Implicit Conversion）</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_2">整数转换</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Preprocessing%20Directive/">预处理指令</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">附录</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Appendix/C%20Standard%20Library/">C标准库列表</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">许可证</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../License/CC-BY-SA%203.0/">CC-BY-SA 3.0</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../License/GFDL/">GNU Free Documentation License</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">C Language Step by Step</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>C语言基础 &raquo;</li>
+        
+      
+    
+    <li>运算符与类型转换</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">运算符和类型转换<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
+<h2 id="eg">一个例子<a class="headerlink" href="#eg" title="Permanent link">#</a></h2>
+<p>有了变量，我们就可以进行算术运算了，下面是一个例子。</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">代码</label><div class="tabbed-content">
+<pre><code>/*arith_op.c*/
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int lhs = 10, rhs = 20;
+    printf("%d\n", lhs + rhs);
+    return 0;
+}
+</code></pre>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">输出</label><div class="tabbed-content">
+<pre><code>30
+</code></pre>
+</div>
+</div>
+<p>当然，我们希望类型之间可以相互转换，下面给出了一个例子：</p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">代码</label><div class="tabbed-content">
+<pre><code>/*type_conv.c*/
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int var_int = 1;
+    float var_float = (float)var_int;
+    printf("%f\n", var_float);
+    return 0;
+}
+</code></pre>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">输出</label><div class="tabbed-content">
+<pre><code>1.000000
+</code></pre>
+</div>
+</div>
+<h2 id="operatorexpression">运算符（Operator）和表达式（Expression）<a class="headerlink" href="#operatorexpression" title="Permanent link">#</a></h2>
+<p><em>表达式</em>是由<em>操作数（operand）</em>和<em>运算符</em>组成。其中，操作数可以是：</p>
+<ul>
+<li>字面量、常量</li>
+<li>（已声明的）标识符</li>
+<li>另一个表达式</li>
+</ul>
+<p>等<sup id="fnref:operand-generic"><a class="footnote-ref" href="#fn:operand-generic">1</a></sup>。而运算符负责串联起操作数，组成新的表达式。</p>
+<p>表达式表示了一个值。<em>左值表达式</em>还表示了这个值的对象标识，可供赋值。
+如果我们像数学中那样将运算符看成一个函数的话（如 <span class="arithmatex">\(a + b\)</span> 看成 <span class="arithmatex">\(f_+(a, b)\)</span>）。
+我们也可以说运算符“返回”了一个值。</p>
+<div class="admonition hint">
+<p class="admonition-title">所以赋值运算符返回的值是什么？</p>
+<p>赋值运算符返回的值是被赋值的那个值。如<code>a = 2</code>返回的就是2，<code>a = b</code>返回的就是<code>b</code>的值。
+赋值运算符是<strong>右结合</strong>的，也就是说<code>a = b = c</code><strong>先处理<code>b = c</code></strong>，再处理<code>a = c的值</code>。
+赋值表达式是<strong>右值表达式</strong>，不能被赋值。<code>(a = b) = c</code>是非法的。</p>
+</div>
+<h3 id="arithmetic-operation">算术运算（Arithmetic Operation）<a class="headerlink" href="#arithmetic-operation" title="Permanent link">#</a></h3>
+<p>算术运算是C中的一类最基本的运算。C语言中有以下的运算符：</p>
+<ul>
+<li>一元运算符<ul>
+<li>正号<code>+</code></li>
+<li>负号<code>-</code></li>
+</ul>
+</li>
+<li>四则运算与取模<ul>
+<li>加法<code>+</code></li>
+<li>减法<code>-</code></li>
+<li>乘法<code>*</code></li>
+<li>除法<code>/</code></li>
+<li>取模<code>%</code></li>
+</ul>
+</li>
+<li>位运算<ul>
+<li>逐位非<code>~</code></li>
+<li>逐位与<code>&amp;</code></li>
+<li>逐位或<code>|</code></li>
+<li>逐位异或<code>^</code></li>
+<li>逐位左移<code>&lt;&lt;</code></li>
+<li>逐位右移<code>&gt;&gt;</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="type-conversion">类型转换（Type Conversion）<a class="headerlink" href="#type-conversion" title="Permanent link">#</a></h2>
+<h3 id="implicit-conversion">隐式转换（Implicit Conversion）<a class="headerlink" href="#implicit-conversion" title="Permanent link">#</a></h3>
+<p>尽管C语言不允许通过赋值取改变一个值的类型，也不允许类型不匹配的类型相互赋值。
+但是在不同的整型类型赋值时，或者整形和浮点相互赋值时，编译会允许这样的赋值。
+这是因为C语言<em>隐式地</em>使用了一个<em>类型转换（type cast）</em>，称为隐式转换。
+下面来看几种隐式转换：</p>
+<h3 id="_2">整数转换<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
+<p>任何整数类型的值可以隐式转换到任何其他整数类型。</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:operand-generic">
+<p>操作数还应该包含泛型选择。&#160;<a class="footnote-backref" href="#fnref:operand-generic" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Preprocessing%20Directive/" class="btn btn-neutral float-right" title="预处理指令">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Variables%2C%20Types%2C%20and%20Literals/" class="btn btn-neutral" title="变量、类型和字面量"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Variables%2C%20Types%2C%20and%20Literals/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Preprocessing%20Directive/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

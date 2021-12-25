@@ -48,6 +48,10 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">首页</a>
+                    </li>
+                </ul>
+                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../Intro/Intro/">序言</a>
                     </li>
                 </ul>
@@ -93,20 +97,33 @@
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#_2">整数字面量</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_3">浮点数字面量</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_4">字符字面量</a>
+    </li>
         </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#initalization">初始化（Initalization）</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">本章练习</a>
     </li>
     </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="#">预处理指令</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../preprocessing%20directive/include/">include</a>
-                </li>
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../Operators%20and%20Type%20Conversions/">运算符与类型转换</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Preprocessing%20Directive/">预处理指令</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">附录</span></p>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../Appendix/C%20Standard%20Library/">C标准库列表</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">许可证</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../License/CC-BY-SA%203.0/">CC-BY-SA 3.0</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../License/GFDL/">GNU Free Documentation License</a>
                     </li>
                 </ul>
       </div>
@@ -338,6 +355,10 @@ int main(void)
 <h3 id="arithmetic">算术（Arithmetic）类型<a class="headerlink" href="#arithmetic" title="Permanent link">#</a></h3>
 <p>算术类型是一类能够执行算术操作的类型。
 它们分为两个大类：整数类型和浮点类型。</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>所有算术类型名都是<strong>关键字</strong>。</p>
+</div>
 <h4 id="integer">整数（Integer）类型<a class="headerlink" href="#integer" title="Permanent link">#</a></h4>
 <p>顾名思义，整数类型的变量能够存储整数。一个整数类型除了决定它的位宽（占内存位数）以外，
 还决定了它是否“有符号”。“有符号”表示这个类型能存储负数，“无符号”表示这个类型只能存储正数和0。
@@ -645,7 +666,7 @@ int main(void)
 <p class="gram"><em>左值</em> = <em>表达式</em></p>
 <p>其中，<em>左值</em>是一个可以被修改的左值表达式。<em>表达式</em>必须能被表示成<em>左值</em>的类型。</p>
 </div>
-<p>运算符连接起两个表达式，构成一个新的表达式。
+<p><strong>运算符</strong>连接起两个表达式，构成一个<strong>新的表达式</strong>。
 <strong><a href="../Hello%2C%20world%21/#statement">前面提到过</a>，要让一个表达式成为语句，需要加<code>;</code></strong>。</p>
 <div class="admonition hint">
 <p class="admonition-title">什么是左值（lvalue）和右值（rvalue）</p>
@@ -712,18 +733,21 @@ int main(void)
 <p class="admonition-title">整数字面量</p>
 <ol>
 <li>
-<p class="gram"><em>十进制数</em> <em>(整数后缀)</em></p>
+<p class="gram"><em>十进制数-(整数后缀)</em></p>
 </li>
 <li>
-<p class="gram"><em>八进制数</em> <em>(整数后缀)</em></p>
+<p class="gram">0<em>八进制数-(整数后缀)</em></p>
 </li>
 <li>
-<p class="gram"><em>十六进制数</em> <em>(整数后缀)</em></p>
+<p class="gram">0x<em>十六进制数-(整数后缀)</em> <strong>或</strong> 0X<em>十六进制数-(整数后缀)</em></p>
 </li>
 </ol>
-<p>其中，<em>十进制数</em>是由<code>0</code>~<code>9</code>中的字符组成的串，且不能以<code>0</code>开头。<em>八进制数</em>是以<code>0</code>开头，
-后随<code>0</code>~<code>7</code>中的字符组成的串。<em>十六进制数</em>是以<code>0x</code>或<code>0X</code>开头，后随<code>0</code>~<code>9</code>、
-<code>A</code>~<code>F</code>和<code>a</code>~<code>f</code>中的字符组组成的串。</p>
+<p>其中，</p>
+<ol>
+<li><em>十进制数</em>是符合正则表达式：[<code>1</code>-<code>9</code>][<code>0</code>-<code>9</code>]*的串。</li>
+<li><em>八进制数</em>是符合正则表达式：[<code>0</code>-<code>7</code>]+的串。</li>
+<li><em>十六进制数</em>是符合正则表达式：[<code>0</code>-<code>9</code> <code>A</code>-<code>F</code> <code>a</code>-<code>f</code>]+的串。</li>
+</ol>
 <p><em>整数后缀</em>可选，只能由：</p>
 <ul>
 <li>无符号后缀：<code>u</code>、<code>U</code>或无，</li>
@@ -731,8 +755,14 @@ int main(void)
 </ul>
 <p>拼合而成。    </p>
 </div>
-<p>整数字面量表示一个整数。在不指定任何后缀的时候，编译器会从<code>int</code>开始，挑选一个位宽最小，
-范围恰能涵盖到这个值的类型，作为这个字面量的类型。也就是说，编译器会依次尝试以下类型：</p>
+<p>整数字面量表示一个整数常量。注意到：</p>
+<ul>
+<li>八进制整数字面量<strong>由<code>0</code>开始</strong>。</li>
+<li>十六进制整数字面量<strong>由<code>0x</code>/<code>0X</code>开始</strong>。</li>
+<li>十进制整数字面量<strong>不由上面两种作为开始</strong>。</li>
+</ul>
+<p>在不指定任何后缀的时候，编译器会从<code>int</code>开始，挑选一个<strong>位宽最小，
+范围恰能涵盖到这个值</strong>的类型，作为这个字面量的类型。也就是说，编译器会依次尝试以下类型：</p>
 <ol>
 <li><code>int</code></li>
 <li><code>unsigned int</code></li>
@@ -741,9 +771,9 @@ int main(void)
 <li><code>long long</code></li>
 <li><code>unsigned long long</code><sup id="fnref2:ull"><a class="footnote-ref" href="#fn:ull">3</a></sup></li>
 </ol>
-<p>如果指定了后缀<code>u</code>（或<code>U</code>），则编译器只会寻找其中的无符号类型。
-如果指定了后缀<code>l</code>（或<code>L</code>），则编译器只会从<code>long</code>开始找。
-如果指定了后缀<code>ll</code>（或<code>LL</code>），则编译器只会从<code>long long</code>开始找。</p>
+<p>如果指定了后缀<code>u</code>（或<code>U</code>），则编译器只会寻找其中的<strong>无符号类型</strong>。
+如果指定了后缀<code>l</code>（或<code>L</code>），则编译器只会<strong>从<code>long</code>开始找</strong>。
+如果指定了后缀<code>ll</code>（或<code>LL</code>），则编译器只会<strong>从<code>long long</code>开始找</strong>。</p>
 <p>换言之，一个指定了<code>llu</code>后缀的整数字面量一定是<code>unsigned long long</code>类型的<sup id="fnref:ull"><a class="footnote-ref" href="#fn:ull">3</a></sup>。</p>
 <p>以下是一些整数字面量的例子：</p>
 <pre><code class="language-C">42
@@ -753,6 +783,194 @@ int main(void)
 147L
 0x1234ABCDEFll
 </code></pre>
+<h3 id="_3">浮点数字面量<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
+<div class="admonition grammar">
+<p class="admonition-title">浮点数字面量</p>
+<ol>
+<li>
+<p class="gram"><em>(整数)</em>.<em>(小数)-(浮点后缀)</em></p>
+</li>
+<li>
+<p class="gram"><em>十进制尾数</em>e<em>指数-(浮点后缀)</em> <strong>或</strong> <em>十进制尾数</em>E<em>指数-(浮点后缀)</em></p>
+</li>
+<li>
+<p class="gram"><em>十六进制指示符-十六进制尾数</em>p<em>指数-(浮点后缀)</em> 
+    <strong>或</strong> <em>十六进制指示符-十六进制尾数</em>P<em>指数-(浮点后缀)</em></p>
+</li>
+</ol>
+<p>其中，</p>
+<ol>
+<li>中的<em>整数</em>和<em>小数</em>至少选择其中之一。二者都是符合正则表达式：[<code>0</code>-<code>9</code>]+的串。</li>
+<li>
+<p>中的<em>十进制尾数</em>是一个拥有语法：</p>
+<p class="gram"><em>(整数)</em>.<em>(小数)</em></p>
+<p>的串，<em>整数</em>和<em>小数</em>至少选择其中之一，或者单独由<em>整数</em>构成。
+二者都是符合正则表达式：[<code>0</code>-<code>9</code>]+的串。
+<em>指数</em>是符合正则表达式：(<code>-</code>|<code>+</code>)?[<code>0</code>-<code>9</code>]+的串。</p>
+</li>
+<li>
+<p>中的<em>十六进制指示符</em>是<code>0x</code>或<code>0X</code>。<em>十六进制尾数</em>是一个拥有语法：</p>
+<p class="gram"><em>(整数)</em>.<em>(小数)</em></p>
+<p>的串，<em>整数</em>和<em>小数</em>至少选择其中之一，或者单独由<em>整数</em>构成。
+二者都是符合正则表达式：[<code>0</code>-<code>9</code> <code>A</code>-<code>F</code> <code>a</code>-<code>f</code>]+的串。
+<em>指数</em>是符合正则表达式：(<code>-</code>|<code>+</code>)?[<code>0</code>-<code>9</code>]+的串。</p>
+</li>
+</ol>
+<p><em>浮点后缀</em>可选，只能选自：<code>f</code>、<code>F</code>、<code>l</code>和<code>L</code>。</p>
+</div>
+<p>浮点数字面量表示一个浮点数常量。注意到：</p>
+<ul>
+<li>十进制浮点数字面量<strong>至少拥有小数点<code>.</code>或指数部分（<code>E</code>或<code>e</code>开始）中的一个</strong>。
+    （否则就是一个<strong>整数字面量</strong>）<ul>
+<li>当只拥有小数点的时候，<strong>至少拥有整数部分或小数部分中的一个</strong>，如<code>1.</code>或<code>.1</code>。</li>
+</ul>
+</li>
+<li>十六进制浮点数字面量<strong>以<code>0x</code>/<code>0X</code>开始</strong>，<strong>必须有指数部分（<code>P</code>或<code>p</code>开始）</strong>。</li>
+</ul>
+<p>十进制浮点数字面量的尾数会转换为一个十进制小数，指数部分表示了这个小数要乘以10的多少次幂。
+合起来是一个科学计数法表示的小数。如<code>1.5e3</code>表示<span class="arithmatex">\(1.5 \times 10 ^ 3\)</span>。指数是整数，可以为负。</p>
+<p>十六进制浮点数字面量的尾数会转换为一个<strong>十六进制小数</strong>，
+指数部分表示了这个小数要乘以<strong>2的多少次幂</strong>。
+如<code>0x1.8p1</code>表示<span class="arithmatex">\((1 + \frac{8}{16}) \times 2 ^ 1 = 3\)</span>。<sup id="fnref:hex3"><a class="footnote-ref" href="#fn:hex3">4</a></sup></p>
+<p>以下是浮点后缀所对应的类型，不同于整数字面量，你需要<strong>显示地指定</strong>类型：</p>
+<table>
+<thead>
+<tr>
+<th>后缀</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>f</code>或<code>F</code></td>
+<td><code>float</code></td>
+</tr>
+<tr>
+<td>无</td>
+<td><code>double</code></td>
+</tr>
+<tr>
+<td><code>l</code>或<code>L</code></td>
+<td><code>long double</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>由于浮点数的二进制表示法，十进制的浮点数值<strong>不一定能够准确的存储</strong>。如<code>0.1</code>等。
+通常某些不能完美转换的值会变为二进制表示的<strong>邻近较大或较小值</strong>。</p>
+</div>
+<div class="admonition hit">
+<p class="admonition-title">Hit</p>
+<p>有一些特殊的浮点数值不能通过浮点数字面量表示。这些值在<code>&lt;math.h&gt;</code>中有常量供使用：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HUGE_VALF</code></td>
+<td>过大而溢出<code>float</code>的值</td>
+</tr>
+<tr>
+<td><code>HUGE_VAL</code></td>
+<td>过大而溢出<code>double</code>的值</td>
+</tr>
+<tr>
+<td><code>HUGE_VALL</code></td>
+<td>过大而溢出<code>long double</code>的值</td>
+</tr>
+<tr>
+<td><code>INFINITY</code></td>
+<td>表示正无穷的值</td>
+</tr>
+<tr>
+<td><code>NAN</code></td>
+<td><code>float</code>类型的“非数”值</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>以下是一些浮点数字面量的例子：</p>
+<pre><code class="language-C">1.0
+0.1
+1.
+.5
+1e0
+.2e-5f
+0x1p0
+0x1.fP5l
+</code></pre>
+<h3 id="_4">字符字面量<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
+<div class="admonition grammar">
+<p class="admonition-title">字符字面量</p>
+<p class="gram">'<em>字符</em>'</p>
+<p>其中，<em>字符</em>表示（<a href="../Hello%2C%20world%21/#basic-source-character-set">基本源字符集</a>的）
+除了<code>'</code>或者<code>\</code>的一个字符，或者<a href="../Hello%2C%20world%21/#escape-sequence">转义序列</a>。</p>
+</div>
+<p>不同于<a href="../Hello%2C%20world%21/#string-literal">字符串字面量</a>，字符字面量表示<strong>一个</strong>字符。
+某些字符用<a href="../Hello%2C%20world%21/#escape-sequence">转义序列</a>表示，比如<code>\n</code>表示换行符。</p>
+<p>我们通常把字符字面量赋给一个<code>char</code>型<sup id="fnref:char-lit-type"><a class="footnote-ref" href="#fn:char-lit-type">5</a></sup>变量。
+在一般情况下字符字面量与<code>char</code>型兼容。</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p><strong>数字字符</strong>和对应的数字本身<strong>不相等</strong>。例如<code>'0'</code>和<code>0</code>不相等。前者表示的整数值是48
+（在ASCII中）。</p>
+</div>
+<h2 id="initalization">初始化（Initalization）<a class="headerlink" href="#initalization" title="Permanent link">#</a></h2>
+<p>我们可以在变量声明时，就给它赋一个值，称之为<em>初始化</em>。</p>
+<div class="admonition grammar">
+<p class="admonition-title">声明与初始化</p>
+<p class="gram"><em>类型</em> <em>声明序列</em></p>
+<p>其中，<em>声明序列</em>是由<em>声明项</em>组成的，由逗号<code>,</code>分隔的列表。<em>声明项</em>具有以下语法：</p>
+<p><em>标识符</em> = <em>表达式</em></p>
+</div>
+<p>以下代码片段展现了一个初始化的例子：</p>
+<pre><code class="language-C">int var = 0;
+int foo = 1, bar = 2;
+</code></pre>
+<p>直观感受的话，这就是将声明和赋值表达式整合到一起。
+上面的代码片段中我们声明了<code>var</code>、<code>foo</code>和<code>bar</code>三个<code>int</code>型变量。并初始化他们的值为0、1和2。</p>
+<div class="admonition good-practice">
+<p class="admonition-title">Good-practice</p>
+<p>声明变量同时初始化是一种好习惯。</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>取一个没有被初始化的变量、也没有被赋值过的变量的值，其结果是不确定的。</p>
+</div>
+<p>当然，初始化能比赋值做更多的事情。</p>
+<h2 id="_5">本章练习<a class="headerlink" href="#_5" title="Permanent link">#</a></h2>
+<div class="admonition exercise">
+<p class="admonition-title">Exercise</p>
+<div class="tabbed-set" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">问题</label><div class="tabbed-content">
+<p>在一个程序中，声明两个足够存储17592236376080和17867114283024的变量，
+交换他们的值并输出。要求使用以下的格式：</p>
+<p>first: <em>第一个值</em>, second: <em>第二个值</em></p>
+</div>
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">输出示例</label><div class="tabbed-content">
+<pre><code>first: 17867114283024, second: 17592236376080
+</code></pre>
+</div>
+<input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><label for="__tabbed_3_3">参考实现</label><div class="tabbed-content">
+<pre><code>#include &lt;stdio.h&gt;
+int main(void)
+{
+    long long first_var = 17592236376080ll;
+    long long second_var = 17867114283024ll;
+    long long temp = first_var;
+    first_var = second_var;
+    second_var = temp;
+    printf("first: %lld, second: %lld", first_var, second_var);
+    return 0;
+}
+</code></pre>
+</div>
+</div>
+</div>
 <div class="footnote">
 <hr />
 <ol>
@@ -767,6 +985,13 @@ int main(void)
 <li id="fn:ull">
 <p>若编译器支持扩展整数类型，则可能为更大的类型。&#160;<a class="footnote-backref" href="#fnref:ull" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:ull" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
+<li id="fn:hex3">
+<p>浮点数在计算机内部由二进制的尾数和指数表示，所以十六进制小数更贴合计算机的表示。
+但是本例不妨直接写成<code>3.0</code>，何必为难自己呢？&#160;<a class="footnote-backref" href="#fnref:hex3" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:char-lit-type">
+<p>虽然字符字面量的的准确类型是<code>int</code>。&#160;<a class="footnote-backref" href="#fnref:char-lit-type" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
 </ol>
 </div>
               
@@ -776,7 +1001,7 @@ int main(void)
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../preprocessing%20directive/include/" class="btn btn-neutral float-right" title="include">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../Operators%20and%20Type%20Conversions/" class="btn btn-neutral float-right" title="运算符与类型转换">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../Hello%2C%20world%21/" class="btn btn-neutral" title="“你好，世界！”"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -808,7 +1033,7 @@ int main(void)
       <span><a href="../Hello%2C%20world%21/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../preprocessing%20directive/include/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../Operators%20and%20Type%20Conversions/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

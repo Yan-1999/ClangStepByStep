@@ -179,7 +179,18 @@ ADD: 2, r2 -&gt; a
 <li>C标准使得C语言<strong>无歧义</strong>，指导我们怎么去使用语言。</li>
 <li>C标准规范了编译器的行为，也规定了每种C语言编译器都应该<strong>至少</strong>实现什么功能。</li>
 </ul>
-<p>C标准现在由国际标准化组织（International Organization for Standardization, ISO）出版并维护，其编号为：<a href="https://www.iso.org/standard/74528.html">ISO/IEC 9899</a>。它是一个动态的标准，意味着它有版本的迭代升级。常见的标准有：C89、C95、C99、C11、C17等。</p>
+<p>C标准现在由国际标准化组织（International Organization for Standardization, ISO）
+出版并维护，其编号为：<a href="https://www.iso.org/standard/74528.html">ISO/IEC 9899</a>。
+它是一个动态的标准，意味着它有版本的迭代升级。常见的标准有：C89、C95、C99、C11、C17等。</p>
+<p>C标准指定了绝大多数的程序行为，但是它在某些地方“留有空间”，不指定它们的行为的结果。
+通常使用以下的术语来表示：</p>
+<ul>
+<li><em>实现定义行为（implementation-defined behavior）</em>：标准容许二种或多种行为，
+    每一个编译器指定实现哪一个行为并成为其规范。如字节的位数。</li>
+<li><em>未定义行为（undefined behavior）</em>：对此行为没有限制。
+    出现该行为程序可以产生<strong>非预期的结果</strong>。编译器<strong>不需要检查出</strong>未定义行为。
+    通常这说明程序在设计上有问题，比如出现了除以0。</li>
+</ul>
               
             </div>
           </div>

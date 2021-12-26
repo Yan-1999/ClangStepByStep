@@ -72,6 +72,18 @@
     <li class="toctree-l2"><a class="reference internal" href="#operatorexpression">运算符（Operator）和表达式（Expression）</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#arithmetic-operation">算术运算（Arithmetic Operation）</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#unary">一元（Unary）算术运算符</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#_2">四则运算符与取模运算符</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#_7">位运算符</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#_9">移位运算符</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#precedence">优先级（Precedence）与结合性</a>
     </li>
         </ul>
     </li>
@@ -79,7 +91,9 @@
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#implicit-conversion">隐式转换（Implicit Conversion）</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#_2">整数转换</a>
+    <li class="toctree-l3"><a class="reference internal" href="#integer-promotions">整数提升（Integer Promotions）</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_10">整数转换</a>
     </li>
         </ul>
     </li>
@@ -190,11 +204,12 @@ int main(void)
 <div class="admonition hint">
 <p class="admonition-title">所以赋值运算符返回的值是什么？</p>
 <p>赋值运算符返回的值是被赋值的那个值。如<code>a = 2</code>返回的就是2，<code>a = b</code>返回的就是<code>b</code>的值。
-赋值运算符是<strong>右结合</strong>的，也就是说<code>a = b = c</code><strong>先处理<code>b = c</code></strong>，再处理<code>a = c的值</code>。
+赋值运算符是<strong><a href="#precedence">右结合</a></strong>的，也就是说<code>a = b = c</code>如同<strong>先处理<code>b = c</code></strong>，
+再处理<code>a = c的值</code>。
 赋值表达式是<strong>右值表达式</strong>，不能被赋值。<code>(a = b) = c</code>是非法的。</p>
 </div>
 <h3 id="arithmetic-operation">算术运算（Arithmetic Operation）<a class="headerlink" href="#arithmetic-operation" title="Permanent link">#</a></h3>
-<p>算术运算是C中的一类最基本的运算。C语言中有以下的运算符：</p>
+<p>算术运算是C中的一类最基本的运算。C语言中有以下的算术运算符：</p>
 <ul>
 <li>一元运算符<ul>
 <li>正号<code>+</code></li>
@@ -219,13 +234,408 @@ int main(void)
 </ul>
 </li>
 </ul>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>所有的算术表达式都是<strong>右值</strong>。它们无法被赋值。</p>
+</div>
+<h4 id="unary">一元（Unary）算术运算符<a class="headerlink" href="#unary" title="Permanent link">#</a></h4>
+<div class="admonition grammar">
+<p class="admonition-title">一元算术运算符</p>
+<p class="gram">+ <em>表达式</em></p>
+<p class="gram">- <em>表达式</em></p>
+</div>
+<p>一元算术运算符将表达式保持原值（正号<code>+</code>）或取相反数（符号<code>-</code>），并进行整数提升
+（<a href="#integer-promotions">见下</a>）。
+以下是一个例子：</p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int var = -1;
+    printf(&quot;%d\n&quot;, var);
+    return 0;
+}  
+</code></pre>
+<p>这里将整数字面量和负号结合起来初始化一个变量。这样可以初始化一个负数值。</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>在赋值的时候，我们可以将一个变量的值经过计算后结果重新赋给这个变量。如：</p>
+<pre><code>a = -a;
+</code></pre>
+<p>意思是取出<code>a</code>的值，变为相反数，再赋值给<code>a</code>。也就是，<code>a</code>变为原来的相反数。</p>
+</div>
+<h4 id="_2">四则运算符与取模运算符<a class="headerlink" href="#_2" title="Permanent link">#</a></h4>
+<div class="admonition grammar">
+<p class="admonition-title">四则运算符与取模运算符</p>
+<p class="gram"><em>表达式</em> + <em>表达式</em></p>
+<p class="gram"><em>表达式</em> - <em>表达式</em></p>
+<p class="gram"><em>表达式</em> * <em>表达式</em></p>
+<p class="gram"><em>表达式</em> / <em>表达式</em></p>
+<p class="gram"><em>整数表达式</em> % <em>整数表达式</em></p>
+</div>
+<p>在左右表达式都是算术类型的情况下，四则运算符都如同在数学中的定义，只有以下不同：</p>
+<h5 id="_3">除法<a class="headerlink" href="#_3" title="Permanent link">#</a></h5>
+<p>对于除法来说，如果它的左右表达式的类型<strong>都是整数</strong>，那么结果为代数商（非分数），<strong>向零</strong>截断。</p>
+<p>如以下的例子：</p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int foo = -7 / 3, bar = 7 / 3;
+    printf(&quot;%d %d\n&quot;, foo, bar);
+    return 0;
+}  
+</code></pre>
+<div class="admonition undefined-behavior">
+<p class="admonition-title">Undefined-behavior</p>
+<p>整数除法中，如果被除表达式是0，则会是未定义行为。</p>
+</div>
+<p>会输出：<code>-2 2</code>。</p>
+<p>如果左右表达式类型为浮点数，则会算出一个浮点数。如以下的例子：</p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    float foo = -7.f / 3.f;
+    printf(&quot;%f\n&quot;, foo);
+    return 0;
+}
+</code></pre>
+<p>会输出：<code>-2.333333</code>。</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>如果编译器的浮点数算术遵循IEEE-754，则非零浮点数除以<code>0.0</code>结果是<code>INFINITY</code>，
+除以<code>-0.0</code>结果是<code>-INFINITY</code>，<code>0.0 / 0.0</code>结果是<code>NaN</code>。否则为未定义行为。</p>
+</div>
+<h5 id="_4">取余<a class="headerlink" href="#_4" title="Permanent link">#</a></h5>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>取余只能运用在<strong>整数类型</strong>上。右操作数不能是0。</p>
+</div>
+<p>取余运算与商有密切关系。如果<code>q = a / b</code>，那么<code>a % b</code>与<code>a - q * b</code>相等。
+对于正整数，这就是通常意义上的余数。同样，这适用于负数的情况。</p>
+<p>这个例子会输出-1：</p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int foo = -7 % 3;
+    printf(&quot;%d\n&quot;, foo);
+    return 0;
+}
+</code></pre>
+<p>不难发现，取余结果的符号与左操作数同号。</p>
+<h5 id="_5">浮点无穷大计算<a class="headerlink" href="#_5" title="Permanent link">#</a></h5>
+<p>浮点无穷大遵循以下的规律运算：
+- 同号无穷大相减或异号无穷大相加得出NaN。
+- 无穷大乘0得出NaN，否则根据符号得出（相应符号）无穷大。
+- 无穷大除以有限值得到（相应符号）无穷大，有限值除以无穷大得到（相应符号）零。</p>
+<h5 id="nan">NaN计算<a class="headerlink" href="#nan" title="Permanent link">#</a></h5>
+<p>如果NaN参与了任何的四则运算，结果都是NaN。
+NaN的相反数是（另一）NaN。</p>
+<h5 id="overflow">溢出（Overflow）<a class="headerlink" href="#overflow" title="Permanent link">#</a></h5>
+<p>由于C语言的整数类型是存在范围的的，所以会遇到整数溢出的情况（分为上溢和下溢）。</p>
+<p>对于无符号整数的情况，如果它的位宽为<span class="arithmatex">\(N\)</span>，则结果就会是对<span class="arithmatex">\(2 ^ N\)</span>的模。</p>
+<p>如以下的例子：</p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    unsigned a = 65536u;
+    unsigned b = a * a;
+    printf(&quot;%u\n&quot;, b);
+    return 0;
+}
+</code></pre>
+<p>在32位的环境下得到的是0.因为
+$$
+    65536 ^ 2 = (2 ^ {16}) ^ 2 = 2 ^ {32}.
+$$
+模<span class="arithmatex">\(2 ^ {32}\)</span>刚好是0.</p>
+<div class="admonition implementation-defined">
+<p class="admonition-title">Implementation-defined</p>
+<p>对于有符号整数，溢出后的结果是实现定义的。</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>这里的溢出对于运算的<strong>中间结果</strong>也成立。</p>
+</div>
+<p>浮点数在中间计算的过程中一般<code>float</code>量都是扩到<code>double</code>上运算（视编译器而定）。
+较难发生溢出的情况。当然，浮点数还会有另外的问题：</p>
+<h5 id="_6">浮点运算的不精确性<a class="headerlink" href="#_6" title="Permanent link">#</a></h5>
+<p>看以下的例子：</p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    double a = 1e300;
+    double b = a + 1.f;
+    printf(&quot;%f\n&quot;, b - a);
+    return 0;
+}
+</code></pre>
+<p>这个例子会输出0.000000. 直觉上，<code>b</code>比<code>a</code>大1，应该输出1. 但是，由于<code>a</code>和<code>b</code>都是很大的数，
+加上<code>1</code>来说，对尾数没有改变。所以相减会等于0.
+在<strong>精确度要求不高</strong>，<strong>数量级相差</strong>不大的计算中，浮点数还是有其优势的。</p>
+<h4 id="_7">位运算符<a class="headerlink" href="#_7" title="Permanent link">#</a></h4>
+<p>位运算符是在<strong>整数</strong>表达式上对整数的位进行操纵运算符。</p>
+<div class="admonition hint">
+<p class="admonition-title">无符号整数的二进制表示</p>
+<p>如同十进制的表示，每一个无符号整数也可以用二进制表示。二进制的每一位表示2的某个幂。
+从左向右依次是：$$ \cdots, 2^3, 2^2, 2^1, 2^0 .$$
+如5的二进制表示可以表示为：<span class="arithmatex">\(101_{2}\)</span>，其意义是<span class="arithmatex">\(2^2 + 2^0 = 5\)</span>。
+在32位的<code>unsigned int</code>类型中就存储为：</p>
+<pre><code>0000 0000 0000 0000 0000 0000 0000 0101
+</code></pre>
+<p>计算机内部就是这么储存无符号整数的。对于有符号整数数，有多种内部表示方法，在此不赘述。</p>
+</div>
+<h5 id="_8">逐位逻辑运算符<a class="headerlink" href="#_8" title="Permanent link">#</a></h5>
+<p>逐位逻辑运算符就是对整数的位进行操纵。</p>
+<div class="admonition grammar">
+<p class="admonition-title">逐位逻辑运算符</p>
+<p class="gram">~<em>整数表达式</em></p>
+<p class="gram"><em>整数表达式</em> &amp; <em>整数表达式</em></p>
+<p class="gram"><em>整数表达式</em> | <em>整数表达式</em></p>
+<p class="gram"><em>整数表达式</em> ^ <em>整数表达式</em></p>
+</div>
+<p>取反操作将所有的位取反，也就是说将每一位0变成1、1变成0.
+取反操作的真值表如下：</p>
+<table>
+<thead>
+<tr>
+<th>输入</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition hint">
+<p class="admonition-title">什么是真值表（truth table）？</p>
+<p>每一种位运算都可以由输入输出决定。真值表列出所有可能的输入，并给出了对应的输出。
+每一个单元格都是0（假）或1（真），所以叫真值表。</p>
+</div>
+<p>我们来试一下以下的程序：</p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    unsigned a = 3;
+    printf(&quot;%u\n&quot;, ~a);
+    return 0;
+}
+
+</code></pre>
+<p>在32位下会输出4294967292. 我们来看看3（上）和4294967292（下）的二进制表示：</p>
+<pre><code class="language-text">0000 0000 0000 0000 0000 0000 0000 0011
+1111 1111 1111 1111 1111 1111 1111 1100
+</code></pre>
+<p>已经很明白了。</p>
+<p>接下来我们介绍逐位与（<code>&amp;</code>）、逐位或（<code>|</code>）和逐位异或（<code>^</code>），它们都是二元运算符。</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>C语言中<code>^</code>代表逐位异或，不是乘幂。</p>
+</div>
+<p>与的真值表如下：</p>
+<table>
+<thead>
+<tr>
+<th>输入</th>
+<th>输入</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>“与”的意思直观理解就是：当两个位都为1（真）时，输出1（真）。其他情况都是0（假）。
+这正是“与”的字面意思。</p>
+<p>或的真值表如下：</p>
+<table>
+<thead>
+<tr>
+<th>输入</th>
+<th>输入</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>“与”的意思直观理解就是：当两个位有一个为1（真）时，就输出1（真）。这正是“或”的字面意思。</p>
+<p>来看一个例子：</p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    unsigned a = 5;
+    unsigned b = 3;
+    printf(&quot;%u %u\n&quot;, a | b, a &amp; b);
+    return 0;
+}
+
+</code></pre>
+<p>输出<code>7 1</code>. 来看看这些数的内部表示：</p>
+<pre><code class="language-text">0...0 0011 -&gt; 3
+0...0 0101 -&gt; 5
+0...0 0111 -&gt; 7: 3 | 5
+0...0 0001 -&gt; 1: 3 &amp; 5
+</code></pre>
+<p>我们可以利用与和或做一下掩码操作。掩码就是找一个特殊的数，用它和其他的数做与运算，
+能够保持那个数的某些位，而其他的位统统变为0. 这个数的设计也特别简单：
+需要保留的位设为1，其他设为0，这就是做掩码的数。</p>
+<div class="admonition exercise">
+<p class="admonition-title">Exercise</p>
+<p>设计一个保留整数最右边三位的掩码。你可以使用9（1001）来试一下，应该与这个数的与是1.
+（提示：这个数在本节已经出现过。）</p>
+</div>
+<p>或运算的一个应用是：将一个数所需要的位设置为1，其他位保持不变。这个数的设计也特别简单：
+需要设置的位设为1，其他设为0。</p>
+<p>最后是异或运算，这是它的真值表：</p>
+<table>
+<thead>
+<tr>
+<th>输入</th>
+<th>输入</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>异或运算的逻辑是：如果两个位只有一个是1（真），则输出1（真），否则为0（假）。</p>
+<div class="admonition hint">
+<p class="admonition-title">使用异或运算进行原地交换</p>
+<p>使用异或运算可以原地交换两个整数的值，不需要辅助变量，下面是一个例子：</p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    unsigned a = 5;
+    unsigned b = 3;
+    a = a ^ b;
+    b = b ^ a;
+    a = b ^ a;
+    printf("%u %u\n", a, b);
+    return 0;
+}
+</code></pre>
+<p>你可以想想这种方法的原理。</p>
+</div>
+<h4 id="_9">移位运算符<a class="headerlink" href="#_9" title="Permanent link">#</a></h4>
+<div class="admonition grammar">
+<p class="admonition-title">逐位逻辑运算符</p>
+<p class="gram"><em>整数表达式</em> &lt;&lt; <em>整数表达式</em></p>
+<p class="gram"><em>整数表达式</em> >> <em>整数表达式</em></p>
+</div>
+<p>移位运算符将整数的所有位向左/向右移动。它的右表达式表示了要移动多少位。
+右移在右侧的位补零，无符号整数左移在左侧补零，超出的部分（对于无符号整数）则截断。</p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    unsigned a = 5;
+    printf(&quot;%u %u\n&quot;, 5 &lt;&lt; 2, 5 &gt;&gt; 1);
+    return 0;
+}
+
+</code></pre>
+<p>输出是<code>20 2</code>.来看看这些数的内部表示：</p>
+<pre><code class="language-text">0...0 0000 0101 -&gt; 5
+0...0 0001 0100 -&gt; 20: 5 &lt;&lt; 2
+0...0 0000 0010 -&gt; 2: 5 &gt;&gt; 1
+</code></pre>
+<div class="admonition undefined-behavior">
+<p class="admonition-title">Undefined-behavior</p>
+<p>如果右表达式是<strong>负数</strong>，或者<strong>超出</strong>左表达式类型的位宽的，则是未定义行为。</p>
+</div>
+<p>左移/右移<span class="arithmatex">\(N\)</span>位相当于乘/整数除<span class="arithmatex">\(2^N\)</span>，对于有符号类型的正数也是如此。
+它提供了一个乘除2的幂的好方法，通常来说，移位运算比乘除运算要快。</p>
+<div class="admonition undefined-behavior">
+<p class="admonition-title">Undefined-behavior</p>
+<p>如果对于无符号整数，在整数提升后（见下）仍然无法表达移位后的值，则是未定义行为。</p>
+</div>
+<div class="admonition implementation-defined">
+<p class="admonition-title">Implementation-defined</p>
+<p>对于负数，移位的结果是实现定义的。大多数编译器选择符号位扩展，会保留正负性。</p>
+</div>
+<h3 id="precedence">优先级（Precedence）与结合性<a class="headerlink" href="#precedence" title="Permanent link">#</a></h3>
 <h2 id="type-conversion">类型转换（Type Conversion）<a class="headerlink" href="#type-conversion" title="Permanent link">#</a></h2>
 <h3 id="implicit-conversion">隐式转换（Implicit Conversion）<a class="headerlink" href="#implicit-conversion" title="Permanent link">#</a></h3>
 <p>尽管C语言不允许通过赋值取改变一个值的类型，也不允许类型不匹配的类型相互赋值。
 但是在不同的整型类型赋值时，或者整形和浮点相互赋值时，编译会允许这样的赋值。
 这是因为C语言<em>隐式地</em>使用了一个<em>类型转换（type cast）</em>，称为隐式转换。
 下面来看几种隐式转换：</p>
-<h3 id="_2">整数转换<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
+<h3 id="integer-promotions">整数提升（Integer Promotions）<a class="headerlink" href="#integer-promotions" title="Permanent link">#</a></h3>
+<h3 id="_10">整数转换<a class="headerlink" href="#_10" title="Permanent link">#</a></h3>
 <p>任何整数类型的值可以隐式转换到任何其他整数类型。</p>
 <div class="footnote">
 <hr />

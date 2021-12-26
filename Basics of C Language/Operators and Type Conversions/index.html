@@ -83,7 +83,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#precedence">优先级（Precedence）与结合性</a>
+    <li class="toctree-l3"><a class="reference internal" href="#precedenceassociativity">优先级（Precedence）与结合性（Associativity）</a>
     </li>
         </ul>
     </li>
@@ -627,7 +627,76 @@ int main(void)
 <p class="admonition-title">Implementation-defined</p>
 <p>对于负数，移位的结果是实现定义的。大多数编译器选择符号位扩展，会保留正负性。</p>
 </div>
-<h3 id="precedence">优先级（Precedence）与结合性<a class="headerlink" href="#precedence" title="Permanent link">#</a></h3>
+<h3 id="precedenceassociativity">优先级（Precedence）与结合性（Associativity）<a class="headerlink" href="#precedenceassociativity" title="Permanent link">#</a></h3>
+<p>和数学中一样，运算符具有优先级。运算符的优先级根数学中的类似。
+我们把现在遇到的运算符列举如下：</p>
+<table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>运算符</th>
+<th>结合性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>高</td>
+<td><code>+</code>（正号）、<code>-</code>（负号）</td>
+<td>右</td>
+</tr>
+<tr>
+<td></td>
+<td><code>*</code>、<code>/</code>、<code>%</code></td>
+<td>左</td>
+</tr>
+<tr>
+<td></td>
+<td><code>+</code>（加号）、<code>-</code>（减号）</td>
+<td>左</td>
+</tr>
+<tr>
+<td></td>
+<td><code>&lt;&lt;</code>、<code>&gt;&gt;</code></td>
+<td>左</td>
+</tr>
+<tr>
+<td></td>
+<td><code>&amp;</code></td>
+<td>左</td>
+</tr>
+<tr>
+<td></td>
+<td><code>^</code></td>
+<td>左</td>
+</tr>
+<tr>
+<td></td>
+<td><code>|</code></td>
+<td>左</td>
+</tr>
+<tr>
+<td>低</td>
+<td><code>=</code></td>
+<td>右</td>
+</tr>
+</tbody>
+</table>
+<p>结合性指的是同级运算的优先级。左结合说明最左边的运算符优先、从左至右，
+右结合说明最右边的运算符优先、从右至左。</p>
+<p>我们可以用小括号<code>()</code>包围表达式，使它最优先，如同数学中那样。</p>
+<div class="admonition grammar">
+<p class="admonition-title">小括号</p>
+<p class="gram">(<em>表达式</em>)</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p><code>[]</code>和<code>{}</code>不能像<code>()</code>那样作为提高优先级使用，它们有别的意义。</p>
+</div>
+<div class="admonition good-practice">
+<p class="admonition-title">Good-practice</p>
+<p>通常，除了<code>=</code>、<code>%</code>和四则运算之外，我们都使用小括号来表示优先级。
+因为这些负号的优先级不是显然的，也省得我们背优先级表。</p>
+</div>
 <h2 id="type-conversion">类型转换（Type Conversion）<a class="headerlink" href="#type-conversion" title="Permanent link">#</a></h2>
 <h3 id="implicit-conversion">隐式转换（Implicit Conversion）<a class="headerlink" href="#implicit-conversion" title="Permanent link">#</a></h3>
 <p>尽管C语言不允许通过赋值取改变一个值的类型，也不允许类型不匹配的类型相互赋值。

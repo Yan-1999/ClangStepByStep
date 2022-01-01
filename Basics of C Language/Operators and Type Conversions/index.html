@@ -89,11 +89,27 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#type-conversion">类型转换（Type Conversion）</a>
         <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_10">算术类型转换规则</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#_11">整数与浮点类型的相互转换</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#_12">算术类型的转换等级</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#_13">整数转换</a>
+    </li>
+        </ul>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#implicit-conversion">隐式转换（Implicit Conversion）</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#integer-promotions">整数提升（Integer Promotions）</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#integer-promotions">整数提升（Integer Promotions）</a>
+    <li class="toctree-l4"><a class="reference internal" href="#2">通常算术转换2</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#_10">整数转换</a>
+    <li class="toctree-l4"><a class="reference internal" href="#_14">赋值转换</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#type-cast">显式转换（Type Cast）</a>
     </li>
         </ul>
     </li>
@@ -698,19 +714,181 @@ int main(void)
 因为这些负号的优先级不是显然的，也省得我们背优先级表。</p>
 </div>
 <h2 id="type-conversion">类型转换（Type Conversion）<a class="headerlink" href="#type-conversion" title="Permanent link">#</a></h2>
-<h3 id="implicit-conversion">隐式转换（Implicit Conversion）<a class="headerlink" href="#implicit-conversion" title="Permanent link">#</a></h3>
 <p>尽管C语言不允许通过赋值取改变一个值的类型，也不允许类型不匹配的类型相互赋值。
-但是在不同的整型类型赋值时，或者整形和浮点相互赋值时，编译会允许这样的赋值。
-这是因为C语言<em>隐式地</em>使用了一个<em>类型转换（type cast）</em>，称为隐式转换。
-下面来看几种隐式转换：</p>
-<h3 id="integer-promotions">整数提升（Integer Promotions）<a class="headerlink" href="#integer-promotions" title="Permanent link">#</a></h3>
-<h3 id="_10">整数转换<a class="headerlink" href="#_10" title="Permanent link">#</a></h3>
-<p>任何整数类型的值可以隐式转换到任何其他整数类型。</p>
+但是我们可以使用<em>类型转换</em>将一个类型的值转换为另外的类型。</p>
+<p>类型转换分为两种：<em>显式转换</em>和<em>隐式转换</em>。顾名思义，显示转换需要我们显示地去指定，
+而隐式转换不需要我们去指定，编译器会为我们自动生成。</p>
+<p>即使有了类型转换机制，在C中仍然存在不能完成的类型转换。好在，算术类型都存在互相的转换。</p>
+<h3 id="_10">算术类型转换规则<a class="headerlink" href="#_10" title="Permanent link">#</a></h3>
+<p>C语言中的算术类型转换时，遵守以下的规则：</p>
+<h4 id="_11">整数与浮点类型的相互转换<a class="headerlink" href="#_11" title="Permanent link">#</a></h4>
+<ul>
+<li>整数向浮点类型转换时，若能够用浮点数表示则保留原值，若不能则转换为临近的值。</li>
+<li>浮点数向整数转换时，<strong>向零取整</strong>。</li>
+</ul>
+<div class="admonition undefined-behavior">
+<p class="admonition-title">Undefined-behavior</p>
+<p>如果这种转换后的值<strong>不能</strong>被转换后的类型表示，则行为未定义。通常发生于超出范围的情况。
+如将<code>1e300</code>转换为整数类型。</p>
+</div>
+<h4 id="_12">算术类型的转换等级<a class="headerlink" href="#_12" title="Permanent link">#</a></h4>
+<p>算术类型的转换等级从某种程度表示了某个类型的范围大小。通常来说，等级越高，范围越大。</p>
+<p>总的来说转换等级有以下的规律：</p>
+<ul>
+<li>浮点类型等级比所有整数类型高</li>
+<li>整数类型有符号和对应的无符号类型等级相等</li>
+</ul>
+<p>以下是类型转换等级列表：<sup id="fnref:real-conv"><a class="footnote-ref" href="#fn:real-conv">2</a></sup></p>
+<table>
+<thead>
+<tr>
+<th>等级</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>高（浮点）</td>
+<td><code>long double</code></td>
+</tr>
+<tr>
+<td>（浮点）</td>
+<td><code>double</code></td>
+</tr>
+<tr>
+<td>（浮点）</td>
+<td><code>float</code></td>
+</tr>
+<tr>
+<td>（整数）</td>
+<td><code>long long</code>、<code>unsigned long long</code></td>
+</tr>
+<tr>
+<td>（整数）</td>
+<td><code>long</code>、<code>unsigned long</code></td>
+</tr>
+<tr>
+<td>（整数）</td>
+<td><code>int</code>、<code>unsigned</code></td>
+</tr>
+<tr>
+<td>（整数）</td>
+<td><code>short</code>、<code>unsigned short</code></td>
+</tr>
+<tr>
+<td>（整数）</td>
+<td><code>char</code>、<code>signed char</code>、<code>unsigned char</code></td>
+</tr>
+<tr>
+<td>低（布尔）</td>
+<td><code>_Bool</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="_13">整数转换<a class="headerlink" href="#_13" title="Permanent link">#</a></h4>
+<p>整数类型之间可以进行整数转换，规则如下：</p>
+<ul>
+<li>如果转换前的值能被转换后的类型表示，则值不变</li>
+<li>若转换到是无符号的类型，其位宽为<span class="arithmatex">\(N\)</span>，则转换后的值是原值对<span class="arithmatex">\(2^N\)</span><strong>取模</strong>的结果。</li>
+</ul>
+<div class="admonition implementation-defined">
+<p class="admonition-title">Implementation-defined</p>
+<p>对于转到有符号类型，且转换后的类型不能表示原值的情况，为实现定义。</p>
+</div>
+<h3 id="implicit-conversion">隐式转换（Implicit Conversion）<a class="headerlink" href="#implicit-conversion" title="Permanent link">#</a></h3>
+<p>隐式转换跟随“语义”发生。存在以下类型的隐式转换，它们都根据算术类型转换规则进行：</p>
+<ul>
+<li>整数提升</li>
+<li>通常算术转换</li>
+<li>赋值转换</li>
+</ul>
+<p>前二者都只将类型“扩大”，而赋值转换则比较任意。</p>
+<h4 id="integer-promotions">整数提升（Integer Promotions）<a class="headerlink" href="#integer-promotions" title="Permanent link">#</a></h4>
+<p>整数提升是指转换等级小于<code>int</code>类型的值都会转换为<code>int</code>或<code>unsigned</code>中的一者。
+如果<code>int</code>能涵盖所有原来类型的值域则选用<code>int</code>，否则为<code>unsigned</code>。</p>
+<p>以下情况存在整数提升：</p>
+<ul>
+<li>一元算术运算符 <code>+</code>、<code>-</code>、<code>~</code>的右表达式</li>
+<li>移位运算符<code>&lt;&lt;</code>和<code>&gt;&gt;</code>的左右表达式 </li>
+</ul>
+<h4 id="2">通常算术转换<sup id="fnref2:real-conv"><a class="footnote-ref" href="#fn:real-conv">2</a></sup><a class="headerlink" href="#2" title="Permanent link">#</a></h4>
+<p>如果<strong>算术运算符</strong>（除移位运算符之外）的两侧拥有不同的类型，则<strong>两边</strong>进行通常算术转换，
+直到都变为一个公共的类型。结果表达式的类型就是公共的类型。
+简而言之，通常算术遵循以下原则：</p>
+<ul>
+<li>小于<code>int</code>的整数类型进行整数提升</li>
+<li>转换为较高等级的类型</li>
+<li>整数类型如果分别为有符号S和无符号U，则：<ol>
+<li>S和U的类型如果一样等级，则转换为U。</li>
+<li>若否，则如果S能涵盖U的值域，则转换为S。</li>
+<li>否则，转换为对应S的无符号类型<sup id="fnref:unsigned-signed-conv"><a class="footnote-ref" href="#fn:unsigned-signed-conv">3</a></sup></li>
+</ol>
+</li>
+</ul>
+<p>直观上理解，通常算术转换就是对左右两边进行范围扩大到一致，且倾向于选择无符号类型。</p>
+<p>例如以下的表达式：</p>
+<pre><code class="language-C">1 / 10.0
+</code></pre>
+<p>得到的结果是<code>double</code>类型的0.1（约值）。虽然除号左边是一个整数，但是由于右边是一个浮点类型，
+所以左边转化为浮点类型，并执行浮点的除法运算。</p>
+<p>而以下的表达式：</p>
+<pre><code class="language-c">65536ll * 65536
+</code></pre>
+<p>不会溢出，得到结果是<code>long long</code>类型的4294967296（<span class="arithmatex">\(2^{32}\)</span>）。</p>
+<p>以下的表达式：</p>
+<pre><code class="language-c">-1 * 65536u
+</code></pre>
+<p>则会变为<code>unsigned</code>类型。</p>
+<h4 id="_14">赋值转换<a class="headerlink" href="#_14" title="Permanent link">#</a></h4>
+<p>赋值和初始化时，右表达式的类型会根据算术类型转换规则转化到左表达式的类型（可以不是扩大）。</p>
+<p>如下面的赋值和初始化都是合法的：</p>
+<pre><code class="language-C">char a = 'a';
+unsigned u_one = 1;
+float f_one = 1;
+long long ll_one = 1;
+ll_one = 1.0;
+</code></pre>
+<div class="admonition exercise">
+<p class="admonition-title">Exercise</p>
+<p>试阐明每一行存在的类型转换和其规则。</p>
+</div>
+<p>以下的代码片段：</p>
+<pre><code class="language-C">float a = 1 / 3;
+</code></pre>
+<p>会将<code>a</code>初始化为<code>0.0</code>而<strong>非三分之一</strong>。这是因为，赋值号右边的表达式中，除号两边都是<strong>整数</strong>，
+所以是整数除法，结果是<code>int</code>类型的<code>0</code>，再转化为<code>float</code>类型，为<code>0.0</code>。</p>
+<h3 id="type-cast">显式转换（Type Cast）<a class="headerlink" href="#type-cast" title="Permanent link">#</a></h3>
+<div class="admonition grammar">
+<p class="admonition-title">显示类型转换</p>
+<p class="gram">(<em>类型</em>) <em>表达式</em></p>
+</div>
+<p>不同于隐式转换，<em>显示类型转换</em>则是在代码中显式地将要转换的类型标识出来。
+由于这种类型转换在何处都能用，不像隐式转换受“语境”影响，可以强制转换类型，
+所以也叫<em>强制类型转换</em>。</p>
+<p>下面是一个显示类型转换的例子：</p>
+<pre><code class="language-C">int a = 3;
+float b = (float)a;
+float c = (float)5;
+</code></pre>
+<p>显示转换的<strong>优先级于正负号相当</strong>。下面的例子展示了如何将计算两个整数的浮点商。</p>
+<pre><code class="language-C">int x = 1, y = 3;
+float q = (float)x / y; /* q is 0.33 */
+</code></pre>
+<p>显示转换可以完成算术类型转换中所有的转换，除此之外还可以做到其他的转换，
+这在我们接触到之后的类型就会出现。</p>
 <div class="footnote">
 <hr />
 <ol>
 <li id="fn:operand-generic">
 <p>操作数还应该包含泛型选择。&#160;<a class="footnote-backref" href="#fnref:operand-generic" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:real-conv">
+<p>这里不讨论虚、复数浮点数的情况。&#160;<a class="footnote-backref" href="#fnref:real-conv" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:real-conv" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:unsigned-signed-conv">
+<p>一个这种情况例子是<code>long long</code>（64位）
+与<code>unsigned long</code>（64位），它们不同等级，且<code>long long</code>无法涵盖<code>unsigned long</code>。
+此时它们都转化为<code>unsigned long long</code>。&#160;<a class="footnote-backref" href="#fnref:unsigned-signed-conv" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>控制流语句 - C Language Step by Step</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  <link href="../../resources/css/extra.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u63a7\u5236\u6d41\u8bed\u53e5";
+    var mkdocs_page_input_path = "Basics of C Language\\Control Flow Statement.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> C Language Step by Step</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">首页</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Intro/Intro/">序言</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Intro/Notions/">记号</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">C语言基础</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../Hello%2C%20world%21/">“你好，世界！”</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Variables%2C%20Types%2C%20and%20Literals/">变量、类型和字面量</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Operators%20and%20Type%20Conversions/">运算符与类型转换</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">控制流语句</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">一个例子</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">布尔类型和布尔转换</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">比较运算符</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">逻辑运算符</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#if">if语句</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#if-else">if-else语句</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">三元运算符</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#while">while语句</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#do-while">do-while语句</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_7">复合赋值运算符</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_8">自增自减运算符</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_9">求值顺序和序列点</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#for">for语句</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#break">break语句</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#continue">continue语句</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#switch">switch语句</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Preprocessing%20Directive/">预处理指令</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">附录</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Appendix/Precedence/">运算符优先级列表</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Appendix/C%20Standard%20Library/">C标准库列表</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">许可证</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../License/CC-BY-SA%203.0/">CC-BY-SA 3.0</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../License/GFDL/">GNU Free Documentation License</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">C Language Step by Step</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>C语言基础 &raquo;</li>
+        
+      
+    
+    <li>控制流语句</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">控制流语句<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
+<p>在前面的所有例子中，我们的程序都是顺序执行的，即，一条一条语句执行。有时候，
+我们希望根据条件判断，来改变程序的走向。这就是控制流语句的作用。</p>
+<h2 id="_2">一个例子<a class="headerlink" href="#_2" title="Permanent link">#</a></h2>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">代码</label><div class="tabbed-content">
+<pre><code>/*ctrl-flow.c*/
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int var = 20;
+    if (var &gt; 10)
+    {
+        var = 30;
+    }
+    printf("%d", var);
+    return 0;
+}
+</code></pre>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">输出</label><div class="tabbed-content">
+<pre><code>30
+</code></pre>
+</div>
+</div>
+<p>这里我们判断了<code>var</code>是否大于10，如果大于10，就变为30。
+在了解控制流语句之前，我们需要了解布尔类型、比较运算符和逻辑运算符。</p>
+<h2 id="_3">布尔类型和布尔转换<a class="headerlink" href="#_3" title="Permanent link">#</a></h2>
+<p>在前面的的部分中我们讲过布尔类型<code>_Bool</code>，布尔类型是一种可以表示<strong>真</strong>和<strong>假</strong>的类型。
+其具有两个值：0（假）和1（真）。在前面提到过，布尔类型都是整数类型。</p>
+<p>C语言中的数值类型都可以<strong>隐式地</strong>转换为布尔类型，其规则如下：</p>
+<ul>
+<li>如果该值与同类型的0相等，则为0（假）</li>
+<li>否则为1（真）</li>
+</ul>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>如果你包含了<code>stdbool.h</code>，则可以用<code>bool</code>表示布尔类型，用<code>true</code>表示真，
+用<code>false</code>表示假。</p>
+</div>
+<h2 id="_4">比较运算符<a class="headerlink" href="#_4" title="Permanent link">#</a></h2>
+<p>比较运算符返回0（假）和1（真）。当条件成立的时候返回1，条件不成立的时候返回0。</p>
+<p>比较运算符一共有六个：
+- <code>&lt;</code>（小于）
+- <code>&gt;</code>（大于）
+- <code>&lt;=</code>（小于等于）
+- <code>&gt;=</code>（大于等于）
+- <code>==</code>（等于）
+- <code>!=</code>（不等于）</p>
+<div class="admonition grammar">
+<p class="admonition-title">Grammar</p>
+<p class="gram"><em>表达式</em> &lt; <em>表达式</em></p>
+<p class="gram"><em>表达式</em> &gt; <em>表达式</em></p>
+<p class="gram"><em>表达式</em> &lt;= <em>表达式</em></p>
+<p class="gram"><em>表达式</em> &gt;= <em>表达式</em></p>
+<p class="gram"><em>表达式</em> == <em>表达式</em></p>
+<p class="gram"><em>表达式</em> != <em>表达式</em></p>
+</div>
+<p>如果比较运算符的两边是不同的类型，比较运算符的两边也会经过
+<a href="../Operators%20and%20Type%20Conversions/#arith-conv">通常算术转换</a>。</p>
+<p>虽然说比较运算符返回的类型是<code>int</code>。由于上述的布尔转换，它可以被转换为布尔值。</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>不要将<code>==</code>（等于）和<code>=</code>（赋值）混淆！</p>
+</div>
+<p>以下是一些例子，它们返回1（真）：</p>
+<pre><code class="language-C">1 &lt; 2
+2 &gt;= 2
+4 != 5
+2 &lt; 2.4
+1 + 2 &gt;= 3
+</code></pre>
+<p>以下是一些例子，它们返回0（假）：</p>
+<pre><code class="language-C">2 &gt; 4
+1 != 1
+3.0 + 1.5 &lt; 4
+</code></pre>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>在比较浮点数<strong>相等/不相等</strong>时要格外小心。浮点数有误差，
+会导致看似相等的浮点数其实不相等。误差来自以下两个地方：</p>
+<ul>
+<li>计算时的舍入</li>
+<li>类型转换</li>
+<li>字面量到实际值</li>
+</ul>
+<p>计算舍入我们在之前的内容中已经讲过。这里来看一个类型转换和字面量到实际值的例子：</p>
+<pre><code>(float)0.1 == 0.1
+</code></pre>
+<p>这个表达式返回<strong>0</strong>。</p>
+<p>这个例子中<code>(float)0.1</code>是由<code>double</code>类型的字面量转到<code>float</code>。
+左边实际代表的值离0.1有<strong>一定误差</strong>。由于<code>float</code>表示不了<code>double</code>那么高的精度，
+类型转换后的这个误差比右边<code>double</code>类型的<strong>大</strong>。</p>
+<p>通过通常算术转换将左边转回<code>double</code>时，
+其值被<strong>如实地</strong>转换了（因为<code>double</code>精度更大），误差保持了。
+这样左边和右边的值就是不相等的。</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>一个常见的比较浮点数相等的方法是采用“近似相等”，
+即其差的绝对值在某个容忍度（如1e-5）之内。</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>C语言的布尔类型是一种后来才有的类型，所以在绝大多数的逻辑表达式中，
+<strong>还都是以<code>int</code>类型作为返回类型的</strong>。
+<code>int</code>类型的0和1（以及其他值）通过上述的布尔转换可以转换到布尔类型。</p>
+</div>
+<h2 id="_5">逻辑运算符<a class="headerlink" href="#_5" title="Permanent link">#</a></h2>
+<p>逻辑运算符同样会返回<code>int</code>的0（假）和1（真）。逻辑运算符会将作用的表达式当作布尔值处理，
+然后进行逻辑演算，给出真假结果。</p>
+<p>逻辑运算符一共有三个：</p>
+<ul>
+<li><code>!</code>逻辑非</li>
+<li><code>&amp;&amp;</code>逻辑与</li>
+<li><code>||</code>逻辑或</li>
+</ul>
+<div class="admonition grammar">
+<p class="admonition-title">Grammar</p>
+<p class="gram">! <em>表达式</em></p>
+<p class="gram"><em>表达式</em> &amp;&amp; <em>表达式</em></p>
+<p class="gram"><em>表达式</em> || <em>表达式</em></p>
+</div>
+<p>与<a href="../Operators%20and%20Type%20Conversions/#bitwise-op">位运算</a>
+最大的不同在于，位运算是对整数<strong>逐位</strong>的进行操作并返回<strong>整数</strong>，
+而逻辑运算将左右两边都视为<strong>布尔值</strong>，然后返回<strong>0或1</strong>。</p>
+<p>逻辑非<code>!</code>的真值表如下：</p>
+<table>
+<thead>
+<tr>
+<th>输入</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0（假）</td>
+<td>1（真）</td>
+</tr>
+<tr>
+<td>1（真）</td>
+<td>0（假）</td>
+</tr>
+</tbody>
+</table>
+<p>逻辑与<code>&amp;&amp;</code>的真值表如下：</p>
+<table>
+<thead>
+<tr>
+<th>输入</th>
+<th>输入</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0（假）</td>
+<td>0（假）</td>
+<td>0（假）</td>
+</tr>
+<tr>
+<td>0（假）</td>
+<td>1（真）</td>
+<td>0（假）</td>
+</tr>
+<tr>
+<td>1（真）</td>
+<td>0（假）</td>
+<td>0（假）</td>
+</tr>
+<tr>
+<td>1（真）</td>
+<td>1（真）</td>
+<td>1（真）</td>
+</tr>
+</tbody>
+</table>
+<p>逻辑或<code>||</code>的真值表如下：</p>
+<table>
+<thead>
+<tr>
+<th>输入</th>
+<th>输入</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0（假）</td>
+<td>0（假）</td>
+<td>0（假）</td>
+</tr>
+<tr>
+<td>0（假）</td>
+<td>1（真）</td>
+<td>1（真）</td>
+</tr>
+<tr>
+<td>1（真）</td>
+<td>0（假）</td>
+<td>1（真）</td>
+</tr>
+<tr>
+<td>1（真）</td>
+<td>1（真）</td>
+<td>1（真）</td>
+</tr>
+</tbody>
+</table>
+<p>通过逻辑运算，可以完成各种逻辑表达式。如下的例子：</p>
+<pre><code class="language-C">(1 + 3 &gt; 4 &amp;&amp; 2 == 2) || (!(2 &lt; 3))
+</code></pre>
+<p>这个表达式的求值是：0（假）。</p>
+<p>逻辑或和逻辑与都有<em>短路求值</em>的特性。由于与运算只要求出一个值是假就能确定返回是假，
+如果左表达式已经是假，则右表达式<strong>不再求值</strong>，也<strong>没有副作用</strong>。看以下的例子：</p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int a = 4;
+    a || (a = 1);
+    printf(&quot;%d&quot;, a);
+    return 0;
+}
+</code></pre>
+<p>此时输出的值为<strong>4</strong>。表达式<code>a || (a = 1)</code>中，左边<code>a</code>为真（不等于0），
+因此右边的赋值不再求值，也就没有将<code>a</code>变为1。</p>
+<p>同理还有逻辑或运算，如果左表达式已经是真，则右表达式不再求值。</p>
+<p>我们在这里现在我们遇到的所有运算符的优先级：</p>
+<table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>运算符</th>
+<th>结合性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>高</td>
+<td><code>+</code>（正号）、<code>-</code>（负号）、<code>~</code>、<code>!</code></td>
+<td>右</td>
+</tr>
+<tr>
+<td></td>
+<td><code>*</code>、<code>/</code>、<code>%</code></td>
+<td>左</td>
+</tr>
+<tr>
+<td></td>
+<td><code>+</code>（加号）、<code>-</code>（减号）</td>
+<td>左</td>
+</tr>
+<tr>
+<td></td>
+<td><code>&lt;&lt;</code>、<code>&gt;&gt;</code></td>
+<td>左</td>
+</tr>
+<tr>
+<td></td>
+<td><code>&lt;</code>、<code>&gt;</code>、<code>&lt;=</code>、<code>&gt;=</code></td>
+<td>左</td>
+</tr>
+<tr>
+<td></td>
+<td><code>==</code>、<code>!=</code></td>
+<td>左</td>
+</tr>
+<tr>
+<td></td>
+<td><code>&amp;</code></td>
+<td>左</td>
+</tr>
+<tr>
+<td></td>
+<td><code>^</code></td>
+<td>左</td>
+</tr>
+<tr>
+<td></td>
+<td><code>|</code></td>
+<td>左</td>
+</tr>
+<tr>
+<td></td>
+<td><code>&amp;&amp;</code></td>
+<td>左</td>
+</tr>
+<tr>
+<td></td>
+<td><code>||</code></td>
+<td>左</td>
+</tr>
+<tr>
+<td>低</td>
+<td><code>=</code></td>
+<td>右</td>
+</tr>
+</tbody>
+</table>
+<h2 id="if">if语句<a class="headerlink" href="#if" title="Permanent link">#</a></h2>
+<p>if语句也叫<em>条件判断语句</em>，是表示“如果……，则……”意义的语句。其语法如下：</p>
+<div class="admonition grammar">
+<p class="admonition-title">if语句</p>
+<p class="gram">if (<em>条件表达式</em>) <em>语句</em></p>
+<p>其中，<em>条件表达式</em>是一个表达式。
+<em>语句</em>可以是<a href="../Hello%2C%20world%21/#block">复合语句</a>。</p>
+</div>
+<p>if语句的作用是：当条件表达式为<strong>真</strong>时，<strong>执行</strong>所带有的语句/复合语句。
+否则就<strong>跳转到</strong>所带有的语句/复合语句<strong>之后继续执行</strong>。</p>
+<p>从上面的语法看出，if表达式一共有<strong>两种形式</strong>：</p>
+<pre><code class="language-C">if (...) ...;
+</code></pre>
+<pre><code class="language-C">if (...)
+{
+    ...
+}
+</code></pre>
+<p>前者只作用于<strong>一条语句</strong>，后者可以作用于<strong>一个块（复合语句）</strong>。
+以下两个if语句是等价的：</p>
+<pre><code class="language-C">if (var &gt; 10)
+{
+    var = 30;
+}
+</code></pre>
+<pre><code class="language-C">if (var &gt; 10) var = 30;
+</code></pre>
+<p>当然，如果要作用于多个语句，只能选取后面的语法。如：</p>
+<pre><code class="language-C">if (var &gt; 10)
+{
+    var = 30;
+    printf(&quot;%d&quot;, var);
+}
+</code></pre>
+<div class="admonition good-practice">
+<p class="admonition-title">Good-practice</p>
+<p>对于控制流语句总是使用<strong>复合语句</strong>的语法是一个好习惯。
+因为单条语句语法是无法<strong>添加语句</strong>到作用范围内的，并因此可能执行了<strong>不想要执行的语句</strong>。</p>
+</div>
+<p>由于if语句本身也是个语句，所以你可以相互嵌套。如：</p>
+<pre><code class="language-C">if (var &gt; 10)
+{
+    var = 30;
+    if (var != 15)
+    {
+        printf(&quot;%d&quot;, var);
+    }
+}
+</code></pre>
+<p>甚至是这样：</p>
+<pre><code class="language-C">if (var &gt; 10)
+    if (var != 15)
+    {
+        printf(&quot;%d&quot;, var);
+    }
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>你可以使用<strong>逻辑运算符</strong>来避免某些<strong>多余的if跳转</strong>。如下面的例子：</p>
+<pre><code>if (var &gt; 10)
+{
+    if (var != 15)
+    {
+        var = 30;
+    }
+}
+</code></pre>
+<p>实际上等价于：</p>
+<pre><code>if (var &gt; 10 &amp;&amp; var != 15)
+{
+    var = 30;
+}
+</code></pre>
+</div>
+<h3 id="if-else">if-else语句<a class="headerlink" href="#if-else" title="Permanent link">#</a></h3>
+<p>if语句后面可跟随<em>else子句</em>形成<em>if-else语句</em>，表示“如果……，则……，否则……”，语法如下：</p>
+<div class="admonition grammar">
+<p class="admonition-title">if-else语句</p>
+<p class="gram">if (<em>条件表达式</em>) <em>if子句</em> else <em>else子句</em></p>
+<p>其中，<em>条件表达式</em>是一个表达式。
+<em>if子句</em>、<em>else子句</em>是语句，可以是<a href="../Hello%2C%20world%21/#block">复合语句</a>。</p>
+</div>
+<p>if-else由两个子语句构成：if子句（跟在if的括号后）和else子句（跟在else后）。
+其作用是：当条件表达式为<strong>真</strong>时，执行<strong>if子句</strong>。
+否则就<strong>跳转到else子句</strong>，然后<strong>跳出if-else</strong>语句继续执行。</p>
+<p>下面的例子：</p>
+<pre><code class="language-C">if (var &gt; 10)
+{
+    var = 10;
+}
+else
+{
+    var = var + 2;
+}
+</code></pre>
+<p>做了这么一件事：如果<code>var</code>大于10则将<code>var</code>改为10，否则给<code>var</code>加2。</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p><code>else</code>子句需要跟随在<code>if</code>子句的后面。不能悬空一个<code>else</code>而没有相应的<code>if</code>。
+悬空一个<code>else</code>是语法错误。</p>
+</div>
+<p><code>else</code>子句中的语句也可以是if语句。如下所示：</p>
+<pre><code class="language-C">if (var &gt; 10)
+{
+    var = 10;
+}
+else if (var &lt; 5)
+{
+    var = var + 2;
+}
+</code></pre>
+<p>该片段的意思是：如果<code>var</code>大于10则将<code>var</code>改为10，否则如果<code>var</code>小于5则加2。
+像这样else子句是if语句，造成<code>else</code>后面接着<code>if</code>的，被非正式地做<em>else-if语句</em>。</p>
+<p>else子句也是if-else语句，就像这样：</p>
+<pre><code class="language-C">if (var &gt; 10)
+{
+    var = 10;
+}
+else if (var &lt; 5)
+{
+    var = var + 2;
+}
+else if (var &lt; 7)
+{
+    var = var + 3;
+}
+else
+{
+    var = 0;
+}
+</code></pre>
+<p>上述的例子就是“如果……，否则如果……，否则如果……，否则……”的意思。</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>else始终与<strong>最近前接</strong>if相关联。也就是前方紧接着的那个if。</p>
+</div>
+<h2 id="_6">三元运算符<a class="headerlink" href="#_6" title="Permanent link">#</a></h2>
+<div class="admonition grammar">
+<p class="admonition-title">三元运算符</p>
+<p class="gram"><em>条件表达式</em> ? <em>表达式真</em> : <em>表达式假</em></p>
+<p>其中，<em>条件表达式</em>、<em>表达式真</em>、<em>表达式假</em>都是表达式。</p>
+</div>
+<p>三元运算符有些类似if-else语句，但是它是一个表达式。
+如果条件表达式，则计算并返回<code>:</code>之前的表达式真，
+否则计算并返回<code>:</code>之后的表达式假。
+下面有一个例子：</p>
+<pre><code class="language-C">int cond = 1;
+int val = cond &gt; 3 ? 1 : 0;
+</code></pre>
+<p>若<code>cond</code>的值大于3则赋值<code>val</code>为1，否则为0.</p>
+<p>三元表达式的优先级在逻辑运算符和赋值之间。<code>?</code>和<code>:</code>之间视同有括号。</p>
+<h2 id="while">while语句<a class="headerlink" href="#while" title="Permanent link">#</a></h2>
+<p>while语句是最简单的<em>循环语句（loop statement）</em>。
+之前我们遇到的语句最多执行一次，而循环语句使得某些语句可以<strong>反复地被执行</strong>。
+下面来看一下while语句的语法。</p>
+<div class="admonition grammar">
+<p class="admonition-title">while语句</p>
+<p class="gram">while (<em>条件表达式</em>) <em>语句</em></p>
+<p>其中，<em>条件表达式</em>是表达式。
+<em>语句</em>可以是<a href="../Hello%2C%20world%21/#block">复合语句</a>。</p>
+</div>
+<p>我们把括号之内的表达式叫做<em>循环条件</em>，while带有的反复执行的语句叫循环体。
+当程序执行到while语句时，首先判断循环条件是否为真，如果是，则执行循环体。
+然后<strong>跳回到while处</strong>再次判断循环条件是否为真，如果是，则执行循环体。
+如此<strong>循环往复</strong>，<strong>直到某次判断为假</strong>，则<strong>跳出循环体</strong>继续执行。</p>
+<p>下面是一个使用while循环的例子：</p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int i = 0;
+    int sum = 0;
+    while (i &lt;= 100)
+    {
+        sum = sum + i;
+        i = i + 1;
+    }
+    printf(&quot;%d&quot;, sum);
+    return 0;
+}
+</code></pre>
+<p>其输出的结果就是 <span class="arithmatex">\(\sum_{i = 0}^{100} i = 5050\)</span>.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>如果循环条件始终为真，在函数体中又无法跳出循环。则程序就会永远在循环中执行，无法跳到外部。
+我们称这样的循环为<em>死循环（endless loop）</em>。我们希望程序给出一个确定的结果，
+因此我们大多数情况需要<strong>避免误写了死循环</strong>。
+下面是可能造成死循环的情况：</p>
+<ul>
+<li>循环条件是一个<strong>常数值</strong>且<strong>始终为真</strong>，内部无break。</li>
+<li>循环条件的变量无法在循环体执行时<strong>被改变</strong>。</li>
+<li>循环的变量虽然被改变，但是改变的<strong>方向</strong>使得循环条件<strong>永真</strong>：如循环条件为<code>a &gt;= 0</code>，
+    但是<code>a</code>在循环中永远增加，不能使得循环条件为假。<ul>
+<li>这里特别要注意<strong>类型</strong>的影响，如<code>unsigned</code>是永远为非负的。</li>
+</ul>
+</li>
+<li>循环条件为<strong>浮点数不相等</strong>，但是浮点数计算的<strong>误差累积</strong>导致<strong>永远不相等</strong>。<ul>
+<li>循环判断最好使用<strong>整数</strong>进行判断，或者使用浮点数<strong>大小比较</strong>。</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>有些地方还是会用到“死循环”的。比如操作系统需要持续地于我们交互，
+窗口程序需要等待我们的操作。它们不能立即执行完就退出，所以拥有一个持久的循环。
+当然这种循环是有方法退出的，但是退出条件和方式比较复杂，所以更像一个死循环。</p>
+</div>
+<h2 id="do-while">do-while语句<a class="headerlink" href="#do-while" title="Permanent link">#</a></h2>
+<div class="admonition grammar">
+<p class="admonition-title">while语句</p>
+<p class="gram">do <em>语句</em> while (<em>条件表达式</em>);</p>
+<p>其中，<em>条件表达式</em>是表达式。
+<em>语句</em>可以是<a href="../Hello%2C%20world%21/#block">复合语句</a>。</p>
+</div>
+<p>do-while语句与while语句不同的是：<strong>先执行</strong><code>do</code>后面的<strong>循环体</strong>，
+然后到<code>while</code>的表达式去<strong>判断</strong>。如果为真则返回<code>do</code>执行循环体。
+所以循环体<strong>至少执行一次</strong>。</p>
+<p>例如下面的例子：</p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int i = 0;
+    int sum = 0;
+    do
+    {
+        sum = sum + i;
+        i = i + 1;
+    } while (sum &lt; 100);
+    printf(&quot;%d&quot;, i);
+    return 0;
+}
+</code></pre>
+<h2 id="_7">复合赋值运算符<a class="headerlink" href="#_7" title="Permanent link">#</a></h2>
+<p>复合赋值运算符将二元运算和赋值结合起来。先对左值和另一个值进行运算，再赋给原左值。
+算术运算符和<code>=</code>结合就是对应的复合赋值运算符。如：<code>+=</code>。
+每一个算术运算符对应一个复合赋值运算符。
+复合赋值运算符和普通赋值运算符<code>=</code><strong>优先级相同</strong>。复合赋值运算符返回计算结果，返回值是右值。</p>
+<div class="admonition grammar">
+<p class="admonition-title">Grammar</p>
+<p class="gram"><em>左值表达式</em> += <em>表达式</em></p>
+<p class="gram"><em>左值表达式</em> -= <em>表达式</em></p>
+<p class="gram"><em>左值表达式</em> *= <em>表达式</em></p>
+<p class="gram"><em>左值表达式</em> /= <em>表达式</em></p>
+<p class="gram"><em>左值表达式</em> %= <em>表达式</em></p>
+<p class="gram"><em>左值表达式</em> ^= <em>表达式</em></p>
+<p class="gram"><em>左值表达式</em> &amp;= <em>表达式</em></p>
+<p class="gram"><em>左值表达式</em> |= <em>表达式</em></p>
+<p class="gram"><em>左值表达式</em> &lt;&lt;= <em>表达式</em></p>
+<p class="gram"><em>左值表达式</em> &gt;&gt;= <em>表达式</em></p>
+<p>其中，<em>左值表达式</em>必须可修改。</p>
+</div>
+<p>例如<code>sum = sum + i</code>和<code>sum += i</code>的效果相同，除了<code>sum</code>只求值<strong>一次</strong>。其他同理，
+如：<code>diff -= i</code>与<code>diff = diff - i</code>。</p>
+<p>接下来我们介绍来介绍复合赋值运算符和自增自减运算符。
+它们是对诸如<code>sum = sum + i;</code>和<code>i = i + 1;</code>这种左值参与计算后修改自身的简化。
+这种计算在循环中时常被用到。</p>
+<h2 id="_8">自增自减运算符<a class="headerlink" href="#_8" title="Permanent link">#</a></h2>
+<div class="admonition grammar">
+<p class="admonition-title">Grammar</p>
+<p class="gram">++ <em>左值表达式</em></p>
+<p class="gram">-- <em>左值表达式</em></p>
+<p class="gram"><em>左值表达式</em> ++</p>
+<p class="gram"><em>左值表达式</em> --</p>
+<p>其中，<em>左值表达式</em>必须可修改。</p>
+</div>
+<p>自增和自减运算符则是给左值增加/减少1的。<code>++</code>意思为自增（加1），<code>--</code>意思为自减（减1）。
+返回的结果都是右值。</p>
+<p>自增自减分为两种形式：前缀（如<code>++a</code>）和后缀（和<code>a++</code>）。两者有以下差别：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>前缀</th>
+<th>后缀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>返回值</td>
+<td>变化<strong>后</strong>的值</td>
+<td>变化<strong>前</strong>的值</td>
+</tr>
+<tr>
+<td>优先级</td>
+<td>与正负号相同</td>
+<td>最先，且高于正负号</td>
+</tr>
+</tbody>
+</table>
+<p>以下的例子：</p>
+<pre><code class="language-C">int i = 1;
+int pre = ++i;
+int post = i++;
+</code></pre>
+<p><code>pre</code>和<code>post</code>都被赋值为2.</p>
+<h2 id="_9">求值顺序和序列点<a class="headerlink" href="#_9" title="Permanent link">#</a></h2>
+<p>在C语言中，除了语言规定的情况之外，一个表达式的每个子表达式可以按照<strong>任意顺序</strong>计算。
+这与运算符的<strong>结合性</strong>无关。</p>
+<p>如：<code>5 * 3 + 7 * 9 + 1 * 2</code>这个表达式，虽然<code>+</code>从左向右结合，
+但是<code>5 * 3</code>、<code>7 * 9</code>、<code>1 * 2</code>三个子表达式的值谁先被计算出结果是由编译器自己决定的。
+优先性和结合性只会保证语义正确：如不会算出<code>5 * (3 + 7)</code>。又如：<code>5 * 3</code>和<code>7 * 9</code>计算加和，
+再把加和和<code>1 * 2</code>相加。</p>
+<p>任意性也体现在<strong>副作用</strong>上，虽然<code>(++a) + 3</code>计算值是与<code>a + 1 + 3</code>等同的，
+但是<code>++a</code>有一个“自增”的副作用，这个副作用是否在加3时完成是由编译器决定的
+（即究竟是<code>a</code>自增之后与3相加，还是<code>a</code>在还是原值时参与了<code>a + 1 + 3</code>计算，然后再加1）。</p>
+<p>好在以上的例子都告诉我们，这样的任意性对最终结果<strong>几乎没有影响</strong>。
+我们在开发时很难注意到它的存在。</p>
+<p>为了正确性，C语言规定了一些情况求值顺序不能颠倒。为此C语言中由以下两个概念：</p>
+<ul>
+<li><em>先序于</em>，如果A先序于B，则A在B<strong>之前完成</strong>。</li>
+<li><em>序列点（sequence point）</em>，如果两个表达式E和F之间存在序列点，
+    则E的<strong>值计算</strong>和<strong>副作用</strong>全部<strong>先序于</strong>F值计算和副作用。</li>
+</ul>
+<p>以下是一些包含我们现在接触到内容的求值顺序：</p>
+<ul>
+<li>序列点<ul>
+<li>一个完整表达式（即非其他表达式的子表达式，如后随分号<code>;</code>或者作为if、while的判断表达式）
+的求值后有序列点。</li>
+<li>逻辑运算符<code>&amp;&amp;</code>和<code>||</code>后有序列点。（用于短路求值）</li>
+<li>三元运算符中<code>?</code>后有序列点。</li>
+<li>在完整声明的结尾，有一个序列点。</li>
+</ul>
+</li>
+<li>其他的先序<ul>
+<li>运算符的<strong>运算数</strong>求值先序于运算符的返回值计算。（副作用顺序是<strong>未知</strong>的）</li>
+<li>赋值的左右运算数求值先序于赋值的副作用。</li>
+<li>后缀自增自减运算符的值计算先序于其副作用。</li>
+</ul>
+</li>
+</ul>
+<div class="admonition undefined-behavior">
+<p class="admonition-title">Undefined-behavior</p>
+<p>对于同一个（标量）对象的<strong>两个副作用之间</strong>或<strong>副作用和求值之间</strong>没有相对顺序，
+则行为未定义。如：<code>i = i++ + 1;</code>。</p>
+</div>
+<h2 id="for">for语句<a class="headerlink" href="#for" title="Permanent link">#</a></h2>
+<div class="admonition grammar">
+<p class="admonition-title">Grammar</p>
+<p class="gram">for (<em>(初始化子句)</em>; <em>(条件表达式)</em>; <em>(迭代表达式)</em>) <em>语句</em></p>
+<p>其中，<em>初始化子句</em>、<em>条件表达式</em>、<em>迭代表达式</em>都可选。<em>初始化子句</em>可以为声明或表达式。
+<em>条件表达式</em>、<em>迭代表达式</em>都为表达式。</p>
+</div>
+<p>for语句相比其他两个循环语句，虽然在语法上较为复杂，但是具有<strong>易于理解</strong>的特点。
+for语句首先<strong>处理初始化子句</strong>的内容，进行表达式求值或声明，然后循环地做以下事情：</p>
+<ol>
+<li>判断条件表达式是否为真，若真则继续，否则跳出循环。</li>
+<li>执行循环体</li>
+<li>求值迭代表达式，并回到1.</li>
+</ol>
+<p>下面的一个例子：</p>
+<pre><code class="language-C">int sum = 0;
+for (int i = 0; i &lt; 10; i++)
+{
+    sum += i;
+}
+</code></pre>
+<p>首先申明了一个<code>int</code>的<code>i</code>变量，在<code>i</code>小于10之前，每次给<code>sum</code>加上<code>i</code>，并给<code>i</code>加上1.
+其等价于从<code>i</code>值为0开始，至9结束，依次地给<code>sum</code>加上<code>i</code>的值。
+我们可以清楚地知道这个循环执行了10次。</p>
+<p><strong>需要规定循环次数</strong>的循环，使用for语句写比较简单，且不容易出错。
+如果是规定循环次数通常我们会这样使用for语句：</p>
+<pre><code class="language-C">for (int i = 0; i &lt; N; i++)
+{
+    ...
+}
+</code></pre>
+<p>其中<code>i</code>是循环变量，也就是我们想要跟踪循环次数所在初始化子句声明的变量，<code>N</code>是循环次数。</p>
+<p>当然我们可以让<code>i</code>从1开始：</p>
+<pre><code class="language-C">for (int i = 1; i &lt;= N; i++)
+{
+    ...
+}
+</code></pre>
+<p>可以递减：</p>
+<pre><code class="language-C">for (int i = N; i &gt; 0; i--)
+{
+    ...
+}
+</code></pre>
+<p>可以以2作为增加量，这也叫<em>步长</em>：</p>
+<pre><code class="language-C">for (int i = 0; i &lt; N; i += 2)
+{
+    ...
+}
+</code></pre>
+<p>下面是一些for语句的说明：</p>
+<p>初始化子句的声明的范围为整个for语句，包括条件表达式、迭代表达式和循环体。
+如果想要让循环变量在循环外部可用，那就在外部声明，然后再初始化子句里面赋值。
+甚至可以外部初始化，初始化子句空着。如：</p>
+<pre><code class="language-C">int i = 0;
+for (; i &lt; N; i++)
+{
+    ...
+}
+</code></pre>
+<p>如果条件表达式空着，那么代表这个条件永真。除非在循环体中能跳出循环之外，否则就是死循环。</p>
+<h2 id="break">break语句<a class="headerlink" href="#break" title="Permanent link">#</a></h2>
+<p>除了在循环条件为假跳出循环之外，还有一种方法可以在循环体内部跳出循环，就是使用break语句。</p>
+<div class="admonition grammar">
+<p class="admonition-title">break语句</p>
+<p class="gram">break;</p>
+</div>
+<p>程序执行到break语句就会跳出循环。如果是多个循环语句相互嵌套，break会跳出<strong>它所在的那层循环</strong>，
+而非跳出所有循环。</p>
+<p>下面的例子：</p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int i = 0;
+    int sum = 0;
+    while (1)
+    {
+        sum = sum + i;
+        if (sum &gt; 100)
+        { 
+            break;   
+        }
+        i = i + 1;
+    }
+    printf(&quot;%d&quot;, i);
+    return 0;
+}
+</code></pre>
+<p>可以看到，该循环语句的判断条件<strong>永远为真</strong>。但是在内部我们使用了break语句跳出这个循环。
+你可以想想这个程序要求解的问题是什么。也试着把他改写为不用break语句的写法。</p>
+<h2 id="continue">continue语句<a class="headerlink" href="#continue" title="Permanent link">#</a></h2>
+<div class="admonition grammar">
+<p class="admonition-title">continue语句</p>
+<p class="gram">continue;</p>
+</div>
+<p>continue语句可以在循环体中直接跳转到下一个循环开始，也就是<strong>条件表达式</strong>处进行判断。
+对于for语句，跳转之前<strong>迭代表达式</strong>会被<strong>计算</strong>。</p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    for (int i = 0; i &lt; 10; i++)
+    {
+        if (i == 8)
+        {
+            continue;
+        }
+        printf(&quot;%d\n&quot;, i);
+    }
+    return 0;
+}
+</code></pre>
+<p>这个程序不会打印8.</p>
+<h2 id="switch">switch语句<a class="headerlink" href="#switch" title="Permanent link">#</a></h2>
+<p>如果有这样的一个要求：给出一个数字，取对5的模数。然后分别对0~4每个不同的情况进行输出。
+如果用else-if写，则会出现以下情况：</p>
+<pre><code class="language-C">int input = 1001; /*any input*/
+int res = input % 5;
+if (res == 0)
+{
+    ...
+}
+else if (res == 1)
+{
+    ...
+}
+else if (res == 2)
+{
+    ...
+}
+...
+</code></pre>
+<p>写道2的时候恐怕已经不想写了。使用switch可以避免else-if的堆叠。</p>
+<div class="admonition grammar">
+<p class="admonition-title">switch语句</p>
+<p class="gram">switch (<em>整数类型表达式</em>) <em>语句</em></p>
+<p>其中，<em>语句</em>可以包含有<code>case</code>或<code>default</code>标号的语句。其格式如下：</p>
+<p class="gram">case <em>常量表达式</em> : <em>语句</em></p>
+<p class="gram">default: <em>语句</em></p>
+</div>
+<p>我们先来看一个switch语句的例子：</p>
+<pre><code class="language-C">int input = 1001; /*any input*/
+int res = input % 5;
+switch (res)
+{
+case 0: printf(&quot;res is zero.&quot;);
+    break;
+case 1: printf(&quot;res is one.&quot;);
+    break;
+case 2: printf(&quot;res is two.&quot;);
+    break;
+case 3: printf(&quot;res is three.&quot;);
+    break;
+case 4: printf(&quot;res is four.&quot;);
+    break;
+}
+</code></pre>
+<p>上述程序在余数是0~4时分别输出对应的英语单词。相比else-if，它简洁许多，也更好懂。</p>
+<p>switch语句的逻辑如下：</p>
+<ol>
+<li>先计算表达式的值</li>
+<li>跳转到有相应值<code>case</code>标号的语句，依次执行。</li>
+<li>若无相应标号的语句，则跳转到<code>default</code>标号的语句执行。</li>
+<li>若无相应标号的语句，也无<code>default</code>标号的语句，直接离开switch语句。</li>
+<li>若在执行中遇到了这一层的<code>break</code>，则离开switch语句。</li>
+</ol>
+<p>case标号需要一个整数常量表达式。</p>
+<p>整数常量表达式可以有以下方式构成：</p>
+<ul>
+<li>整数字面量、字符字面量、立即转型为整数的浮点字面量（如：<code>(int)1.0f</code>）</li>
+<li>整数常量表达式以赋值、自增、自减、函数调用或逗号以外的运算符构成的表达式。</li>
+<li>以及其他</li>
+</ul>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p><strong>常限定变量</strong>不是也不能构成整数常量表达式！下面的代码会有编译器报错：</p>
+<pre><code>const int lab = 1;
+int test = 1;
+switch (test)
+{
+case lab: break;
+}
+</code></pre>
+</div>
+<p>如果在case标号之间不添加<code>break;</code>，那么在执行到下一个case还会继续执行，直到遇到<code>break;</code>。
+这叫做<em>直落（fall through）</em>。如下的例子：</p>
+<pre><code class="language-c">int count = 3; /*any input*/
+switch (count)
+{
+case 4: printf(&quot;4!\n&quot;);
+case 3: printf(&quot;3!\n&quot;);
+case 2: printf(&quot;2!\n&quot;);
+case 1: printf(&quot;1!\n&quot;);
+    break;
+}
+</code></pre>
+<p>则会输出：</p>
+<pre><code class="language-text">3!
+2!
+1!
+</code></pre>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>确保你的直落是<strong>有意为之</strong>的。</p>
+</div>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Preprocessing%20Directive/" class="btn btn-neutral float-right" title="预处理指令">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Operators%20and%20Type%20Conversions/" class="btn btn-neutral" title="运算符与类型转换"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Operators%20and%20Type%20Conversions/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Preprocessing%20Directive/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

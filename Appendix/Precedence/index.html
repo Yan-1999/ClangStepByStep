@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>记号 - C Language Step by Step</title>
+  <title>运算符优先级列表 - C Language Step by Step</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -19,8 +19,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u8bb0\u53f7";
-    var mkdocs_page_input_path = "Intro\\Notions.md";
+    var mkdocs_page_name = "\u8fd0\u7b97\u7b26\u4f18\u5148\u7ea7\u5217\u8868";
+    var mkdocs_page_input_path = "Appendix\\Precedence.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -52,17 +52,11 @@
                     </li>
                 </ul>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../Intro/">序言</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Intro/Intro/">序言</a>
                     </li>
                 </ul>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">记号</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#_2">语法记号</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_3">其他记号</a>
-    </li>
-    </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Intro/Notions/">记号</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">C语言基础</span></p>
@@ -79,10 +73,12 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">附录</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../Appendix/Precedence/">运算符优先级列表</a>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">运算符优先级列表</a>
+    <ul class="current">
+    </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../Appendix/C%20Standard%20Library/">C标准库列表</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../C%20Standard%20Library/">C标准库列表</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">许可证</span></p>
@@ -112,8 +108,12 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>附录 &raquo;</li>
+        
+      
     
-    <li>记号</li>
+    <li>运算符优先级列表</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -125,78 +125,212 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="_1">记号<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
-<p>下面列举本教程中用到的记号：</p>
-<h2 id="_2">语法记号<a class="headerlink" href="#_2" title="Permanent link">#</a></h2>
-<div class="admonition grammar">
-<p class="admonition-title">Grammar</p>
-<p>代表了代码的语法，其中</p>
-<p class="gram"><em>斜体</em></p>
-<p>是语法结构中可替换的占位符。</p>
-<p class="gram"><em>(括号之间的内容)</em></p>
-<p>表示该部分可选。</p>
-<p class="gram"><em>用连接符-连接的符号</em></p>
-<p>表示两个替换之中没有空格地相连。</p>
-</div>
-<p>在语法替换符的描述过程中，为了表达简便，我们用<em>正则表达式（regular expression）</em>来表达一个串允许的组成。
-以下是我们会用到的正则表达式符号：</p>
-<ul>
-<li>+ 表示前面的符号一个或重复多个，如：<code>a</code>+表示：<code>a</code>、<code>aa</code>、<code>aaa</code>等。</li>
-<li>* 表示前面的符号零个或以上，如：<code>b</code> <code>a</code>*表示：<code>b</code>、<code>ba</code>、<code>baa</code>等。</li>
-<li>? 表示前面的符号零个或一个，如：<code>b</code> <code>a</code>?表示：<code>b</code>或<code>ba</code>。</li>
-<li>| 表示或者，如：<code>is</code>|<code>are</code>表示：<code>is</code>或<code>are</code>。</li>
-<li>[] 表示在其中的任意一个字符。如[<code>abc</code>]表示<code>a</code>或<code>b</code>或<code>c</code>。<ul>
-<li>其中可以使用-表示范围。如[<code>0</code>-<code>9</code>]表示<code>0</code>到<code>9</code>中的任意一个字符，
-    [<code>0</code>-<code>9</code> <code>A</code>-<code>F</code>]表示<code>0</code>到<code>9</code>，或<code>A</code>到<code>F</code>中的任意一个字符。</li>
-</ul>
-</li>
-<li>() 括号，如<code>a</code>(<code>t</code>|<code>re</code>)表示<code>at</code>或<code>are</code>。</li>
-<li>符号之间可以组合，如[<code>1</code>-<code>9</code>][<code>0</code>-<code>9</code>]*表示不以<code>0</code>开始的十进制数位串。</li>
-<li>为了直观，我们用<code>-</code>表示一个负号，以与-区分，这个标准的正则表达式（\-）不同。
-    同理的还有<code>+</code>。</li>
-</ul>
-<h2 id="_3">其他记号<a class="headerlink" href="#_3" title="Permanent link">#</a></h2>
-<div class="admonition detail">
-<p class="admonition-title">Detail</p>
-<p>详情。</p>
-</div>
-<div class="admonition hint">
-<p class="admonition-title">Hint</p>
-<p>在C语言本身之外一些补充性的内容。</p>
-</div>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>需要注意的内容。如果不遵守，<strong>可能引发错误</strong>。</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>补充注释性的内容。通常对理解有帮助。</p>
-</div>
-<div class="admonition error">
-<p class="admonition-title">Error</p>
-<p>用来展示编译器的报错。</p>
-</div>
-<div class="admonition exercise">
-<p class="admonition-title">Exercise</p>
-<p>小练习。</p>
-</div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>小贴士。</p>
-</div>
-<div class="admonition implementation-defined">
-<p class="admonition-title">Implementation-defined</p>
-<p>实现定义的，这表示标准没有明确规定此部分内容。编译器可以以固定的方式选择实现。</p>
-</div>
-<div class="admonition undefined-behavior">
-<p class="admonition-title">Undefined-behavior</p>
-<p>未定义行为。这说明程序设计中出现了不应该存在的错误（如试图除以0），而其结果是不确定的。
-编译器会基于他们不存在的断定而进行编译。</p>
-</div>
-<div class="admonition good-practice">
-<p class="admonition-title">Good-practice</p>
-<p>好习惯，尽量遵守。</p>
-</div>
+                <h1 id="_1">运算符优先级<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
+<p>（此处来自<a href="https://zh.cppreference.com/w/c/language/operator_precedence">zh.cppreference.com</a>）</p>
+<table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>运算符</th>
+<th>描述</th>
+<th>结合性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>++</code> <code>--</code></td>
+<td>后缀自增与自减</td>
+<td>左</td>
+</tr>
+<tr>
+<td></td>
+<td><code>()</code></td>
+<td>函数调用</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><code>[]</code></td>
+<td>数组下标</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><code>.</code></td>
+<td>结构体与联合体成员访问</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><code>-&gt;</code></td>
+<td>结构体与联合体成员通过指针访问</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><code>(type){list}</code></td>
+<td>复合字面量(C99)</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>++</code> <code>--</code></td>
+<td>前缀自增与自减</td>
+<td>右</td>
+</tr>
+<tr>
+<td></td>
+<td><code>+</code> <code>-</code></td>
+<td>一元加与减</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><code>!</code> <code>~</code></td>
+<td>逻辑非与逐位非</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><code>(type)</code></td>
+<td>转型</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><code>*</code></td>
+<td>间接（解引用）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><code>&amp;</code></td>
+<td>取址</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><code>sizeof</code></td>
+<td>取大小</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><code>_Alignof</code></td>
+<td>对齐要求(C11)</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>*</code> <code>/</code> <code>%</code></td>
+<td>乘法、除法及余数</td>
+<td>左</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>+</code> <code>-</code></td>
+<td>加法及减法</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>&lt;&lt;</code> <code>&gt;&gt;</code></td>
+<td>逐位左移及右移</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>&lt;</code> <code>&lt;=</code></td>
+<td>分别为 &lt; 与 ≤ 的关系运算符</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><code>&gt;</code> <code>&gt;=</code></td>
+<td>分别为 &gt; 与 ≥ 的关系运算符</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>==</code> <code>!=</code></td>
+<td>分别为 = 与 ≠ 关系</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>&amp;</code></td>
+<td>逐位与</td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>^</code></td>
+<td>逐位异或（排除或）</td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>||</code></td>
+<td>逐位或（包含或）</td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>&amp;&amp;</code></td>
+<td>逻辑与</td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td><code>|</code></td>
+<td>逻辑或</td>
+<td></td>
+</tr>
+<tr>
+<td>13</td>
+<td><code>?:</code></td>
+<td>三元条件</td>
+<td>右</td>
+</tr>
+<tr>
+<td>14</td>
+<td><code>=</code></td>
+<td>简单赋值</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><code>+=</code> <code>-=</code></td>
+<td>以和及差赋值</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><code>*=</code> <code>/=</code> <code>%=</code></td>
+<td>以积、商及余数赋值</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><code>&lt;&lt;=</code> <code>&gt;&gt;=</code></td>
+<td>以逐位左移及右移赋值</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><code>&amp;=</code> <code>^=</code> <code>|=</code></td>
+<td>以逐位与、异或及或赋值</td>
+<td></td>
+</tr>
+<tr>
+<td>15</td>
+<td><code>,</code></td>
+<td>逗号</td>
+<td>左</td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div>
@@ -204,10 +338,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../Basics%20of%20C%20Language/Hello%2C%20world%21/" class="btn btn-neutral float-right" title="“你好，世界！”">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../C%20Standard%20Library/" class="btn btn-neutral float-right" title="C标准库列表">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../Intro/" class="btn btn-neutral" title="序言"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../Basics%20of%20C%20Language/Preprocessing%20Directive/" class="btn btn-neutral" title="预处理指令"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -233,10 +367,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../Intro/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../../Basics%20of%20C%20Language/Preprocessing%20Directive/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../../Basics%20of%20C%20Language/Hello%2C%20world%21/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../C%20Standard%20Library/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

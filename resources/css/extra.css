@@ -59,6 +59,68 @@ gram-rep {
   font-family: none;
 }
 
+.rst-content .grammar {
+  background: #e7f2fa;
+}
+
+.rst-content .grammar .admonition-title {
+  background: #003399;
+}
+
+.rst-content .grammar .admonition-title::before {
+  content: "\f292";
+}
+
+.rst-content .undefined-behavior {
+  background: #fdc4b6;
+}
+
+.rst-content .undefined-behavior .admonition-title {
+  background: #e41749;
+}
+
+.rst-content .undefined-behavior .admonition-title::before {
+  content: "\f057";
+}
+
+.rst-content .implementation-defined {
+  background: #f0f0f0;
+}
+
+.rst-content .implementation-defined .admonition-title {
+  background: #a39e9e;
+}
+
+.rst-content .hint .admonition-title::before,
+.rst-content .note .admonition-title::before,
+.rst-content .tip .admonition-title::before {
+  content: "\f05a";
+}
+
+.rst-content .good-practice {
+  background: #dbfaf4;
+}
+
+.rst-content .good-practice .admonition-title {
+  background: #3b9a9c;
+}
+
+.rst-content .good-practice .admonition-title::before {
+  content: "\f164";
+}
+
+.rst-content .exercise .admonition-title::before {
+  content: "\f14b";
+}
+
+.rst-content .error .admonition-title::before {
+  content: "\f188";
+}
+
+.rst-content .implementation-defined .admonition-title::before {
+  content: "\f013";
+}
+
 @media screen {
   .tabbed-set input:nth-child(n+1):checked + label + .tabbed-content {
     order: 99;

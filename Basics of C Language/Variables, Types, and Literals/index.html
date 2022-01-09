@@ -105,17 +105,23 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#initalization">初始化（Initalization）</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_5">本章练习</a>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">“常”类型限定符</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">本章练习</a>
     </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../Operators%20and%20Type%20Conversions/">运算符与类型转换</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Control%20Flow%20Statement/">控制流语句</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../Preprocessing%20Directive/">预处理指令</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">附录</span></p>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Appendix/Precedence/">运算符优先级列表</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../Appendix/C%20Standard%20Library/">C标准库列表</a>
                     </li>
                 </ul>
@@ -211,7 +217,7 @@ C语言每一个对象都是由整数个<em>字节（byte）</em>组成。根据
 <h3 id="declaration">变量的声明（declaration）<a class="headerlink" href="#declaration" title="Permanent link">#</a></h3>
 <p>在使用变量之前，我们先要进行变量声明。</p>
 <div class="admonition grammar">
-<p class="admonition-title">语法：变量的声明</p>
+<p class="admonition-title">变量的声明</p>
 <p class="gram"><em>类型</em> <em>变量名</em>;</p>
 <p>其中，<em>变量名</em>是一个标识符。</p>
 </div>
@@ -662,7 +668,7 @@ int main(void)
 <h2 id="assignment-operator">赋值运算符（Assignment Operator）<a class="headerlink" href="#assignment-operator" title="Permanent link">#</a></h2>
 <p>赋值运算符是我们要接触的第一个运算符。它将一个值赋与一个变量。</p>
 <div class="admonition grammar">
-<p class="admonition-title">语法：赋值表达式</p>
+<p class="admonition-title">赋值表达式</p>
 <p class="gram"><em>左值</em> = <em>表达式</em></p>
 <p>其中，<em>左值</em>是一个可以被修改的左值表达式。<em>表达式</em>必须能被表示成<em>左值</em>的类型。</p>
 </div>
@@ -912,7 +918,8 @@ int main(void)
 除了<code>'</code>或者<code>\</code>的一个字符，或者<a href="../Hello%2C%20world%21/#escape-sequence">转义序列</a>。</p>
 </div>
 <p>不同于<a href="../Hello%2C%20world%21/#string-literal">字符串字面量</a>，字符字面量表示<strong>一个</strong>字符。
-某些字符用<a href="../Hello%2C%20world%21/#escape-sequence">转义序列</a>表示，比如<code>\n</code>表示换行符。</p>
+用<code>''</code>（一对单引号）包围。
+某些字符用<a href="../Hello%2C%20world%21/#escape-sequence">转义序列</a>表示，比如<code>'\n'</code>表示换行符。</p>
 <p>我们通常把字符字面量赋给一个<code>char</code>型<sup id="fnref:char-lit-type"><a class="footnote-ref" href="#fn:char-lit-type">5</a></sup>变量。
 在一般情况下字符字面量与<code>char</code>型兼容。</p>
 <div class="admonition attention">
@@ -943,7 +950,43 @@ int foo = 1, bar = 2;
 <p>取一个没有被初始化的变量、也没有被赋值过的变量的值，其结果是不确定的。</p>
 </div>
 <p>当然，初始化能比赋值做更多的事情。</p>
-<h2 id="_5">本章练习<a class="headerlink" href="#_5" title="Permanent link">#</a></h2>
+<h2 id="_5">“常”类型限定符<a class="headerlink" href="#_5" title="Permanent link">#</a></h2>
+<p>常类型限定符<code>const</code>用来加在类型前面，表示该类型的常限定变量。如：</p>
+<pre><code class="language-C">const int a = 1;
+</code></pre>
+<p>含有<code>const</code>限定类型的变量<strong>无法被赋值</strong>。但是它们是<strong>左值</strong>。当然，
+它们可以被（也应该被）初始化。如果尝试对常限定变量赋值，会有编译器报错。如：</p>
+<pre><code class="language-C">/*const.c*/
+int main(void)
+{
+    const int i = 3;
+    i = 4;
+    return 0;
+}
+</code></pre>
+<p>编译器会报错：</p>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>表达式必须是可修改的左值 (const.c:5)</p>
+</div>
+<div class="admonition good-practice">
+<p class="admonition-title">Good-practice</p>
+<p>比起直接用字面量（如：<code>12</code>等）来表达常数，
+使用其他方式（如前文提到的常限定变量变量）来给常数指定一个名字更加好（如：<code>months in year</code>）。
+这种方式有以下优点：</p>
+<ul>
+<li>可以清楚地知道常数的代表的含义。</li>
+<li>便于整体替换和修改（如将月数从<code>12</code>全部改为<code>10</code>）。</li>
+</ul>
+<p>当然，常限定变量有以下的不足：</p>
+<ul>
+<li>它的作用范围和变量相同，只有范围内能使用。</li>
+<li>它是左值，意味着它可能在内存中占有空间（而字面量是右值，可以不占有）。</li>
+<li>有些地方不能使用常限定变量变量。</li>
+</ul>
+<p>我们之后还会介绍其他的命名常量的方式。</p>
+</div>
+<h2 id="_6">本章练习<a class="headerlink" href="#_6" title="Permanent link">#</a></h2>
 <div class="admonition exercise">
 <p class="admonition-title">Exercise</p>
 <div class="tabbed-set" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">问题</label><div class="tabbed-content">

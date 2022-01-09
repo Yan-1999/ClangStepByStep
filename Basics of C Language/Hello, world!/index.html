@@ -113,11 +113,15 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../Operators%20and%20Type%20Conversions/">运算符与类型转换</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Control%20Flow%20Statement/">控制流语句</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../Preprocessing%20Directive/">预处理指令</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">附录</span></p>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Appendix/Precedence/">运算符优先级列表</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../Appendix/C%20Standard%20Library/">C标准库列表</a>
                     </li>
                 </ul>
@@ -191,7 +195,7 @@ int main(void)
 <p>这里我们的<code>#include</code>是一个预编译指令，表示头文件（以及对应源文件）的<em>包含</em>。
 它告诉编译器我们需要将<code>stdio.h</code>这个文件包含到我们的文件中去。</p>
 <div class="admonition grammar">
-<p class="admonition-title">语法：<code>#include</code></p>
+<p class="admonition-title"><code>#include</code></p>
 <ol>
 <li class="gram">#include &lt;<em>文件名</em>&gt;</li>
 <li class="gram">#include "<em>文件名</em>"</li>
@@ -228,7 +232,7 @@ int main(void)
 <p>语句是C语言的最小单位，是程序执行的内容。一般来说，语句都会以<code>;</code>（分号）结束。
 中间可以<strong>有换行</strong>。</p>
 <div class="admonition grammar">
-<p class="admonition-title">语法：表达式语句</p>
+<p class="admonition-title">表达式语句</p>
 <p class="gram"><em>表达式</em>;</p>
 </div>
 <p>上面的程序有两条语句：</p>
@@ -238,11 +242,12 @@ return 0;
 <p>我们等会会说明这两条语句的意义。</p>
 <p>这几条语句可以每个占一行（或多行），也可以写到一行里。
 但是为了阅读上的便利，我们通常会让它们每个占一行（或多行）。</p>
-<p>多条语句可以由大括号<code>{}</code>围起来，这样就形成了<em>复合语句（compound statements）</em>，
+<p id="block">多条语句可以由大括号<code>{}</code>围起来，这样就形成了<em>复合语句（compound statements）</em>，
 又称<em>块（block）</em>。</p>
 <div class="admonition grammar">
-<p class="admonition-title">语法：复合语句</p>
+<p class="admonition-title">复合语句</p>
 <p class="gram">{<em>语句...</em>}</p>
+<p>其中<em>语句...</em>代表由多条语句构成的序列。</p>
 </div>
 <div class="admonition detail">
 <p class="admonition-title">详情</p>
@@ -251,8 +256,8 @@ return 0;
 <h3 id="function">函数（Function）<a class="headerlink" href="#function" title="Permanent link">#</a></h3>
 <p>函数的是C语言的一个单元。</p>
 <div class="admonition grammar">
-<p class="admonition-title">语法：函数定义</p>
-<p class="gram"><em>返回类型</em> <em>函数名</em>(<em>形参列表</em>) <em>复合语句</em></p>
+<p class="admonition-title">函数定义</p>
+<p class="gram"><em>返回类型</em> <em>函数名</em>(<em>形参列表</em>) <em><a href="#block">复合语句</a></em></p>
 </div>
 <p>函数有两重含义。首先它能像数学中的函数一样<em>返回（return）</em>一个值。
 其次它能执行某种<strong>功能</strong>（如同英语中Function的含义）。</p>
@@ -282,7 +287,7 @@ return 0;
 </code></pre>
 <h4 id="argumentfunction-call">参数（Argument）和函数调用（Function Call）<a class="headerlink" href="#argumentfunction-call" title="Permanent link">#</a></h4>
 <div class="admonition grammar">
-<p class="admonition-title">语法：函数调用表达式</p>
+<p class="admonition-title">函数调用表达式</p>
 <p class="gram"><em>函数名</em>(<em>实参列表</em>)</p>
 </div>
 <pre><code class="language-C">printf(&quot;Hello, world!&quot;);
@@ -314,7 +319,7 @@ return 0;
 <p>函数通过返回语句会返回一个值。在这个语句之后，程序会离开当前的函数，返回到调用它的地方，
 并把值传回。</p>
 <div class="admonition grammar">
-<p class="admonition-title">语法：返回语句</p>
+<p class="admonition-title">返回语句</p>
 <p class="gram">return <em>表达式</em>;</p>
 </div>
 <p>我们的<code>main()</code>函数通过下面的语句返回了0。</p>
@@ -332,9 +337,57 @@ return 0;
 <p>关键字是C语言中特殊的单词，表示一定的<strong>语法意义</strong>。
 在C语言代码的命名中<strong>不能以关键字作为名字</strong>。</p>
 <p>程序中的<code>int</code>、<code>void</code>和<code>return</code>都是关键字。换言之，我们不能定义一个叫<code>return()</code>的函数。</p>
+<p>C语言的关键字有以下几个：</p>
+<p><code>auto</code>
+<code>break</code>
+<code>case</code>
+<code>char</code>
+<code>const</code>
+<code>continue</code>
+<code>default</code>
+<code>do</code>
+<code>double</code>
+<code>else</code>
+<code>enum</code>
+<code>extern</code>
+<code>float</code>
+<code>for</code>
+<code>goto</code>
+<code>if</code>
+<code>inline</code>
+<code>int</code>
+<code>long</code>
+<code>register</code>
+<code>restrict</code>
+<code>return</code>
+<code>short</code>
+<code>signed</code>
+<code>sizeof</code>
+<code>static</code>
+<code>struct</code>
+<code>switch</code>
+<code>typedef</code>
+<code>union</code>
+<code>unsigned</code>
+<code>void</code>
+<code>volatile</code>
+<code>while</code>
+<code>_Alignas</code>
+<code>_Alignof</code>
+<code>_Atomic</code>
+<code>_Bool</code>
+<code>_Complex</code>
+<code>_Decimal128</code>
+<code>_Decimal32</code>
+<code>_Decimal64</code>
+<code>_Generic</code>
+<code>_Imaginary</code>
+<code>_Noreturn</code>
+<code>_Static_assert</code>
+<code>_Thread_local</code></p>
 <h3 id="comment">注释（Comment）<a class="headerlink" href="#comment" title="Permanent link">#</a></h3>
 <div class="admonition grammar">
-<p class="admonition-title">语法：返回语句</p>
+<p class="admonition-title">返回语句</p>
 <ol>
 <li class="gram">/*<em>注释内容</em>*/</li>
 <li class="gram">// <em>注释内容</em></li>
@@ -351,7 +404,7 @@ return 0;
 </div>
 <h3 id="string-literal">字符串字面量（String Literal）<a class="headerlink" href="#string-literal" title="Permanent link">#</a></h3>
 <div class="admonition grammar">
-<p class="admonition-title">语法：字符串字面量</p>
+<p class="admonition-title">字符串字面量</p>
 <p class="gram">"<em>字符序列</em>"</p>
 <p>其中，<em>字符序列</em>是除了<strong>换行以外</strong>的字符组成的序列，这包括转义序列。</p>
 </div>

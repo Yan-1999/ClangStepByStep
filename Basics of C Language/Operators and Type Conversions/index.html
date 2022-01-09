@@ -77,25 +77,25 @@
     </li>
     <li class="toctree-l4"><a class="reference internal" href="#_2">四则运算符与取模运算符</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#_7">位运算符</a>
+    <li class="toctree-l4"><a class="reference internal" href="#bitwise-op">位运算符</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#_9">移位运算符</a>
+    <li class="toctree-l4"><a class="reference internal" href="#_8">移位运算符</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#precedenceassociativity">优先级（Precedence）与结合性（Associativity）</a>
+    <li class="toctree-l3"><a class="reference internal" href="#precedence">优先级（Precedence）与结合性（Associativity）</a>
     </li>
         </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#type-conversion">类型转换（Type Conversion）</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#_10">算术类型转换规则</a>
+    <li class="toctree-l3"><a class="reference internal" href="#_9">算术类型转换规则</a>
         <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#_11">整数与浮点类型的相互转换</a>
+    <li class="toctree-l4"><a class="reference internal" href="#_10">整数与浮点类型的相互转换</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#_12">算术类型的转换等级</a>
+    <li class="toctree-l4"><a class="reference internal" href="#_11">算术类型的转换等级</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#_13">整数转换</a>
+    <li class="toctree-l4"><a class="reference internal" href="#_12">整数转换</a>
     </li>
         </ul>
     </li>
@@ -103,9 +103,9 @@
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#integer-promotions">整数提升（Integer Promotions）</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2">通常算术转换2</a>
+    <li class="toctree-l4"><a class="reference internal" href="#arith-conv">通常算术转换2</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#_14">赋值转换</a>
+    <li class="toctree-l4"><a class="reference internal" href="#_13">赋值转换</a>
     </li>
         </ul>
     </li>
@@ -113,13 +113,19 @@
     </li>
         </ul>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_14">本章练习</a>
+    </li>
     </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Control%20Flow%20Statement/">控制流语句</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../Preprocessing%20Directive/">预处理指令</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">附录</span></p>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Appendix/Precedence/">运算符优先级列表</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../Appendix/C%20Standard%20Library/">C标准库列表</a>
                     </li>
                 </ul>
@@ -224,8 +230,11 @@ int main(void)
 再处理<code>a = c的值</code>。
 赋值表达式是<strong>右值表达式</strong>，不能被赋值。<code>(a = b) = c</code>是非法的。</p>
 </div>
+<p>运算符还可能会有除了返回值以外的其他作用，称为<em>副作用（side effect）</em>。
+赋值运算符就是典型的具有副作用的运算符。其返回值是所赋之值，副作用是给变量赋值。</p>
 <h3 id="arithmetic-operation">算术运算（Arithmetic Operation）<a class="headerlink" href="#arithmetic-operation" title="Permanent link">#</a></h3>
-<p>算术运算是C中的一类最基本的运算。C语言中有以下的算术运算符：</p>
+<p>算术运算是C中的一类最基本的运算。它们返回值是运算的结果，没有副作用。
+C语言中有以下的算术运算符：</p>
 <ul>
 <li>一元运算符<ul>
 <li>正号<code>+</code></li>
@@ -393,7 +402,7 @@ int main(void)
 <p>这个例子会输出0.000000. 直觉上，<code>b</code>比<code>a</code>大1，应该输出1. 但是，由于<code>a</code>和<code>b</code>都是很大的数，
 加上<code>1</code>来说，对尾数没有改变。所以相减会等于0.
 在<strong>精确度要求不高</strong>，<strong>数量级相差</strong>不大的计算中，浮点数还是有其优势的。</p>
-<h4 id="_7">位运算符<a class="headerlink" href="#_7" title="Permanent link">#</a></h4>
+<h4 id="bitwise-op">位运算符<a class="headerlink" href="#bitwise-op" title="Permanent link">#</a></h4>
 <p>位运算符是在<strong>整数</strong>表达式上对整数的位进行操纵运算符。</p>
 <div class="admonition hint">
 <p class="admonition-title">无符号整数的二进制表示</p>
@@ -405,7 +414,7 @@ int main(void)
 </code></pre>
 <p>计算机内部就是这么储存无符号整数的。对于有符号整数数，有多种内部表示方法，在此不赘述。</p>
 </div>
-<h5 id="_8">逐位逻辑运算符<a class="headerlink" href="#_8" title="Permanent link">#</a></h5>
+<h5 id="_7">逐位逻辑运算符<a class="headerlink" href="#_7" title="Permanent link">#</a></h5>
 <p>逐位逻辑运算符就是对整数的位进行操纵。</p>
 <div class="admonition grammar">
 <p class="admonition-title">逐位逻辑运算符</p>
@@ -606,7 +615,7 @@ int main(void)
 </code></pre>
 <p>你可以想想这种方法的原理。</p>
 </div>
-<h4 id="_9">移位运算符<a class="headerlink" href="#_9" title="Permanent link">#</a></h4>
+<h4 id="_8">移位运算符<a class="headerlink" href="#_8" title="Permanent link">#</a></h4>
 <div class="admonition grammar">
 <p class="admonition-title">逐位逻辑运算符</p>
 <p class="gram"><em>整数表达式</em> &lt;&lt; <em>整数表达式</em></p>
@@ -643,7 +652,7 @@ int main(void)
 <p class="admonition-title">Implementation-defined</p>
 <p>对于负数，移位的结果是实现定义的。大多数编译器选择符号位扩展，会保留正负性。</p>
 </div>
-<h3 id="precedenceassociativity">优先级（Precedence）与结合性（Associativity）<a class="headerlink" href="#precedenceassociativity" title="Permanent link">#</a></h3>
+<h3 id="precedence">优先级（Precedence）与结合性（Associativity）<a class="headerlink" href="#precedence" title="Permanent link">#</a></h3>
 <p>和数学中一样，运算符具有优先级。运算符的优先级根数学中的类似。
 我们把现在遇到的运算符列举如下：</p>
 <table>
@@ -657,7 +666,7 @@ int main(void)
 <tbody>
 <tr>
 <td>高</td>
-<td><code>+</code>（正号）、<code>-</code>（负号）</td>
+<td><code>+</code>（正号）、<code>-</code>（负号）、<code>~</code></td>
 <td>右</td>
 </tr>
 <tr>
@@ -719,9 +728,9 @@ int main(void)
 <p>类型转换分为两种：<em>显式转换</em>和<em>隐式转换</em>。顾名思义，显示转换需要我们显示地去指定，
 而隐式转换不需要我们去指定，编译器会为我们自动生成。</p>
 <p>即使有了类型转换机制，在C中仍然存在不能完成的类型转换。好在，算术类型都存在互相的转换。</p>
-<h3 id="_10">算术类型转换规则<a class="headerlink" href="#_10" title="Permanent link">#</a></h3>
+<h3 id="_9">算术类型转换规则<a class="headerlink" href="#_9" title="Permanent link">#</a></h3>
 <p>C语言中的算术类型转换时，遵守以下的规则：</p>
-<h4 id="_11">整数与浮点类型的相互转换<a class="headerlink" href="#_11" title="Permanent link">#</a></h4>
+<h4 id="_10">整数与浮点类型的相互转换<a class="headerlink" href="#_10" title="Permanent link">#</a></h4>
 <ul>
 <li>整数向浮点类型转换时，若能够用浮点数表示则保留原值，若不能则转换为临近的值。</li>
 <li>浮点数向整数转换时，<strong>向零取整</strong>。</li>
@@ -731,7 +740,7 @@ int main(void)
 <p>如果这种转换后的值<strong>不能</strong>被转换后的类型表示，则行为未定义。通常发生于超出范围的情况。
 如将<code>1e300</code>转换为整数类型。</p>
 </div>
-<h4 id="_12">算术类型的转换等级<a class="headerlink" href="#_12" title="Permanent link">#</a></h4>
+<h4 id="_11">算术类型的转换等级<a class="headerlink" href="#_11" title="Permanent link">#</a></h4>
 <p>算术类型的转换等级从某种程度表示了某个类型的范围大小。通常来说，等级越高，范围越大。</p>
 <p>总的来说转换等级有以下的规律：</p>
 <ul>
@@ -785,7 +794,7 @@ int main(void)
 </tr>
 </tbody>
 </table>
-<h4 id="_13">整数转换<a class="headerlink" href="#_13" title="Permanent link">#</a></h4>
+<h4 id="_12">整数转换<a class="headerlink" href="#_12" title="Permanent link">#</a></h4>
 <p>整数类型之间可以进行整数转换，规则如下：</p>
 <ul>
 <li>如果转换前的值能被转换后的类型表示，则值不变</li>
@@ -811,7 +820,7 @@ int main(void)
 <li>一元算术运算符 <code>+</code>、<code>-</code>、<code>~</code>的右表达式</li>
 <li>移位运算符<code>&lt;&lt;</code>和<code>&gt;&gt;</code>的左右表达式 </li>
 </ul>
-<h4 id="2">通常算术转换<sup id="fnref2:real-conv"><a class="footnote-ref" href="#fn:real-conv">2</a></sup><a class="headerlink" href="#2" title="Permanent link">#</a></h4>
+<h4 id="arith-conv">通常算术转换<sup id="fnref2:real-conv"><a class="footnote-ref" href="#fn:real-conv">2</a></sup><a class="headerlink" href="#arith-conv" title="Permanent link">#</a></h4>
 <p>如果<strong>算术运算符</strong>（除移位运算符之外）的两侧拥有不同的类型，则<strong>两边</strong>进行通常算术转换，
 直到都变为一个公共的类型。结果表达式的类型就是公共的类型。
 简而言之，通常算术遵循以下原则：</p>
@@ -839,7 +848,7 @@ int main(void)
 <pre><code class="language-c">-1 * 65536u
 </code></pre>
 <p>则会变为<code>unsigned</code>类型。</p>
-<h4 id="_14">赋值转换<a class="headerlink" href="#_14" title="Permanent link">#</a></h4>
+<h4 id="_13">赋值转换<a class="headerlink" href="#_13" title="Permanent link">#</a></h4>
 <p>赋值和初始化时，右表达式的类型会根据算术类型转换规则转化到左表达式的类型（可以不是扩大）。</p>
 <p>如下面的赋值和初始化都是合法的：</p>
 <pre><code class="language-C">char a = 'a';
@@ -875,7 +884,103 @@ float c = (float)5;
 float q = (float)x / y; /* q is 0.33 */
 </code></pre>
 <p>显示转换可以完成算术类型转换中所有的转换，除此之外还可以做到其他的转换，
-这在我们接触到之后的类型就会出现。</p>
+这在我们之后接触到其他的类型就会说到。</p>
+<h2 id="_14">本章练习<a class="headerlink" href="#_14" title="Permanent link">#</a></h2>
+<div class="admonition exercise">
+<p class="admonition-title">Exercise</p>
+<div class="tabbed-set" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">问题</label><div class="tabbed-content">
+<p>计算 <span class="arithmatex">\(\frac{1}{7}\)</span>的值，精确到6位小数。</p>
+</div>
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">输出示例</label><div class="tabbed-content">
+<pre><code>0.142857
+</code></pre>
+</div>
+<input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><label for="__tabbed_3_3">参考实现</label><div class="tabbed-content">
+<pre><code>#include &lt;stdio.h&gt;
+int main(void)
+{
+    printf("%f", 1 / 7.0);
+    return 0;
+}
+</code></pre>
+</div>
+</div>
+</div>
+<div class="admonition exercise">
+<p class="admonition-title">Exercise</p>
+<div class="tabbed-set" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">问题</label><div class="tabbed-content">
+<p>定义一个<code>int</code>型变量<code>input</code>并赋值为一个三位正整数（任选）。
+计算它的（十进制）每一位数之和并输出。</p>
+</div>
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">输出示例</label><div class="tabbed-content">
+<p>对于<code>input</code>为123的情况：</p>
+<pre><code>6
+</code></pre>
+</div>
+<input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><label for="__tabbed_4_3">参考实现</label><div class="tabbed-content">
+<pre><code>#include &lt;stdio.h&gt;
+int main(void)
+{
+    int input = 123;
+    int sum = input / 100 + input / 10 % 10 + input % 10;
+    printf("%d", sum);
+    return 0;
+}
+</code></pre>
+</div>
+</div>
+</div>
+<div class="admonition exercise">
+<p class="admonition-title">Exercise</p>
+<div class="tabbed-set" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">问题</label><div class="tabbed-content">
+<p>不同的浮点类型精度不一样，<code>(float)0.1</code>与<code>(double)0.1</code>相差多少？
+将结果乘以65536并输出。（保留6位小数）</p>
+</div>
+<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">输出示例</label><div class="tabbed-content">
+<pre><code>0.000098
+</code></pre>
+</div>
+<input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><label for="__tabbed_5_3">参考实现</label><div class="tabbed-content">
+<pre><code>#include &lt;stdio.h&gt;
+int main(void)
+{
+    printf("%f", (0.1f - 0.1) * 65536);
+    return 0;
+}
+</code></pre>
+<p>（注：这里直接使用了<code>float</code>类型的字面量<code>0.1f</code>）</p>
+</div>
+</div>
+</div>
+<div class="admonition exercise">
+<p class="admonition-title">Exercise</p>
+<div class="tabbed-set" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">问题</label><div class="tabbed-content">
+<p>定义<code>int</code>类型变量<code>input</code>并赋值为一个正整数，使用<strong>位运算</strong>解决以下问题：</p>
+<ul>
+<li>它除以16的整数商是多少？</li>
+<li>它除以16余多少？</li>
+<li>它是否为奇数（是则输出1，否则输出0）</li>
+</ul>
+<p>结果用空格分隔。</p>
+<p>（提示：<span class="arithmatex">\(16 = 2 ^ 4\)</span>，15的二进制为1111。）</p>
+</div>
+<input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">输出示例</label><div class="tabbed-content">
+<p>对于<code>input</code>为1001时：</p>
+<pre><code>62 9 1
+</code></pre>
+</div>
+<input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><label for="__tabbed_6_3">参考实现</label><div class="tabbed-content">
+<pre><code>#include &lt;stdio.h&gt;
+int main(void)
+{
+    int input = 1001;
+    printf("%d %d %d", input &gt;&gt; 4, input &amp; 15, input &amp; 1);
+    return 0;
+}
+</code></pre>
+</div>
+</div>
+</div>
 <div class="footnote">
 <hr />
 <ol>
@@ -899,7 +1004,7 @@ float q = (float)x / y; /* q is 0.33 */
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../Preprocessing%20Directive/" class="btn btn-neutral float-right" title="预处理指令">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../Control%20Flow%20Statement/" class="btn btn-neutral float-right" title="控制流语句">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../Variables%2C%20Types%2C%20and%20Literals/" class="btn btn-neutral" title="变量、类型和字面量"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -931,7 +1036,7 @@ float q = (float)x / y; /* q is 0.33 */
       <span><a href="../Variables%2C%20Types%2C%20and%20Literals/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../Preprocessing%20Directive/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../Control%20Flow%20Statement/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

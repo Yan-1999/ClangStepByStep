@@ -103,6 +103,12 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#switch">switch语句</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_10">整数常量表达式</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#goto">goto语句和标号</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_11">本章练习</a>
+    </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../Preprocessing%20Directive/">预处理指令</a>
@@ -963,24 +969,6 @@ case 4: printf(&quot;res is four.&quot;);
 <li>若无相应标号的语句，也无<code>default</code>标号的语句，直接离开switch语句。</li>
 <li>若在执行中遇到了这一层的<code>break</code>，则离开switch语句。</li>
 </ol>
-<p>case标号需要一个整数常量表达式。</p>
-<p>整数常量表达式可以有以下方式构成：</p>
-<ul>
-<li>整数字面量、字符字面量、立即转型为整数的浮点字面量（如：<code>(int)1.0f</code>）</li>
-<li>整数常量表达式以赋值、自增、自减、函数调用或逗号以外的运算符构成的表达式。</li>
-<li>以及其他</li>
-</ul>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p><strong>常限定变量</strong>不是也不能构成整数常量表达式！下面的代码会有编译器报错：</p>
-<pre><code>const int lab = 1;
-int test = 1;
-switch (test)
-{
-case lab: break;
-}
-</code></pre>
-</div>
 <p>如果在case标号之间不添加<code>break;</code>，那么在执行到下一个case还会继续执行，直到遇到<code>break;</code>。
 这叫做<em>直落（fall through）</em>。如下的例子：</p>
 <pre><code class="language-c">int count = 3; /*any input*/
@@ -1001,6 +989,209 @@ case 1: printf(&quot;1!\n&quot;);
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>确保你的直落是<strong>有意为之</strong>的。</p>
+</div>
+<p>case标号需要一个整数常量表达式。</p>
+<h2 id="_10">整数常量表达式<a class="headerlink" href="#_10" title="Permanent link">#</a></h2>
+<p>整数常量表达式可以有以下方式构成：</p>
+<ul>
+<li>整数字面量、字符字面量、立即转型为整数的浮点字面量（如：<code>(int)1.0f</code>）</li>
+<li>整数常量表达式以赋值、自增、自减、函数调用或逗号以外的运算符构成的表达式。</li>
+<li>以及其他</li>
+</ul>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p><strong>常限定变量</strong>不是也不能构成整数常量表达式！下面的代码会有编译器报错：</p>
+<pre><code>const int lab = 1;
+int test = 1;
+switch (test)
+{
+case lab: break;
+}
+</code></pre>
+</div>
+<h2 id="goto">goto语句和标号<a class="headerlink" href="#goto" title="Permanent link">#</a></h2>
+<div class="admonition grammar">
+<p class="admonition-title">标号</p>
+<p class="gram"><em>标识符</em> : <em>语句</em></p>
+</div>
+<div class="admonition grammar">
+<p class="admonition-title">goto语句</p>
+<p class="gram">goto <em>标识符</em>;</p>
+</div>
+<p>标号是给语句打上的标签，代表了程序的一个位置。
+而goto语句可以<strong>在函数内部自由地</strong>跳转到某个带有标号的语句处。
+既可以先声明标号再使用goto，向前方跳转；也可以先使用goto再声明标号，向后方跳转。</p>
+<div class="admonition good-practice">
+<p class="admonition-title">Good-practice</p>
+<p>goto语句有较大的跳转自由性。通常我们不建议使用goto，因为：</p>
+<ul>
+<li>完全可以用if/while重写。</li>
+<li>使得控制流混乱，难于调试。</li>
+<li><strong>跳过</strong>某些变量的<strong>初始化</strong>，使得某些变量出现<strong>野值</strong>。</li>
+</ul>
+<p>如：</p>
+<pre><code>int i = 1;
+goto lab;
+int j = 2;
+lab: printf("%d", i + j);
+</code></pre>
+<p>但是有些地方使用goto比较方便，也比较清晰，如跳出多重循环。</p>
+<pre><code>int main(void)
+{
+    for (int i = 0; i &lt; 4; i++) 
+    {
+        for (int j = 0; j &lt; 4; j++) 
+        {
+            printf("%d\n", i + j);
+            if (i + j &gt;= 5) 
+            {
+                goto endloop;
+            }
+        }
+    }
+endloop:;
+}
+</code></pre>
+</div>
+<h2 id="_11">本章练习<a class="headerlink" href="#_11" title="Permanent link">#</a></h2>
+<div class="admonition exercise">
+<p class="admonition-title">Exercise</p>
+<div class="tabbed-set" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">问题</label><div class="tabbed-content">
+<p>计算
+<span class="arithmatex">\(1001^{1001} \mod 2281701377\)</span>.
+提示：</p>
+<ol>
+<li>
+<p><span class="arithmatex">\(a \times b \mod m = (a \mod m) \times (b \mod m) \mod m\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(2281701377 &lt; 2^{32}\)</span></p>
+</li>
+</ol>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">输出示例</label><div class="tabbed-content">
+<pre><code>1377575194
+</code></pre>
+</div>
+<input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><label for="__tabbed_2_3">参考实现1</label><div class="tabbed-content">
+<p>这是一个显而易见的实现，但不是最好的。</p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    const long long mod = 2281701377;
+    long long ans = 1;
+    for (int i = 0; i &lt; 1001; i++)
+    {
+        ans *= 1001;
+        ans %= 2281701377;
+    }
+    printf("%lld", ans);
+    return 0;
+}
+</code></pre>
+<p>它的循环次数是1001次。</p>
+</div>
+<input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><label for="__tabbed_2_4">参考实现2</label><div class="tabbed-content">
+<p>我们使用一个叫“快速幂”的算法来提升我们的效率。</p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    const long long mod = 2281701377;
+    long long base = 1001;
+    long long ans = 1;
+    for (long long index = 1001; index; index &gt;&gt;= 1)
+    {
+        if (index &amp; 1)
+        {
+            ans *= base;
+            ans %= mod;
+        }
+        base *= base;
+        base %= mod;
+    }
+    printf("%lld", ans);
+    return 0;
+}
+</code></pre>
+<p>它的循环次数是9次。你可以自己尝试搜索并理解它的原理。</p>
+</div>
+</div>
+</div>
+<div class="admonition exercise">
+<p class="admonition-title">Exercise</p>
+<div class="tabbed-set" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">问题</label><div class="tabbed-content">
+<p>计算斐波那契数列的前30项。输出每10个数为一行，行内数以空格分割，
+可以以空格结尾每行，以换行结束。</p>
+</div>
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">输出示例</label><div class="tabbed-content">
+<pre><code>1 1 2 3 5 8 13 21 34 55
+89 144 233 377 610 987 1597 2584 4181 6765
+10946 17711 28657 46368 75025 121393 196418 317811 514229 832040
+1346269 2178309 3524578 5702887 9227465 14930352 24157817 39088169 63245986 102334155
+165580141 267914296 433494437 701408733 1134903170 1836311903 2971215073 4807526976 7778742049 12586269025
+</code></pre>
+</div>
+<input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><label for="__tabbed_3_3">参考实现</label><div class="tabbed-content">
+<pre><code>#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    long long p = 1;
+    long long q = 1;
+    long long cur = 1;
+    printf("1 1 ");
+    for (int i = 3; i &lt;= 50; i++)
+    {
+        p = q;
+        q = cur;
+        cur = p + q;
+        printf("%lld ", cur);
+        if (i % 10 == 0)
+        {
+            printf("\n");
+        }
+    }
+    return 0;
+}
+</code></pre>
+</div>
+</div>
+</div>
+<div class="admonition exercise">
+<p class="admonition-title">Exercise</p>
+<div class="tabbed-set" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">问题</label><div class="tabbed-content">
+<p>计算自然对数e的值，精确到小数点后6位。
+提示：
+$$
+e = \sum_{i=0}^\infty \frac{1}{n!}
+$$</p>
+<p>想一想：你真的需要每次循环都重新计算一遍阶乘吗？
+当一个项为多小的时候，对于小数点后6位已经没有作用了？</p>
+</div>
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">输出示例</label><div class="tabbed-content">
+<pre><code>2.718282
+</code></pre>
+</div>
+<input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><label for="__tabbed_4_3">参考实现</label><div class="tabbed-content">
+<pre><code>#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    float e = 1;
+    float inv_fact = 1;
+    for (int i = 1; inv_fact &gt; 1e-7; i++)
+    {
+        inv_fact *= 1.f / i;
+        e += inv_fact;
+    }
+    printf("%f", e);
+    return 0;
+}
+</code></pre>
+</div>
+</div>
 </div>
               
             </div>

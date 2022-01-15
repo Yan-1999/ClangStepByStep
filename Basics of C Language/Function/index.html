@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>函数 - C Language Step by Step</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  <link href="../../resources/css/extra.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u51fd\u6570";
+    var mkdocs_page_input_path = "Basics of C Language\\Function.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> C Language Step by Step</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">首页</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Intro/Intro/">序言</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Intro/Notions/">记号</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">C语言基础</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../Hello%2C%20world%21/">“你好，世界！”</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Variables%2C%20Types%2C%20and%20Literals/">变量、类型和字面量</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Operators%20and%20Type%20Conversions/">运算符与类型转换</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Control%20Flow%20Statement/">控制流语句</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">函数</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">一个例子</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">函数的定义</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#parameter">形式参数（Parameter）</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_4">返回类型与返回语句</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">函数调用运算符</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#argument">实际参数（Argument）</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pass-by-value">值传递（Pass By Value）</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#recursion">递归（Recursion）</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#stack">栈（Stack）</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">函数声明和函数类型</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Preprocessing%20Directive/">预处理指令</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">附录</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Appendix/Precedence/">运算符优先级列表</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Appendix/C%20Standard%20Library/">C标准库列表</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">许可证</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../License/CC-BY-SA%203.0/">CC-BY-SA 3.0</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../License/GFDL/">GNU Free Documentation License</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">C Language Step by Step</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>C语言基础 &raquo;</li>
+        
+      
+    
+    <li>函数</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">函数<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
+<p>函数是C语言中一个特殊的<strong>执行单元</strong>。它可以被<em>调用</em>，传入一些值（<em>参数</em>），然后<em>返回</em>一个值。
+所以如同运算符，函数可以用来<strong>返回值</strong>，也可以有<strong>副作用</strong>。迄今为止，我们所有代码的实现，
+都是基于<strong>主函数的副作用</strong>。</p>
+<p>一个函数主要由以下属性描述：</p>
+<ul>
+<li>函数名</li>
+<li>函数体</li>
+<li>参数</li>
+<li>返回值</li>
+</ul>
+<h2 id="_2">一个例子<a class="headerlink" href="#_2" title="Permanent link">#</a></h2>
+<p>我们之前学习过一个特殊的函数：主函数。并且将代码全部写入其中。现在我们要自己实现一个函数。</p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+
+int Euclid(int lhs, int rhs)
+{
+    int res = 0;
+    while (rhs &gt; 0)
+    {
+        res = lhs % rhs;
+        lhs = rhs;
+        rhs = res;
+    }
+    return lhs;
+}
+
+int main(void)
+{
+    int ans = Euclid(120, 123);
+    printf(&quot;%d&quot;, ans);
+    return 0;
+}
+</code></pre>
+<p>打印的值是<span class="arithmatex">\(\gcd(120, 123) = 3\)</span>。我们自己创建了一个名叫<code>Euclid</code>的函数，并调用它。
+我们分别将120和123两个参数传入了这个函数，并返回了答案。</p>
+<h2 id="_3">函数的定义<a class="headerlink" href="#_3" title="Permanent link">#</a></h2>
+<div class="admonition grammar">
+<p class="admonition-title">函数定义</p>
+<p class="gram"><em>返回类型</em> <em>标识符</em>(<em>形参列表</em>) <em>复合语句</em></p>
+<p>其中，<em>形参列表</em>是由<code>,</code>（逗号分隔）的声明项组成，或者是<code>void</code>。
+声明项由类型和标识符构成，如同声明中一样。</p>
+</div>
+<p>函数定义定义了一个函数。函数的定义必须放在文件层级中，即<strong>不能放在其他函数中</strong>。</p>
+<p>以下就是一个函数的定义：</p>
+<pre><code class="language-C">int MyFunc(int x, int y)
+{
+    return 0;
+}
+</code></pre>
+<h3 id="parameter">形式参数（Parameter）<a class="headerlink" href="#parameter" title="Permanent link">#</a></h3>
+<p>函数参数列表中的每一项都是<em>形式参数</em>，简称<em>形参</em>。参数为函数指定了一些变量，
+在函数外部给这些变量<strong>初始化</strong>，在函数体内部，这些变量可以被使用。
+上面的例子中，<code>x</code>和<code>y</code>就是我们在函数中可以使用的变量。</p>
+<p>形式参数的作用域是<strong>函数体</strong>。也就是说，离开了这个函数，其形式参数的声明也就<strong>无效</strong>了。
+如果在其他地方重新声明同样的标识符，那就是新的定义了。</p>
+<p>当然，在同一函数声明两个同名的参数是不可以的，这就是标识符相互冲突了。</p>
+<p>如果函数没有形式参数，那么它的形参列表就是<code>void</code>，如主函数。</p>
+<h3 id="_4">返回类型与返回语句<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
+<div class="admonition grammar">
+<p class="admonition-title">返回语句</p>
+<ol>
+<li>
+<p class="gram">return;</p>
+</li>
+<li>
+<p class="gram">return <em>表达式</em>;</p>
+</li>
+</ol>
+</div>
+<p>函数可以向外界<em>返回</em>一个值。这个值的类型由<em>返回类型</em>指定。当然，函数也可以什么都不返回，
+这使得函数的返回类型是<code>void</code>。（这个函数可以执行它的副作用。）
+函数的return语句中的表达式类型和返回类型必须<strong>一致</strong>，
+或能够通过如同赋值的<strong>隐式转换</strong>转到返回类型。如果返回类型是<code>void</code>，那就只能使用<code>return;</code>。</p>
+<p>return语句是函数返回的地方。当函数执行到return的时候，就会<strong>离开函数</strong>，返回它被调用的地方。
+return的表达式的计算值就是返回的值。当然，如果这个函数被执行完了
+（也就是执行到了这个函数函数体的右大括号<code>}</code>），程序也会返回。</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>对于非<code>void</code>返回类型的函数，其必须要有一个<strong>返回值</strong>，请确保函数一定会返回一个合适的值。
+下面的例子是错误的：</p>
+<pre><code>int func(int x)
+{
+    if (x &gt; 3)
+    {
+        return x;
+    }
+}
+</code></pre>
+<p>这个函数可能<strong>不执行</strong>return，这样得到的返回值是<strong>不确定的</strong>。</p>
+</div>
+<p>根据return语句被执行就会离开函数的特性，return语句也可以用来控制函数执行。
+这就是<code>return;</code>对于拥有<code>void</code>返回类型的函数的作用。例如：</p>
+<pre><code class="language-C">void LoopFunc(void)
+{
+    int i = 1;
+    while (1)
+    {
+        if (i &gt; 3)
+        {
+            return;
+        }
+        i++;
+    }
+}
+</code></pre>
+<div class="admonition hint">
+<p class="admonition-title">main函数的返回值具有什么样的意义？</p>
+<p>main函数是由操作系统（或其他宿主）调用的。它的返回值标识了程序执行的状况。
+如果程序执行<strong>没有错误</strong>，我们就让他<strong>返回0</strong>。其他的返回值表示程序执行有错误。</p>
+</div>
+<h2 id="_5">函数调用运算符<a class="headerlink" href="#_5" title="Permanent link">#</a></h2>
+<div class="admonition grammar">
+<p class="admonition-title">函数调用运算符</p>
+<p class="gram"><em>函数名</em>(<em>实参列表</em>)</p>
+<p>其中，<em>实参列表</em>是由<code>,</code>（逗号分隔）的表达式组成，或为空。</p>
+<p>注：若想让一个表达式组成完整语句，需要后附<code>;</code>分号。</p>
+</div>
+<p>函数调用（function call）指的就是让程序<strong>暂时离开</strong>当前函数，
+走入我们指定的函数中去<strong>执行</strong>。
+我们已经遇到过函数调用运算符，如我们一直在使用的格式化打印函数<code>printf()</code>。
+函数调用运算符的结果是<strong>函数的返回值</strong>，其副作用是函数体的执行。</p>
+<p>我们可以将函数调用运算符的结果为变量赋值，这样我们就储存了这个函数的返回值。
+如：</p>
+<pre><code class="language-C">int a = printf(&quot;%d&quot;);
+</code></pre>
+<p>不过也可以丢弃返回值，就像我们平时调用<code>prinf()</code>那样。</p>
+<div class="admonition hint">
+<p class="admonition-title"><code>printf()</code>的返回值是什么？</p>
+<p>写出的字符数，或者当出现错误时返回负值。</p>
+</div>
+<h3 id="argument">实际参数（Argument）<a class="headerlink" href="#argument" title="Permanent link">#</a></h3>
+<p><em>实际参数</em>指在函数调用运算符中传入的值。在一次调用中，
+<strong>实际参数</strong>为函数的<strong>形式参数</strong>进行<strong>初始化</strong>。
+所以实际参数的<strong>个数</strong>和<strong>类型</strong>必须<strong>与形式参数一一对应</strong>，如下面的程序：</p>
+<pre><code class="language-C">float Add(int lhs, float rhs)
+{
+    return lhs + rhs;
+}
+
+int main(void)
+{
+    float ans = Add(1, 0.8);
+    return 0;
+}
+</code></pre>
+<p>在<code>Add(1, 0.8)</code>这个调用中，我们分别为<code>lhs</code>初始化为1，给<code>rhs</code>初始化为0.8，
+然后进入<code>Add</code>这个函数。</p>
+<p>对于形参列表为<code>void</code>的函数，对应实参列表为<strong>空</strong>。如：要调用<code>int VoidParam(void)</code>，
+只需写<code>VoidParam();</code></p>
+<h3 id="pass-by-value">值传递（Pass By Value）<a class="headerlink" href="#pass-by-value" title="Permanent link">#</a></h3>
+<p>由于我们在函数调用中用实际参数初始化了形式参数，也就是说，我们把实际参数的值<strong>复制</strong>了一份，
+给了形式参数。请看以下的例子：</p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+
+void swap(int lhs, int rhs)
+{
+    int temp = lhs;
+    lhs = rhs;
+    rhs = temp;
+}
+
+int main(void)
+{
+    int a = 1, b = 2;
+    swap(a, b);
+    printf(&quot;%d %d&quot;, a, b);
+    return 0;
+}
+</code></pre>
+<p>这样写法常见于想要使用函数来交换两个变量值的人。但是很明显这个程序的输出是1 2，
+也就是说这样<strong>并不能交换</strong>两个变量的值。</p>
+<p>其实稍微想想就能明白，在<code>swap()</code>函数中，<code>lhs</code>和<code>rhs</code>和原来的<code>a</code>和<code>b</code>没有任何关系。
+只是<code>swap(a, b);</code>语句中<code>a</code>和<code>b</code>表示两个<strong>值</strong>，为<code>swap()</code>函数的两个变量初始化。</p>
+<p>像这样，用值传入函数的机制，叫<em>值传递</em>机制。
+与之相对的是<em>引用传递（pass by reference）</em>机制，
+也就是真正的用形式参数去<strong>代表</strong>实际参数的机制。
+C语言中函数调用采用的都是<strong>值传递</strong>机制<sup id="fnref:pass-by-ref"><a class="footnote-ref" href="#fn:pass-by-ref">1</a></sup>。</p>
+<h3 id="recursion">递归（Recursion）<a class="headerlink" href="#recursion" title="Permanent link">#</a></h3>
+<p>函数可以在其内部调用自己吗？当然可以！函数调用自己就叫<em>递归</em>。下面就是一个例子：</p>
+<pre><code class="language-C">void RecursionFunc(int iter)
+{
+    if (iter &gt; 10)
+    {
+        return;
+    }
+    printf(&quot;*&quot;);
+    RecursionFunc(iter + 1);
+}
+</code></pre>
+<p>这个函数在自己内部调用自己，每次调用，
+就会将<code>iter + 1</code>的实际参数初始化<strong>新一轮调用</strong>的形式参数<code>iter</code>。
+也就是说，这个函数的<code>iter</code>参数每一次调用都会增加1。
+当<code>iter</code>大于10时，函数返回，不再执行新的递归。</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>和循环一样，递归亦不能<strong>无穷递归</strong>。要设置一定条件，如果条件满足就返回（或其他方法），
+阻止<strong>新的自我调用</strong>。由于每一次函数调用都要分配内存空间（具体来说，是栈的空间），
+如果递归超过一定次数，就会导致<em>栈溢出（stack overflow）</em>。</p>
+</div>
+<p>以下的程序能帮你更好的理解递归：</p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+
+void RecursionFunc(int iter)
+{
+    printf(&quot;Line 1 of RecursionFunc. iter is %d.\n&quot;, iter);
+    if (iter &gt; 3)
+    {
+        printf(&quot;Line 4 of RecursionFunc. Return. iter = %d. No more calls.\n&quot;, iter);
+        return;
+    }
+    printf(&quot;Line 7 of RecursionFunc. Call RecursionFunc(%d + 1).\n&quot;, iter);
+    RecursionFunc(iter + 1);
+    printf(&quot;Line 9 of RecursionFunc. Back form the call. iter is %d now.\n&quot;, iter);
+    printf(&quot;Line 10 of RecursionFunc. Return.\n&quot;);
+}
+
+
+int main(void)
+{
+    RecursionFunc(0);
+    return 0;
+}
+</code></pre>
+<p>当进入这个<code>RecursionFunc()</code>函数体时，程序输出</p>
+<pre><code class="language-text">Line 1 of RecursionFunc. iter = ...
+</code></pre>
+<p>当要调用自身时，程序输出</p>
+<pre><code class="language-text">Line 7 of RecursionFunc. Call RecursionFunc(... + 1).
+</code></pre>
+<p>当返回到调用者时，程序输出</p>
+<pre><code class="language-text">Line 9 of RecursionFunc. Back form the call. iter is ... now.
+</code></pre>
+<p>当返回函数返回时，程序输出</p>
+<pre><code class="language-text">Line ... of RecursionFunc. Return. ...
+</code></pre>
+<p>以下是这个函数的输出：</p>
+<pre><code class="language-text">Line 1 of RecursionFunc. iter is 0.
+Line 7 of RecursionFunc. Call RecursionFunc(0 + 1).
+Line 1 of RecursionFunc. iter is 1.
+Line 7 of RecursionFunc. Call RecursionFunc(1 + 1).
+Line 1 of RecursionFunc. iter is 2.
+Line 7 of RecursionFunc. Call RecursionFunc(2 + 1).
+Line 1 of RecursionFunc. iter is 3.
+Line 7 of RecursionFunc. Call RecursionFunc(3 + 1).
+Line 1 of RecursionFunc. iter is 4.
+Line 4 of RecursionFunc. Return. iter = 4. No more calls.
+Line 9 of RecursionFunc. Back form the call. iter is 3 now.
+Line 10 of RecursionFunc. Return.
+Line 9 of RecursionFunc. Back form the call. iter is 2 now.
+Line 10 of RecursionFunc. Return.
+Line 9 of RecursionFunc. Back form the call. iter is 1 now.
+Line 10 of RecursionFunc. Return.
+Line 9 of RecursionFunc. Back form the call. iter is 0 now.
+Line 10 of RecursionFunc. Return.
+</code></pre>
+<h3 id="stack">栈（Stack）<a class="headerlink" href="#stack" title="Permanent link">#</a></h3>
+<pre><code class="language-C">void RecursionFunc(int iter)
+{
+    int i = 0;
+    if (iter &gt; 3)
+    {
+        return iter;
+    }
+    printf(&quot;Before new function call, i is: %d\n&quot;, i);
+    i = RecurseFunc(iter + 1);
+    printf(&quot;After new function call, i is: %d\n&quot;, i);
+}
+</code></pre>
+<p>(TODO)</p>
+<h2 id="_6">函数声明和函数类型<a class="headerlink" href="#_6" title="Permanent link">#</a></h2>
+<div class="admonition grammar">
+<p class="admonition-title">函数声明项</p>
+<p class="gram"><em>返回类型</em> <em>标识符</em>(<em>形参列表</em>)</p>
+<p>其中，<em>形参列表</em>是由<code>,</code>（逗号分隔）的声明项组成，或者是<code>void</code>。
+声明项由类型和标识符构成，或<strong>只有类型</strong>。</p>
+<p>注：若想让一个声明项组成完整声明，需要后附<code>;</code>分号。</p>
+</div>
+<p>函数声明声明了一个函数，如下所示：</p>
+<pre><code class="language-C">int MyFunc(int a);
+</code></pre>
+<p>(TODO)</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:pass-by-ref">
+<p>我们会学习一种使用指针去实现引用传递的方法。
+当然在C中没有真正意义上的引用传递。&#160;<a class="footnote-backref" href="#fnref:pass-by-ref" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Preprocessing%20Directive/" class="btn btn-neutral float-right" title="预处理指令">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Control%20Flow%20Statement/" class="btn btn-neutral" title="控制流语句"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Control%20Flow%20Statement/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Preprocessing%20Directive/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

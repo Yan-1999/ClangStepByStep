@@ -115,6 +115,8 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../Control%20Flow%20Statement/">控制流语句</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Function/">函数</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../Preprocessing%20Directive/">预处理指令</a>
                     </li>
                 </ul>
@@ -739,13 +741,14 @@ int main(void)
 <p class="admonition-title">整数字面量</p>
 <ol>
 <li>
-<p class="gram"><em>十进制数-(整数后缀)</em></p>
+<p class="gram"><em>十进制数-<span class="opt">整数后缀</span></em></p>
 </li>
 <li>
-<p class="gram">0<em>八进制数-(整数后缀)</em></p>
+<p class="gram">0<em>八进制数-<span class="opt">整数后缀</span></em></p>
 </li>
 <li>
-<p class="gram">0x<em>十六进制数-(整数后缀)</em> <strong>或</strong> 0X<em>十六进制数-(整数后缀)</em></p>
+<p class="gram">0x<em>十六进制数-<span class="opt">整数后缀</span></em> 
+<strong>或</strong> 0X<em>十六进制数-<span class="opt">整数后缀</span></em></p>
 </li>
 </ol>
 <p>其中，</p>
@@ -794,14 +797,27 @@ int main(void)
 <p class="admonition-title">浮点数字面量</p>
 <ol>
 <li>
-<p class="gram"><em>(整数)</em>.<em>(小数)-(浮点后缀)</em></p>
+<p class="gram"><em><span class="opt">整数</span></em>.<em><span class="opt">小数</span>-<span class="opt">浮点后缀</span></em></p>
 </li>
 <li>
-<p class="gram"><em>十进制尾数</em>e<em>指数-(浮点后缀)</em> <strong>或</strong> <em>十进制尾数</em>E<em>指数-(浮点后缀)</em></p>
+<ul>
+<li>
+<p class="gram"><em>十进制尾数</em>e<em>指数-<span class="opt">浮点后缀</span></em></p>
 </li>
 <li>
-<p class="gram"><em>十六进制指示符-十六进制尾数</em>p<em>指数-(浮点后缀)</em> 
-    <strong>或</strong> <em>十六进制指示符-十六进制尾数</em>P<em>指数-(浮点后缀)</em></p>
+<p class="gram"><em>十进制尾数</em>E<em>指数-<span class="opt">浮点后缀</span></em></p>
+</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>
+<p class="gram"><em>十六进制指示符-十六进制尾数</em>p<em>指数-<span class="opt">浮点后缀</span></em> </p>
+</li>
+<li>
+<p class="gram"><em>十六进制指示符-十六进制尾数</em>P<em>指数-<span class="opt">浮点后缀</span></em></p>
+</li>
+</ul>
 </li>
 </ol>
 <p>其中，</p>
@@ -809,14 +825,14 @@ int main(void)
 <li>中的<em>整数</em>和<em>小数</em>至少选择其中之一。二者都是符合正则表达式：[<code>0</code>-<code>9</code>]+的串。</li>
 <li>
 <p>中的<em>十进制尾数</em>是一个拥有语法：</p>
-<p class="gram"><em>(整数)</em>.<em>(小数)</em></p>
+<p class="gram"><em><span class="opt">整数</span></em>.<em><span class="opt">小数</span></em></p>
 <p>的串，<em>整数</em>和<em>小数</em>至少选择其中之一，或者单独由<em>整数</em>构成。
 二者都是符合正则表达式：[<code>0</code>-<code>9</code>]+的串。
 <em>指数</em>是符合正则表达式：(<code>-</code>|<code>+</code>)?[<code>0</code>-<code>9</code>]+的串。</p>
 </li>
 <li>
 <p>中的<em>十六进制指示符</em>是<code>0x</code>或<code>0X</code>。<em>十六进制尾数</em>是一个拥有语法：</p>
-<p class="gram"><em>(整数)</em>.<em>(小数)</em></p>
+<p class="gram"><em><span class="opt">整数</span></em>.<em><span class="opt">小数</span></em></p>
 <p>的串，<em>整数</em>和<em>小数</em>至少选择其中之一，或者单独由<em>整数</em>构成。
 二者都是符合正则表达式：[<code>0</code>-<code>9</code> <code>A</code>-<code>F</code> <code>a</code>-<code>f</code>]+的串。
 <em>指数</em>是符合正则表达式：(<code>-</code>|<code>+</code>)?[<code>0</code>-<code>9</code>]+的串。</p>
@@ -931,9 +947,9 @@ int main(void)
 <p>我们可以在变量声明时，就给它赋一个值，称之为<em>初始化</em>。</p>
 <div class="admonition grammar">
 <p class="admonition-title">声明与初始化</p>
-<p class="gram"><em>类型</em> <em>声明序列</em></p>
+<p class="gram"><em>类型</em> <em>声明序列</em>;</p>
 <p>其中，<em>声明序列</em>是由<em>声明项</em>组成的，由逗号<code>,</code>分隔的列表。<em>声明项</em>具有以下语法：</p>
-<p><em>标识符</em> = <em>表达式</em></p>
+<p class="gram"><em>标识符</em> = <em>表达式</em></p>
 </div>
 <p>以下代码片段展现了一个初始化的例子：</p>
 <pre><code class="language-C">int var = 0;

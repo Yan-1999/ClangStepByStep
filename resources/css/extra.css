@@ -59,6 +59,18 @@ gram-rep {
   font-family: none;
 }
 
+.gram .or::after {
+  content: "或";
+  font-weight: normal;
+  font-family: none;
+}
+
+.gram .opt::after {
+  content: "可选";
+  font-size: 12px;
+  vertical-align: text-top;
+}
+
 .rst-content .grammar {
   background: #e7f2fa;
 }

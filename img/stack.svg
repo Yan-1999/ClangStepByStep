@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210.23102mm"
+   height="47.117424mm"
+   viewBox="0 0 210.23102 47.117424"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   sodipodi:docname="stack.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.5358305"
+     inkscape:cx="437.22272"
+     inkscape:cy="165.05727"
+     inkscape:window-width="1920"
+     inkscape:window-height="1051"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="图层 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(17.460681,-119.6238)">
+    <rect
+       style="fill:#87decd;fill-opacity:1;stroke:none;stroke-width:1.1604;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers stroke fill"
+       id="rect33"
+       width="26.960846"
+       height="12.274508"
+       x="20.582687"
+       y="134.05333" />
+    <rect
+       style="fill:#37c8ab;fill-opacity:1;stroke:none;stroke-width:1.1604;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers stroke fill"
+       id="rect33-0"
+       width="26.960846"
+       height="12.274508"
+       x="20.582687"
+       y="146.32784" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:1.25;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="23.881453"
+       y="138.91727"
+       id="text3703"><tspan
+         sodipodi:role="line"
+         id="tspan3701"
+         style="stroke-width:0.264583"
+         x="23.881453"
+         y="138.91727">iter: 0</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="23.881453"
+         y="145.0909"
+         id="tspan6589">i:    1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="4.5741296"
+       y="158.12003"
+       id="text8674"><tspan
+         sodipodi:role="line"
+         id="tspan8672"
+         style="font-size:4.23333px;stroke-width:0.264583"
+         x="4.5741296"
+         y="158.12003">main()</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="-17.750069"
+       y="145.71631"
+       id="text9077"><tspan
+         sodipodi:role="line"
+         id="tspan9075"
+         style="font-size:4.23333px;stroke-width:0.264583"
+         x="-17.750069"
+         y="145.71631">RecursionFunc()</tspan></text>
+    <rect
+       style="fill:#87decd;fill-opacity:1;stroke:none;stroke-width:1.1604;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers stroke fill"
+       id="rect11307"
+       width="26.960846"
+       height="12.274508"
+       x="93.282227"
+       y="134.05333" />
+    <rect
+       style="fill:#37c8ab;fill-opacity:1;stroke:none;stroke-width:1.1604;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers stroke fill"
+       id="rect11309"
+       width="26.960846"
+       height="12.274508"
+       x="93.282227"
+       y="146.32784" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:1.25;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="96.580986"
+       y="138.91727"
+       id="text11315"><tspan
+         sodipodi:role="line"
+         id="tspan11311"
+         style="stroke-width:0.264583"
+         x="96.580986"
+         y="138.91727">iter: 0</tspan><tspan
+         sodipodi:role="line"
+         style="fill:#800000;stroke-width:0.264583"
+         x="96.580986"
+         y="145.0909"
+         id="tspan11313">i:    0</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="77.254913"
+       y="158.12003"
+       id="text11319"><tspan
+         sodipodi:role="line"
+         id="tspan11317"
+         style="font-size:4.23333px;stroke-width:0.264583"
+         x="77.254913"
+         y="158.12003">main()</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="54.930714"
+       y="145.71631"
+       id="text11323"><tspan
+         sodipodi:role="line"
+         id="tspan11321"
+         style="font-size:4.23333px;stroke-width:0.264583"
+         x="54.930714"
+         y="145.71631">RecursionFunc()</tspan></text>
+    <rect
+       style="fill:#afe9dd;fill-opacity:1;stroke:none;stroke-width:1.1604;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers stroke fill"
+       id="rect15245"
+       width="26.960846"
+       height="12.274508"
+       x="93.282227"
+       y="121.77882" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:1.25;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="96.580986"
+       y="126.64276"
+       id="text15251"><tspan
+         sodipodi:role="line"
+         id="tspan15247"
+         style="stroke-width:0.264583"
+         x="96.580986"
+         y="126.64276">iter: 1</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="96.580986"
+         y="132.81639"
+         id="tspan15249">i:    1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="54.930714"
+       y="133.4418"
+       id="text15255"><tspan
+         sodipodi:role="line"
+         id="tspan15253"
+         style="font-size:4.23333px;stroke-width:0.264583"
+         x="54.930714"
+         y="133.4418">RecursionFunc()</tspan></text>
+    <rect
+       style="fill:#87decd;fill-opacity:1;stroke:none;stroke-width:1.1604;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers stroke fill"
+       id="rect27514"
+       width="26.960846"
+       height="12.274508"
+       x="165.80949"
+       y="134.05333" />
+    <rect
+       style="fill:#37c8ab;fill-opacity:1;stroke:none;stroke-width:1.1604;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers stroke fill"
+       id="rect27516"
+       width="26.960846"
+       height="12.274508"
+       x="165.80949"
+       y="146.32784" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:1.25;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="169.10825"
+       y="138.91727"
+       id="text27522"><tspan
+         sodipodi:role="line"
+         id="tspan27518"
+         style="stroke-width:0.264583"
+         x="169.10825"
+         y="138.91727">iter: 0</tspan><tspan
+         sodipodi:role="line"
+         style="fill:#800000;stroke-width:0.264583"
+         x="169.10825"
+         y="145.0909"
+         id="tspan27520">i:    0</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="149.97905"
+       y="158.12003"
+       id="text27526"><tspan
+         sodipodi:role="line"
+         id="tspan27524"
+         style="font-size:4.23333px;stroke-width:0.264583"
+         x="149.97905"
+         y="158.12003">main()</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="127.65485"
+       y="145.71631"
+       id="text27530"><tspan
+         sodipodi:role="line"
+         id="tspan27528"
+         style="font-size:4.23333px;stroke-width:0.264583"
+         x="127.65485"
+         y="145.71631">RecursionFunc()</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.9389px;line-height:1.25;font-family:'Source Han Sans';-inkscape-font-specification:'Source Han Sans';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="25.669474"
+       y="166.32635"
+       id="text28278"><tspan
+         sodipodi:role="line"
+         id="tspan28276"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Source Han Sans';-inkscape-font-specification:'Source Han Sans';stroke-width:0.264583"
+         x="25.669474"
+         y="166.32635">递归前</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.9389px;line-height:1.25;font-family:'Source Han Sans';-inkscape-font-specification:'Source Han Sans';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="99.481506"
+       y="166.32635"
+       id="text28278-8"><tspan
+         sodipodi:role="line"
+         id="tspan28276-3"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Source Han Sans';-inkscape-font-specification:'Source Han Sans';stroke-width:0.264583"
+         x="99.481506"
+         y="166.32635">递归中</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.9389px;line-height:1.25;font-family:'Source Han Sans';-inkscape-font-specification:'Source Han Sans';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="173.02345"
+       y="166.2733"
+       id="text28278-8-3"><tspan
+         sodipodi:role="line"
+         id="tspan28276-3-5"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Source Han Sans';-inkscape-font-specification:'Source Han Sans';stroke-width:0.264583"
+         x="173.02345"
+         y="166.2733">返回后</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:1.25;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="3.3958793"
+       y="136.15311"
+       id="text33956"><tspan
+         sodipodi:role="line"
+         id="tspan33954"
+         style="stroke-width:0.264583"
+         x="3.3958793"
+         y="136.15311"><tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Source Han Sans';-inkscape-font-specification:'Source Han Sans'"
+   id="tspan34442">栈顶</tspan>-&gt;</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:1.25;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="76.07666"
+       y="123.77248"
+       id="text33956-4"><tspan
+         sodipodi:role="line"
+         id="tspan33954-2"
+         style="stroke-width:0.264583"
+         x="76.07666"
+         y="123.77248"><tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Source Han Sans';-inkscape-font-specification:'Source Han Sans'"
+   id="tspan34442-7">栈顶</tspan>-&gt;</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:1.25;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="148.8008"
+       y="136.0759"
+       id="text33956-4-8"><tspan
+         sodipodi:role="line"
+         id="tspan33954-2-9"
+         style="stroke-width:0.264583"
+         x="148.8008"
+         y="136.0759"><tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Source Han Sans';-inkscape-font-specification:'Source Han Sans'"
+   id="tspan34442-7-6">栈顶</tspan>-&gt;</tspan></text>
+  </g>
+</svg>

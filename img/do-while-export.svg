@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="69.501mm" height="60.594mm" version="1.1" viewBox="0 0 69.501 60.594" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <marker id="Arrow2Lend9430" overflow="visible" orient="auto">
+   <path transform="matrix(-1.1,0,0,-1.1,-1.1,0)" d="m8.7186 4.0337-10.926-4.0177 10.926-4.0177c-1.7455 2.3721-1.7354 5.6175-6e-7 8.0354z" fill="#000080" fill-rule="evenodd" stroke="#000080" stroke-linejoin="round" stroke-width=".625"/>
+  </marker>
+  <marker id="Arrow2Lend-2-436" overflow="visible" orient="auto">
+   <path transform="matrix(-1.1,0,0,-1.1,-1.1,0)" d="m8.7186 4.0337-10.926-4.0177 10.926-4.0177c-1.7455 2.3721-1.7354 5.6175-6e-7 8.0354z" fill="#008000" fill-rule="evenodd" stroke="#008000" stroke-linejoin="round" stroke-width=".625"/>
+  </marker>
+  <marker id="Arrow2Lend-28318" overflow="visible" orient="auto">
+   <path transform="matrix(-1.1,0,0,-1.1,-1.1,0)" d="m8.7186 4.0337-10.926-4.0177 10.926-4.0177c-1.7455 2.3721-1.7354 5.6175-6e-7 8.0354z" fill="#800000" fill-rule="evenodd" stroke="#800000" stroke-linejoin="round" stroke-width=".625"/>
+  </marker>
+ </defs>
+ <g transform="translate(-47.934 -83.96)">
+  <rect x="51.91" y="89.121" width="65.524" height="45.767" fill="#ccc" style="paint-order:markers stroke fill"/>
+  <text x="55.127609" y="86.825989" font-family="'Cascadia Code'" font-size="7.0556px" letter-spacing="0px" stroke-width=".26458" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="55.127609" y="86.825989" fill="#666666">...</tspan><tspan x="55.127609" y="95.645439">do</tspan><tspan x="55.127609" y="104.46489">{</tspan><tspan x="55.127609" y="113.28434">    <tspan fill="#666666">...</tspan></tspan><tspan x="55.127609" y="122.10379">}</tspan><tspan x="55.127609" y="130.92323">while (<tspan fill="#666666">cond</tspan>);</tspan><tspan x="55.127609" y="139.74269" fill="#666666">...</tspan><tspan x="55.127609" y="148.56213"/></text>
+  <g>
+   <path d="m49.099 83.96v37.536" fill="#008000" marker-end="url(#Arrow2Lend9430)" stroke="#000080" stroke-dasharray="1.5875, 0.529166" stroke-width=".26458"/>
+   <path d="m101.29 128.66h12.318v11.006h-46.428" fill="none" marker-end="url(#Arrow2Lend-28318)" stroke="#800000" stroke-width=".26458px"/>
+   <path d="m93.438 124.7v-31.427h-27.71" fill="none" marker-end="url(#Arrow2Lend-2-436)" stroke="#008000" stroke-width=".26458px"/>
+  </g>
+  <text x="96.558151" y="109.18696" fill="#008000" font-family="'Cascadia Code'" font-size="4.2333px" letter-spacing="0px" stroke-width=".26458" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="96.558151" y="109.18696" fill="#008000" font-size="4.2333px" stroke-width=".26458">cond<tspan font-family="'Source Han Sans'">为真</tspan></tspan></text>
+  <text x="85.790359" y="144.2068" fill="#800000" font-family="'Cascadia Code'" font-size="4.2333px" letter-spacing="0px" stroke-width=".26458" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="85.790359" y="144.2068" fill="#800000" font-size="4.2333px" stroke-width=".26458">cond<tspan fill="#800000" font-family="'Source Han Sans'">为假</tspan></tspan></text>
+ </g>
+</svg>

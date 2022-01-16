@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="94.639mm" height="58.836mm" version="1.1" viewBox="0 0 94.639 58.836" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <marker id="Arrow2Lend-28318" overflow="visible" orient="auto">
+   <path transform="matrix(-1.1,0,0,-1.1,-1.1,0)" d="m8.7186 4.0337-10.926-4.0177 10.926-4.0177c-1.7455 2.3721-1.7354 5.6175-6e-7 8.0354z" fill="#800000" fill-rule="evenodd" stroke="#800000" stroke-linejoin="round" stroke-width=".625"/>
+  </marker>
+  <marker id="Arrow2Lstart3693" overflow="visible" orient="auto">
+   <path transform="matrix(1.1,0,0,1.1,1.1,0)" d="m8.7186 4.0337-10.926-4.0177 10.926-4.0177c-1.7455 2.3721-1.7354 5.6175-6e-7 8.0354z" fill="#000080" fill-rule="evenodd" stroke="#000080" stroke-linejoin="round" stroke-width=".625"/>
+  </marker>
+  <marker id="Arrow2Lend-2-436-23" overflow="visible" orient="auto">
+   <path transform="matrix(-1.1,0,0,-1.1,-1.1,0)" d="m8.7186 4.0337-10.926-4.0177 10.926-4.0177c-1.7455 2.3721-1.7354 5.6175-6e-7 8.0354z" fill="#008000" fill-rule="evenodd" stroke="#008000" stroke-linejoin="round" stroke-width=".625"/>
+  </marker>
+  <marker id="Arrow2Lend-2-4365784" overflow="visible" orient="auto">
+   <path transform="matrix(-1.1,0,0,-1.1,-1.1,0)" d="m8.7186 4.0337-10.926-4.0177 10.926-4.0177c-1.7455 2.3721-1.7354 5.6175-6e-7 8.0354z" fill="#000080" fill-rule="evenodd" stroke="#000080" stroke-linejoin="round" stroke-width=".625"/>
+  </marker>
+  <marker id="Arrow2Lend-2-4365784-5" overflow="visible" orient="auto">
+   <path transform="matrix(-1.1,0,0,-1.1,-1.1,0)" d="m8.7186 4.0337-10.926-4.0177 10.926-4.0177c-1.7455 2.3721-1.7354 5.6175-6e-7 8.0354z" fill="#000080" fill-rule="evenodd" stroke="#000080" stroke-linejoin="round" stroke-width=".625"/>
+  </marker>
+  <marker id="Arrow2Lend169" overflow="visible" orient="auto">
+   <path transform="matrix(-1.1,0,0,-1.1,-1.1,0)" d="m8.7186 4.0337-10.926-4.0177 10.926-4.0177c-1.7455 2.3721-1.7354 5.6175-6e-7 8.0354z" fill="#000080" fill-rule="evenodd" stroke="#000080" stroke-linejoin="round" stroke-width=".625"/>
+  </marker>
+  <marker id="Arrow2Lend-932944" overflow="visible" orient="auto">
+   <path transform="matrix(-1.1,0,0,-1.1,-1.1,0)" d="m8.7186 4.0337-10.926-4.0177 10.926-4.0177c-1.7455 2.3721-1.7354 5.6175-6e-7 8.0354z" fill="#000080" fill-rule="evenodd" stroke="#000080" stroke-linejoin="round" stroke-width=".625"/>
+  </marker>
+ </defs>
+ <g transform="translate(-51.91 -76.279)">
+  <rect x="51.91" y="89.121" width="94.639" height="37.67" fill="#ccc" style="paint-order:markers stroke fill"/>
+  <text x="55.127609" y="86.825989" font-family="'Cascadia Code'" font-size="7.0556px" letter-spacing="0px" stroke-width=".26458" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="55.127609" y="86.825989" fill="#666666">...</tspan><tspan x="55.127609" y="95.645439">for (<tspan fill="#808080">init</tspan>; <tspan fill="#808080">cond</tspan>; <tspan fill="#808080">iter</tspan>)</tspan><tspan x="55.127609" y="104.46489">{</tspan><tspan x="55.127609" y="113.28434">    <tspan fill="#666666">...</tspan></tspan><tspan x="55.127609" y="122.10379">}</tspan><tspan x="55.127609" y="130.92323" fill="#666666">...</tspan><tspan x="55.127609" y="139.74269"/></text>
+  <g fill="none">
+   <path d="m110.93 96.244v34.164h-43.748" marker-end="url(#Arrow2Lend-28318)" stroke="#800000" stroke-width=".26458px"/>
+   <path d="m84.738 76.279v13.098" marker-end="url(#Arrow2Lend-2-4365784)" stroke="#000080" stroke-width=".26458px"/>
+   <path d="m53.944 103.99v13.098" marker-end="url(#Arrow2Lend-2-4365784-5)" stroke="#000080" stroke-dasharray="1.5875, 0.529166" stroke-width=".26458"/>
+   <path d="m110.36 96.244v5.5327h-51.464" marker-end="url(#Arrow2Lend-2-436-23)" stroke="#008000" stroke-width=".26458px"/>
+   <path d="m133.9 97.121v23.209h-74.357" marker-start="url(#Arrow2Lstart3693)" stroke="#000080" stroke-width=".26458px"/>
+  </g>
+  <g font-family="'Cascadia Code'" font-size="4.2333px" letter-spacing="0px" stroke-width=".26458" word-spacing="0px">
+   <text x="78.40757" y="107.2379" fill="#008000" style="line-height:1.25" xml:space="preserve"><tspan x="78.40757" y="107.2379" fill="#008000" font-size="4.2333px" stroke-width=".26458">cond<tspan font-family="'Source Han Sans'">为真</tspan></tspan></text>
+   <text x="81.788803" y="134.76785" fill="#800000" style="line-height:1.25" xml:space="preserve"><tspan x="81.788803" y="134.76785" fill="#800000" font-size="4.2333px" stroke-width=".26458">cond<tspan fill="#800000" font-family="'Source Han Sans'">为假</tspan></tspan></text>
+   <text x="120.77151" y="125.59911" fill="#800000" style="line-height:1.25" xml:space="preserve"><tspan x="120.77151" y="125.59911" fill="#000080" font-family="'Source Han Sans'" font-size="4.2333px" stroke-width=".26458">跳回</tspan></text>
+  </g>
+  <path d="m133.9 90.104v-4.6083h-23.536v4.6083" fill="none" marker-end="url(#Arrow2Lend169)" stroke="#000080" stroke-width=".26458px"/>
+  <path d="m92.291 94.051h7.4751" fill="none" marker-end="url(#Arrow2Lend-932944)" stroke="#000080" stroke-width=".26458px"/>
+ </g>
+</svg>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="116.81mm" height="36.298mm" version="1.1" viewBox="0 0 116.81 36.298" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <marker id="Arrow2Lend-2-68384" overflow="visible" orient="auto">
+   <path transform="matrix(-1.1,0,0,-1.1,-1.1,0)" d="m8.7186 4.0337-10.926-4.0177 10.926-4.0177c-1.7455 2.3721-1.7354 5.6175-6e-7 8.0354z" fill="#000080" fill-rule="evenodd" stroke="#000080" stroke-linejoin="round" stroke-width=".625"/>
+  </marker>
+  <marker id="Arrow2Lstart8488" overflow="visible" orient="auto">
+   <path transform="matrix(1.1,0,0,1.1,1.1,0)" d="m8.7186 4.0337-10.926-4.0177 10.926-4.0177c-1.7455 2.3721-1.7354 5.6175-6e-7 8.0354z" fill="#000080" fill-rule="evenodd" stroke="#000080" stroke-linejoin="round" stroke-width=".625"/>
+  </marker>
+ </defs>
+ <g transform="translate(-50.112 -85.875)">
+  <text x="55.127609" y="86.825989" font-family="'Cascadia Code'" font-size="7.0556px" letter-spacing="0px" stroke-width=".26458" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="55.127609" y="86.825989" fill="#666666">...</tspan><tspan x="55.127609" y="95.645439" fill="#666666">label: ...;</tspan><tspan x="55.127609" y="104.46489" fill="#808080">...</tspan><tspan x="55.127609" y="113.28434">goto <tspan fill="#808080">label</tspan>;</tspan><tspan x="55.127609" y="122.10379" fill="#666666">...</tspan><tspan x="55.127609" y="130.92323"/></text>
+  <path d="m54.738 111.67h-4.493v-18.588h4.0649" fill="none" marker-end="url(#Arrow2Lend-2-68384)" stroke="#000080" stroke-width=".26458px"/>
+  <text x="123.00347" y="86.825989" font-family="'Cascadia Code'" font-size="7.0556px" letter-spacing="0px" stroke-width=".26458" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="123.00347" y="86.825989" fill="#666666">...</tspan><tspan x="123.00347" y="95.645439"><tspan fill="#000000">goto</tspan> label<tspan fill="none">;</tspan></tspan><tspan x="123.00347" y="104.46489" fill="#808080">...</tspan><tspan x="123.00347" y="113.28434" fill="#808080">label: ...;</tspan><tspan x="123.00347" y="122.10379" fill="#666666">...</tspan></text>
+  <path d="m122.61 111.67h-4.493v-18.588h4.0649" fill="none" marker-end="" marker-start="url(#Arrow2Lstart8488)" stroke="#000080" stroke-width=".26458px"/>
+ </g>
+</svg>

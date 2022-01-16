@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="80.296mm" height="45.707mm" version="1.1" viewBox="0 0 80.296 45.707" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <marker id="marker27318263" overflow="visible" orient="auto">
+   <path transform="scale(.8) translate(-6)" d="m5.77 0-8.65 5v-10l8.65 5z" fill="#000080" fill-rule="evenodd" stroke="#000080" stroke-width="1pt"/>
+  </marker>
+  <marker id="marker27312006" overflow="visible" orient="auto">
+   <path transform="scale(.8) translate(-6)" d="m5.77 0-8.65 5v-10l8.65 5z" fill="#008000" fill-rule="evenodd" stroke="#008000" stroke-width="1pt"/>
+  </marker>
+  <marker id="marker27314863" overflow="visible" orient="auto">
+   <path transform="scale(.8) translate(-6)" d="m5.77 0-8.65 5v-10l8.65 5z" fill="#800000" fill-rule="evenodd" stroke="#800000" stroke-width="1pt"/>
+  </marker>
+ </defs>
+ <g transform="translate(-37.139 -85.875)">
+  <rect x="51.91" y="89.121" width="65.524" height="35.29" fill="#ccc" style="paint-order:markers stroke fill"/>
+  <text x="55.127609" y="86.825989" font-family="'Cascadia Code'" font-size="7.0556px" letter-spacing="0px" stroke-width=".26458" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="55.127609" y="86.825989" fill="#666666">...</tspan><tspan x="55.127609" y="95.645439">while (<tspan fill="#808080">cond</tspan>)</tspan><tspan x="55.127609" y="104.46489">{</tspan><tspan x="55.127609" y="113.28434">    <tspan fill="#666666">...</tspan></tspan><tspan x="55.127609" y="122.10379">}</tspan><tspan x="55.127609" y="130.92323" fill="#666666">...</tspan><tspan x="55.127609" y="139.74269"/></text>
+  <g fill="none" stroke-width=".265">
+   <path d="m55.903 119.3h-8.9582v-24.98h6.7187" marker-end="url(#marker27318263)" stroke="#000080"/>
+   <path d="m101.29 93.455h12.318v36.953h-46.428" marker-end="url(#marker27314863)" stroke="#800000"/>
+   <path d="m96.97 96.685v4.9959h-37.211" marker-end="url(#marker27312006)" stroke="#008000"/>
+  </g>
+  <g font-family="'Cascadia Code'" font-size="4.2333px" letter-spacing="0px" stroke-width=".26458" word-spacing="0px">
+   <text x="70.976799" y="105.77611" fill="#008000" style="line-height:1.25" xml:space="preserve"><tspan x="70.976799" y="105.77611" fill="#008000" font-size="4.2333px" stroke-width=".26458">cond<tspan font-family="'Source Han Sans'">为真</tspan></tspan></text>
+   <text x="85.181282" y="128.49254" fill="#800000" style="line-height:1.25" xml:space="preserve"><tspan x="85.181282" y="128.49254" fill="#800000" font-size="4.2333px" stroke-width=".26458">cond<tspan fill="#800000" font-family="'Source Han Sans'">为假</tspan></tspan></text>
+   <text x="36.990543" y="108.32381" fill="#800000" style="line-height:1.25" xml:space="preserve"><tspan x="36.990543" y="108.32381" fill="#000080" font-family="'Source Han Sans'" font-size="4.2333px" stroke-width=".26458">跳回</tspan></text>
+  </g>
+ </g>
+</svg>

@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>C标准库列表 - C Language Step by Step</title>
+  <title>数组 - C Language Step by Step</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -19,8 +19,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "C\u6807\u51c6\u5e93\u5217\u8868";
-    var mkdocs_page_input_path = "Appendix\\C Standard Library.md";
+    var mkdocs_page_name = "\u6570\u7ec4";
+    var mkdocs_page_input_path = "Basics of C Language\\Array.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -60,29 +60,29 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">C语言基础</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../Basics%20of%20C%20Language/Hello%2C%20world%21/">“你好，世界！”</a>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../Hello%2C%20world%21/">“你好，世界！”</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../Basics%20of%20C%20Language/Variables%2C%20Types%2C%20and%20Literals/">变量、类型和字面量</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../Variables%2C%20Types%2C%20and%20Literals/">变量、类型和字面量</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../Basics%20of%20C%20Language/Operators%20and%20Type%20Conversions/">运算符与类型转换</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../Operators%20and%20Type%20Conversions/">运算符与类型转换</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../Basics%20of%20C%20Language/Control%20Flow%20Statement/">控制流语句</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../Control%20Flow%20Statement/">控制流语句</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../Basics%20of%20C%20Language/Function/">函数</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../Function/">函数</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../Basics%20of%20C%20Language/Array/">数组</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">数组</a>
+    <ul class="current">
+    </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../Basics%20of%20C%20Language/Preprocessing%20Directive/">预处理指令</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../Preprocessing%20Directive/">预处理指令</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">附录</span></p>
-                <ul class="current">
-                    <li class="toctree-l1"><a class="reference internal" href="../Precedence/">运算符优先级列表</a>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Appendix/Precedence/">运算符优先级列表</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">C标准库列表</a>
-    <ul class="current">
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Appendix/C%20Standard%20Library/">C标准库列表</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">许可证</span></p>
@@ -113,11 +113,11 @@
     
       
         
-          <li>附录 &raquo;</li>
+          <li>C语言基础 &raquo;</li>
         
       
     
-    <li>C标准库列表</li>
+    <li>数组</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -129,134 +129,13 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="c">C标准库列表<a class="headerlink" href="#c" title="Permanent link">#</a></h1>
-<p>（此处来自<a href="https://zh.cppreference.com/w/c/header">zh.cppreference.com</a>）</p>
-<table>
-<thead>
-<tr>
-<th>头文件名</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&lt;assert.h></td>
-<td>条件编译宏，将参数与零比较</td>
-</tr>
-<tr>
-<td>&lt;complex.h></td>
-<td>(C99)    复数运算</td>
-</tr>
-<tr>
-<td>&lt;ctype.h></td>
-<td>用来确定包含于字符数据中的类型的函数</td>
-</tr>
-<tr>
-<td>&lt;errno.h></td>
-<td>报告错误条件的宏</td>
-</tr>
-<tr>
-<td>&lt;fenv.h></td>
-<td>(C99)   浮点环境</td>
-</tr>
-<tr>
-<td>&lt;float.h></td>
-<td>浮点类型的极限</td>
-</tr>
-<tr>
-<td>&lt;inttypes.h></td>
-<td>(C99)   整数类型的格式转换</td>
-</tr>
-<tr>
-<td>&lt;iso646.h></td>
-<td>(C95)     运算符的替代写法</td>
-</tr>
-<tr>
-<td>&lt;limits.h></td>
-<td>整数类型的范围</td>
-</tr>
-<tr>
-<td>&lt;locale.h></td>
-<td>本地化工具</td>
-</tr>
-<tr>
-<td>&lt;math.h></td>
-<td>常用数学函数</td>
-</tr>
-<tr>
-<td>&lt;setjmp.h></td>
-<td>非局部跳转</td>
-</tr>
-<tr>
-<td>&lt;signal.h></td>
-<td>信号处理</td>
-</tr>
-<tr>
-<td>&lt;stdalign.h></td>
-<td>(C11)   alignas 与 alignof 便利宏</td>
-</tr>
-<tr>
-<td>&lt;stdarg.h></td>
-<td>可变参数</td>
-</tr>
-<tr>
-<td>&lt;stdatomic.h></td>
-<td>(C11)  原子类型</td>
-</tr>
-<tr>
-<td>&lt;stdbool.h></td>
-<td>(C99)    布尔类型的宏</td>
-</tr>
-<tr>
-<td>&lt;stddef.h></td>
-<td>常用宏定义</td>
-</tr>
-<tr>
-<td>&lt;stdint.h></td>
-<td>(C99)     定宽整数类型</td>
-</tr>
-<tr>
-<td>&lt;stdio.h></td>
-<td>输入/输出</td>
-</tr>
-<tr>
-<td>&lt;stdlib.h></td>
-<td>基础工具：内存管理、程序工具、字符串转换、随机数、算法</td>
-</tr>
-<tr>
-<td>&lt;stdnoreturn.h></td>
-<td>(C11)    noreturn 便利宏</td>
-</tr>
-<tr>
-<td>&lt;string.h></td>
-<td>字符串处理</td>
-</tr>
-<tr>
-<td>&lt;tgmath.h></td>
-<td>(C99)     泛型数学（包装 math.h 和 complex.h 的宏）</td>
-</tr>
-<tr>
-<td>&lt;threads.h></td>
-<td>(C11)    线程库</td>
-</tr>
-<tr>
-<td>&lt;time.h></td>
-<td>时间/日期工具</td>
-</tr>
-<tr>
-<td>&lt;uchar.h></td>
-<td>(C11)  UTF-16 和 UTF-32 字符工具</td>
-</tr>
-<tr>
-<td>&lt;wchar.h></td>
-<td>(C95)  扩展多字节和宽字符工具</td>
-</tr>
-<tr>
-<td>&lt;wctype.h></td>
-<td>(C95)     用来确定包含于宽字符数据中的类型的函数</td>
-</tr>
-</tbody>
-</table>
+                <h3 id="int-constexpr">整数常量表达式<a class="headerlink" href="#int-constexpr" title="Permanent link">#</a></h3>
+<p>整数常量表达式可以有以下方式构成：</p>
+<ul>
+<li>整数字面量、字符字面量、立即转型为整数的浮点字面量（如：<code>(int)1.0f</code>）</li>
+<li>整数常量表达式以赋值、自增、自减、函数调用或逗号以外的运算符构成的表达式。</li>
+<li>以及其他</li>
+</ul>
               
             </div>
           </div>
@@ -264,10 +143,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../License/CC-BY-SA%203.0/" class="btn btn-neutral float-right" title="CC-BY-SA 3.0">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../Preprocessing%20Directive/" class="btn btn-neutral float-right" title="预处理指令">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../Precedence/" class="btn btn-neutral" title="运算符优先级列表"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Function/" class="btn btn-neutral" title="函数"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -293,10 +172,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../Precedence/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../Function/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../../License/CC-BY-SA%203.0/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../Preprocessing%20Directive/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

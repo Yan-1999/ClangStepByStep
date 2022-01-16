@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="224.98mm" height="89.214mm" version="1.1" viewBox="0 0 224.98 89.214" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <marker id="Arrow2Lend-2-68384" overflow="visible" orient="auto">
+   <path transform="matrix(-1.1,0,0,-1.1,-1.1,0)" d="m8.7186 4.0337-10.926-4.0177 10.926-4.0177c-1.7455 2.3721-1.7354 5.6175-6e-7 8.0354z" fill="#000080" fill-rule="evenodd" stroke="#000080" stroke-linejoin="round" stroke-width=".625"/>
+  </marker>
+  <marker id="Arrow2Lend-2-6-89369" overflow="visible" orient="auto">
+   <path transform="matrix(-1.1,0,0,-1.1,-1.1,0)" d="m8.7186 4.0337-10.926-4.0177 10.926-4.0177c-1.7455 2.3721-1.7354 5.6175-6e-7 8.0354z" fill="#000080" fill-rule="evenodd" stroke="#000080" stroke-linejoin="round" stroke-width=".625"/>
+  </marker>
+  <marker id="Arrow2Lend-23482" overflow="visible" orient="auto">
+   <path transform="matrix(-1.1,0,0,-1.1,-1.1,0)" d="m8.7186 4.0337-10.926-4.0177 10.926-4.0177c-1.7455 2.3721-1.7354 5.6175-6e-7 8.0354z" fill="#000080" fill-rule="evenodd" stroke="#000080" stroke-linejoin="round" stroke-width=".625"/>
+  </marker>
+  <marker id="Arrow2Lend-2-68384-8" overflow="visible" orient="auto">
+   <path transform="matrix(-1.1,0,0,-1.1,-1.1,0)" d="m8.7186 4.0337-10.926-4.0177 10.926-4.0177c-1.7455 2.3721-1.7354 5.6175-6e-7 8.0354z" fill="#000080" fill-rule="evenodd" stroke="#000080" stroke-linejoin="round" stroke-width=".625"/>
+  </marker>
+  <marker id="Arrow2Lend-2-68384-8-8" overflow="visible" orient="auto">
+   <path transform="matrix(-1.1,0,0,-1.1,-1.1,0)" d="m8.7186 4.0337-10.926-4.0177 10.926-4.0177c-1.7455 2.3721-1.7354 5.6175-6e-7 8.0354z" fill="#000080" fill-rule="evenodd" stroke="#000080" stroke-linejoin="round" stroke-width=".625"/>
+  </marker>
+ </defs>
+ <g transform="translate(-51.91 -85.875)">
+  <rect x="51.91" y="89.121" width="65.524" height="80.484" fill="#ccc" style="paint-order:markers stroke fill"/>
+  <text x="55.127609" y="86.825989" font-family="'Cascadia Code'" font-size="7.0556px" letter-spacing="0px" stroke-width=".26458" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="55.127609" y="86.825989" fill="#666666">...</tspan><tspan x="55.127609" y="95.645439">while (<tspan fill="#666666">cond</tspan>)</tspan><tspan x="55.127609" y="104.46489">{</tspan><tspan x="55.127609" y="113.28434">case <tspan fill="#666666">cond</tspan>:</tspan><tspan x="55.127609" y="122.10379">    <tspan fill="#808080">...</tspan></tspan><tspan x="55.127609" y="130.92323">case <tspan fill="#808080">...</tspan>:</tspan><tspan x="55.127609" y="139.74269">    <tspan fill="#808080">...</tspan></tspan><tspan x="55.127609" y="148.56213">    <tspan fill="#800080">break</tspan>;</tspan><tspan x="55.127609" y="157.38159" fill="#808080">...</tspan><tspan x="55.127609" y="166.20103">}</tspan><tspan x="55.127609" y="175.02049" fill="#666666">...</tspan><tspan x="55.127609" y="183.83994"/></text>
+  <g fill="none" stroke="#000080">
+   <path d="m97.881 146.45h15.241v26.964h-46.428" marker-end="url(#Arrow2Lend-23482)" stroke-width=".26458px"/>
+   <path d="m105.9 93.195h7.9322v18.193h-15.974" marker-end="url(#Arrow2Lend-2-68384)" stroke-width=".26458px"/>
+   <path d="m54.021 111.35v33.176" marker-end="url(#Arrow2Lend-2-6-89369)" stroke-dasharray="1.5875, 0.529166" stroke-width=".26458"/>
+  </g>
+  <text x="114.66074" y="159.31198" fill="#800000" font-family="'Cascadia Code'" font-size="4.2333px" letter-spacing="0px" stroke-width=".26458" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="114.66074" y="159.31198" fill="#000080" font-family="'Source Han Sans'" font-size="4.2333px" stroke-width=".26458">跳转</tspan></text>
+  <text x="115.15901" y="104.66286" fill="#800000" font-family="'Cascadia Code'" font-size="4.2333px" letter-spacing="0px" stroke-width=".26458" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="115.15901" y="104.66286" fill="#000080" font-family="'Source Han Sans'" font-size="4.2333px" stroke-width=".26458">跳转</tspan></text>
+  <rect x="130.48" y="89.121" width="65.524" height="45.523" fill="#ccc" style="paint-order:markers stroke fill"/>
+  <text x="133.6989" y="86.825989" font-family="'Cascadia Code'" font-size="7.0556px" letter-spacing="0px" stroke-width=".26458" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="133.6989" y="86.825989" fill="#666666">...</tspan><tspan x="133.6989" y="95.645439">switch (<tspan fill="#666666">cond</tspan>)</tspan><tspan x="133.6989" y="104.46489">{</tspan><tspan x="133.6989" y="113.28434">default:</tspan><tspan x="133.6989" y="122.10379">    <tspan fill="#808080">...</tspan></tspan><tspan x="133.6989" y="130.92323">}</tspan><tspan x="133.6989" y="139.74269" fill="#666666">...</tspan><tspan x="133.6989" y="148.56213"/></text>
+  <path d="m184.47 93.195h7.9322v18.193h-15.974" fill="none" marker-end="url(#Arrow2Lend-2-68384-8)" stroke="#000080" stroke-width=".26458px"/>
+  <text x="182.03596" y="109.41368" fill="#800000" font-family="'Cascadia Code'" font-size="4.2333px" letter-spacing="0px" stroke-width=".26458" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="182.03596" y="109.41368" fill="#000080" font-family="'Source Han Sans'" font-size="4.2333px" stroke-width=".26458">跳转</tspan></text>
+  <rect x="211.37" y="89.121" width="65.524" height="35.534" fill="#ccc" style="paint-order:markers stroke fill"/>
+  <text x="214.5847" y="86.825989" font-family="'Cascadia Code'" font-size="7.0556px" letter-spacing="0px" stroke-width=".26458" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="214.5847" y="86.825989" fill="#666666">...</tspan><tspan x="214.5847" y="95.645439">switch (<tspan fill="#666666">cond</tspan>)</tspan><tspan x="214.5847" y="104.46489">{</tspan><tspan x="214.5847" y="113.28434"><tspan fill="#808080">    ...</tspan></tspan><tspan x="214.5847" y="122.10379">}</tspan><tspan x="214.5847" y="130.92323" fill="#666666">...</tspan><tspan x="214.5847" y="139.74269"/></text>
+  <path d="m265.36 93.195h7.9322v37.805h-45.088" fill="none" marker-end="url(#Arrow2Lend-2-68384-8-8)" stroke="#000080" stroke-width=".26458px"/>
+  <text x="259.26727" y="128.53879" fill="#800000" font-family="'Cascadia Code'" font-size="4.2333px" letter-spacing="0px" stroke-width=".26458" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="259.26727" y="128.53879" fill="#000080" font-family="'Source Han Sans'" font-size="4.2333px" stroke-width=".26458">跳转</tspan></text>
+ </g>
+</svg>

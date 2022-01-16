@@ -89,13 +89,15 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#recursion">递归（Recursion）</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#stack">栈（Stack）</a>
-    </li>
         </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#_6">函数声明和函数类型</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_7">全局变量</a>
+    </li>
     </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Array/">数组</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../Preprocessing%20Directive/">预处理指令</a>
                     </li>
@@ -194,13 +196,15 @@ int main(void)
 <p>其中，<em>形参列表</em>是由<code>,</code>（逗号分隔）的声明项组成，或者是<code>void</code>。
 声明项由类型和标识符构成，如同声明中一样。</p>
 </div>
-<p>函数定义定义了一个函数。函数的定义必须放在文件层级中，即<strong>不能放在其他函数中</strong>。</p>
+<p>函数定义定义了一个函数。函数的定义必须放在<strong>文件层级</strong>中，即<strong>不能放在其他函数中</strong>。</p>
 <p>以下就是一个函数的定义：</p>
 <pre><code class="language-C">int MyFunc(int x, int y)
 {
     return 0;
 }
 </code></pre>
+<p>函数定义为当前文件<strong>定义</strong>了一个函数。它的作用范围是<strong>从这个定义开始，到文件末尾结束</strong>。
+在文件中不能定义<strong>两个同名的函数</strong>。</p>
 <h3 id="parameter">形式参数（Parameter）<a class="headerlink" href="#parameter" title="Permanent link">#</a></h3>
 <p>函数参数列表中的每一项都是<em>形式参数</em>，简称<em>形参</em>。参数为函数指定了一些变量，
 在函数外部给这些变量<strong>初始化</strong>，在函数体内部，这些变量可以被使用。
@@ -345,6 +349,8 @@ C语言中函数调用采用的都是<strong>值传递</strong>机制<sup id="fn
 就会将<code>iter + 1</code>的实际参数初始化<strong>新一轮调用</strong>的形式参数<code>iter</code>。
 也就是说，这个函数的<code>iter</code>参数每一次调用都会增加1。
 当<code>iter</code>大于10时，函数返回，不再执行新的递归。</p>
+<p>下图简单地描述了递归的过程：</p>
+<p><img alt="recursion flow" src="../../img/recursion-export.svg" /></p>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>和循环一样，递归亦不能<strong>无穷递归</strong>。要设置一定条件，如果条件满足就返回（或其他方法），
@@ -368,24 +374,11 @@ void RecursionFunc(int iter)
     printf(&quot;Line 10 of RecursionFunc. Return.\n&quot;);
 }
 
-
 int main(void)
 {
     RecursionFunc(0);
     return 0;
 }
-</code></pre>
-<p>当进入这个<code>RecursionFunc()</code>函数体时，程序输出</p>
-<pre><code class="language-text">Line 1 of RecursionFunc. iter = ...
-</code></pre>
-<p>当要调用自身时，程序输出</p>
-<pre><code class="language-text">Line 7 of RecursionFunc. Call RecursionFunc(... + 1).
-</code></pre>
-<p>当返回到调用者时，程序输出</p>
-<pre><code class="language-text">Line 9 of RecursionFunc. Back form the call. iter is ... now.
-</code></pre>
-<p>当返回函数返回时，程序输出</p>
-<pre><code class="language-text">Line ... of RecursionFunc. Return. ...
 </code></pre>
 <p>以下是这个函数的输出：</p>
 <pre><code class="language-text">Line 1 of RecursionFunc. iter is 0.
@@ -407,20 +400,59 @@ Line 10 of RecursionFunc. Return.
 Line 9 of RecursionFunc. Back form the call. iter is 0 now.
 Line 10 of RecursionFunc. Return.
 </code></pre>
-<h3 id="stack">栈（Stack）<a class="headerlink" href="#stack" title="Permanent link">#</a></h3>
-<pre><code class="language-C">void RecursionFunc(int iter)
+<p>在之前的例子中我们注意到：随着函数一层层返回，<code>iter</code>的值一次次减一。
+当然，并不是因为哪里有减一的计算，而是<code>iter</code>变量在每一次返回之后，<strong>变成了那一层原来的值</strong>。</p>
+<p>下面有一个更详细的例子：</p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+
+void RecursionFunc(int iter)
 {
-    int i = 0;
+    int i = 1;
+    printf(&quot;Enter function iter is %d. i is %d.\n&quot;, iter, i);
+    i = iter;
+    printf(&quot;Assign: i = iter. i is %d now.\n&quot;, i);
     if (iter &gt; 3)
     {
-        return iter;
+        return;
     }
-    printf(&quot;Before new function call, i is: %d\n&quot;, i);
-    i = RecurseFunc(iter + 1);
-    printf(&quot;After new function call, i is: %d\n&quot;, i);
+    RecursionFunc(iter + 1);
+    printf(&quot;Return from function. i is %d.\n&quot;, i);
+}
+
+
+int main(void)
+{
+    RecursionFunc(0);
+    return 0;
 }
 </code></pre>
-<p>(TODO)</p>
+<p>运行的结果是：</p>
+<pre><code class="language-text">Enter function iter is 0. i is 1.
+Assign: i = iter. i is 0 now.
+Enter function iter is 1. i is 1.
+Assign: i = iter. i is 1 now.
+Enter function iter is 2. i is 1.
+Assign: i = iter. i is 2 now.
+Enter function iter is 3. i is 1.
+Assign: i = iter. i is 3 now.
+Enter function iter is 4. i is 1.
+Assign: i = iter. i is 4 now.
+Return from function. i is 3.
+Return from function. i is 2.
+Return from function. i is 1.
+Return from function. i is 0.
+</code></pre>
+<p>从上面我们可以看到：当程序进入函数时，其内部定义的变量会<strong>重新定义</strong>，
+和调用者的同名变量<strong>没有关系</strong>，即使它们是同一个函数。当程序从函数返回时，
+其内部定义的变量也会恢复到调用前的状态一样，
+因为我们目前所有的改动都是在<strong>新函数的新变量</strong>中进行的，调用者的变量<strong>没有经历改动</strong>。</p>
+<div class="admonition hint">
+<p class="admonition-title">什么是栈？它和函数调用有什么关系？</p>
+<p>通常，编译器使用<em>栈</em>这种数据结构，来帮我们管理函数调用中，所有函数内部变量的内存。
+而且这个<em>栈</em>可以帮助程序<strong>区分</strong>递归中<strong>不同调用的同名变量</strong>，
+并保存之前调用中所有内部变量的值。如下图所示：</p>
+<p><img alt="stack" src="../../img/stack-export.svg" /></p>
+</div>
 <h2 id="_6">函数声明和函数类型<a class="headerlink" href="#_6" title="Permanent link">#</a></h2>
 <div class="admonition grammar">
 <p class="admonition-title">函数声明项</p>
@@ -432,6 +464,91 @@ Line 10 of RecursionFunc. Return.
 <p>函数声明声明了一个函数，如下所示：</p>
 <pre><code class="language-C">int MyFunc(int a);
 </code></pre>
+<p>函数声明如同变量声明，给一个标识符指定了一个类型。由函数声明指定的类型就是<em>函数类型</em>。
+函数类型是由以下两部分组成的复合类型：</p>
+<ul>
+<li>参数类型</li>
+<li>返回类型</li>
+</ul>
+<p>函数声明也叫函数<em>原型（prototype）</em>。之所以叫原型，是因为它给出了参数类型和返回类型，
+但是没有给出实现和参数名。</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p><strong>不能声明<code>main</code>函数！</strong></p>
+</div>
+<p>迄今为止，我们接触到的main函数的原型是:</p>
+<pre><code class="language-C">int main(void)
+</code></pre>
+<p>当然，main函数的原型不止这一种。</p>
+<p>如同变量声明，函数声明同样由自己的作用域。通常我们和函数定义一样，放在<strong>文件层级</strong>，
+这样它的作用域就是<strong>文件作用域</strong>，从这个声明开始，到文件末尾结束。</p>
+<p>如同变量声明一样，不能声明两个同名函数。但是函数定义可以出现在<strong>同名函数声明的作用域</strong>中，
+不过需要它们的类型是<strong>一致</strong>的。</p>
+<p>函数调用运算符必须在<strong>函数声明的作用域</strong>中或<strong>函数定义的作用域</strong>中，
+这样这个运算才能找到这个标识符。换言之，可以先声明一个函数，在调用之后的部分再定义，如：</p>
+<pre><code class="language-C">int Func(int);
+
+int main(void)
+{
+    Func(0);
+    return 0;
+}
+
+int Func(int param)
+{
+    return param;
+}
+</code></pre>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>在给出了函数的声明之后，请你<strong>确保给出函数定义</strong>。</p>
+</div>
+<p>如果只有函数声明而无函数定义，那么编译器（准确来说是链接器）会报错：</p>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>无法解析的外部符号XXX</p>
+</div>
+<p>链接器负责查找函数声明，并将他和函数定义链接在一起。在<strong>编译阶段</strong>，这份代码<strong>没有任何错误</strong>。
+而在链接阶段，链接器<strong>找不到</strong>这个函数的<strong>定义</strong>。在经过编译之后，
+编译器很可能给函数的名字<strong>增加了修饰符</strong>。所以，通常这种错误比较<strong>隐蔽</strong>，不易查找。</p>
+<div class="admonition hint">
+<p class="admonition-title">声明和定义的区别</p>
+<p><strong>声明</strong>给出了一个标识符的<strong>类型</strong>，而<strong>定义</strong>给出了标识符的具体<strong>内容</strong>（如函数）。
+而对于变量来说，变量的声明就是变量的定义。</p>
+</div>
+<p>对于两个互相调用的函数函数来说，函数声明是必要的，因为总有一个函数要在另外一个函数之后定义。
+如下的例子：</p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+
+void Ping(int);
+
+void Pong(int iter)
+{
+    printf(&quot;Pong\n&quot;);
+    Ping(iter);
+}
+
+void Ping(int iter)
+{
+    if (iter &gt; 3)
+    {
+        return;
+    }
+    printf(&quot;Ping\n&quot;);
+    Pong(iter + 1);
+}
+
+int main(void)
+{
+    Ping(0);
+    return 0;
+}
+</code></pre>
+<p><strong>标准库头文件</strong>包含了一些<strong>函数的声明</strong>。
+我们可以通过<code>#include</code>指令将这些声明包含到我们的文件中。
+如<code>&lt;stdio.h&gt;</code>含有<code>printf()</code>的声明。
+这些函数的定义在别处，编译器会把这些函数的定义链接进来。</p>
+<h2 id="_7">全局变量<a class="headerlink" href="#_7" title="Permanent link">#</a></h2>
 <p>(TODO)</p>
 <div class="footnote">
 <hr />
@@ -449,7 +566,7 @@ Line 10 of RecursionFunc. Return.
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../Preprocessing%20Directive/" class="btn btn-neutral float-right" title="预处理指令">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../Array/" class="btn btn-neutral float-right" title="数组">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../Control%20Flow%20Statement/" class="btn btn-neutral" title="控制流语句"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -481,7 +598,7 @@ Line 10 of RecursionFunc. Return.
       <span><a href="../Control%20Flow%20Statement/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../Preprocessing%20Directive/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../Array/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

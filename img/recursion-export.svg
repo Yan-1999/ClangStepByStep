@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="287.27mm" height="187.26mm" version="1.1" viewBox="0 0 287.27 187.26" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <marker id="Arrow2Lstart-6-4-984473973" overflow="visible" orient="auto">
+   <path transform="matrix(1.1,0,0,1.1,1.1,0)" d="m8.7186 4.0337-10.926-4.0177 10.926-4.0177c-1.7455 2.3721-1.7354 5.6175-6e-7 8.0354z" fill="#000080" fill-rule="evenodd" stroke="#000080" stroke-linejoin="round" stroke-width=".625"/>
+  </marker>
+  <marker id="Arrow2Lstart-6-4-9-986109362" overflow="visible" orient="auto">
+   <path transform="matrix(1.1,0,0,1.1,1.1,0)" d="m8.7186 4.0337-10.926-4.0177 10.926-4.0177c-1.7455 2.3721-1.7354 5.6175-6e-7 8.0354z" fill="#000080" fill-rule="evenodd" stroke="#000080" stroke-linejoin="round" stroke-width=".625"/>
+  </marker>
+  <marker id="Arrow2Lstart-6-4-9-551021695" overflow="visible" orient="auto">
+   <path transform="matrix(1.1,0,0,1.1,1.1,0)" d="m8.7186 4.0337-10.926-4.0177 10.926-4.0177c-1.7455 2.3721-1.7354 5.6175-6e-7 8.0354z" fill="#000080" fill-rule="evenodd" stroke="#000080" stroke-linejoin="round" stroke-width=".625"/>
+  </marker>
+  <marker id="Arrow2Lstart-6-4-9-946096979" overflow="visible" orient="auto">
+   <path transform="matrix(1.1,0,0,1.1,1.1,0)" d="m8.7186 4.0337-10.926-4.0177 10.926-4.0177c-1.7455 2.3721-1.7354 5.6175-6e-7 8.0354z" fill="#000080" fill-rule="evenodd" stroke="#000080" stroke-linejoin="round" stroke-width=".625"/>
+  </marker>
+ </defs>
+ <g transform="translate(-54.134 -80.596)">
+  <rect x="54.324" y="80.786" width="154.41" height="79.558" fill="#ccc" stroke="#000080" stroke-dasharray="2.27687, 0.758958" stroke-linecap="round" stroke-linejoin="round" stroke-width=".37948" style="paint-order:markers stroke fill"/>
+  <rect x="162.06" y="123.84" width="34.23" height="8.5271" fill="none" stroke="#008000" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5" style="paint-order:markers stroke fill"/>
+  <text x="55.127609" y="86.825989" font-family="'Cascadia Code'" font-size="7.0556px" letter-spacing="0px" stroke-width=".26458" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="55.127609" y="86.825989" fill="#000000">int <tspan fill="#800080">RecursionFunc</tspan>(int iter)</tspan><tspan x="55.127609" y="95.645439" fill="#000000">{</tspan><tspan x="55.127609" y="104.46489" fill="#000000">    if (<tspan fill="#808080">...</tspan>)</tspan><tspan x="55.127609" y="113.28434">    { <tspan fill="#800080">return </tspan><tspan fill="#999999">...</tspan>; }</tspan><tspan x="55.127609" y="122.10379" fill="#000000">    <tspan fill="#999999">...</tspan></tspan><tspan x="55.127609" y="130.92323" fill="#000000">    int a = <tspan fill="#800080">RecursionFunc</tspan>(iter + 1);</tspan><tspan x="55.127609" y="139.74269" fill="#000000">    <tspan fill="#808080">...</tspan></tspan><tspan x="55.127609" y="148.56213" fill="#000000">    <tspan fill="#800080">return</tspan> ...;</tspan><tspan x="55.127609" y="157.38159" fill="#000000">}</tspan><tspan x="55.127609" y="166.20103" fill="#666666"/><tspan x="55.127609" y="175.02049"/></text>
+  <path d="m118.69 138.23h-8.4414v-5.1133" fill="none" marker-start="url(#Arrow2Lstart-6-4-9-986109362)" stroke="#000080" stroke-width=".5"/>
+  <rect x="120.3" y="134.36" width="154.41" height="79.558" fill="#e6e6e6" stroke="#000080" stroke-dasharray="2.27687, 0.758958" stroke-linecap="round" stroke-linejoin="round" stroke-width=".37948" style="paint-order:markers stroke fill"/>
+  <rect x="228.03" y="177.5" width="34.23" height="8.5271" fill="none" stroke="#008000" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5" style="paint-order:markers stroke fill"/>
+  <text x="121.10846" y="140.40312" font-family="'Cascadia Code'" font-size="7.0556px" letter-spacing="0px" stroke-width=".26458" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="121.10846" y="140.40312" fill="#000000">int <tspan fill="#800080">RecursionFunc</tspan>(int iter)</tspan><tspan x="121.10846" y="149.22256" fill="#000000">{</tspan><tspan x="121.10846" y="158.04202" fill="#000000">    if (<tspan fill="#808080">...</tspan>)</tspan><tspan x="121.10846" y="166.86147">    { <tspan fill="#800080">return </tspan><tspan fill="#999999">...</tspan>; }</tspan><tspan x="121.10846" y="175.68092" fill="#000000">    <tspan fill="#999999">...</tspan></tspan><tspan x="121.10846" y="184.50037" fill="#000000">    int a = <tspan fill="#800080">RecursionFunc</tspan>(iter + 1);</tspan><tspan x="121.10846" y="193.31982" fill="#000000">    <tspan fill="#808080">...</tspan></tspan><tspan x="121.10846" y="202.13927" fill="#000000">    <tspan fill="#800080">return</tspan> ...;</tspan><tspan x="121.10846" y="210.95872" fill="#000000">}</tspan><tspan x="121.10846" y="219.77817" fill="#666666"/><tspan x="121.10846" y="228.59763"/></text>
+  <g stroke="#000080">
+   <path d="m184.67 191.81h-8.4414v-5.1133" fill="none" marker-start="url(#Arrow2Lstart-6-4-9-946096979)" stroke-width=".5"/>
+   <path d="m90.783 133.58v66.38h45.132" fill="none" marker-start="url(#Arrow2Lstart-6-4-984473973)" stroke-width=".5"/>
+   <rect x="186.8" y="188.11" width="154.41" height="79.558" fill="#f2f2f2" stroke-dasharray="2.27687, 0.758958" stroke-linecap="round" stroke-linejoin="round" stroke-width=".37948" style="paint-order:markers stroke fill"/>
+  </g>
+  <text x="187.60612" y="194.15254" font-family="'Cascadia Code'" font-size="7.0556px" letter-spacing="0px" stroke-width=".26458" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="187.60612" y="194.15254" fill="#000000">int <tspan fill="#800080">RecursionFunc</tspan>(int iter)</tspan><tspan x="187.60612" y="202.97198" fill="#000000">{</tspan><tspan x="187.60612" y="211.79144" fill="#000000">    if (<tspan fill="#808080">...</tspan>)</tspan><tspan x="187.60612" y="220.61089">    { <tspan fill="#800080">return </tspan><tspan fill="#999999">...</tspan>; }</tspan><tspan x="187.60612" y="229.43034" fill="#000000">    <tspan fill="#999999">...</tspan></tspan><tspan x="187.60612" y="238.24979" fill="#000000">    int a = <tspan fill="#800080">RecursionFunc</tspan>(iter + 1);</tspan><tspan x="187.60612" y="247.06924" fill="#000000">    <tspan fill="#808080">...</tspan></tspan><tspan x="187.60612" y="255.88869" fill="#000000">    <tspan fill="#800080">return</tspan> ...;</tspan><tspan x="187.60612" y="264.70813" fill="#000000">}</tspan><tspan x="187.60612" y="273.52759" fill="#666666"/><tspan x="187.60612" y="282.34705"/></text>
+  <g fill="none">
+   <path d="m156.44 185.75v33.49h52.684" marker-start="url(#Arrow2Lstart-6-4-9-551021695)" stroke="#000080" stroke-width=".5"/>
+   <g stroke="#008000">
+    <rect x="211.94" y="134.52" width="16.883" height="6.7187" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5" style="paint-order:markers stroke fill"/>
+    <rect x="278.47" y="188.16" width="16.883" height="6.7187" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5" style="paint-order:markers stroke fill"/>
+    <path d="m196.22 128.01c8.4127 0 16.825 0 21.031 1.097 4.2061 1.097 4.2061 3.2907 4.2061 5.4842" stroke-dasharray="0.50000001,0.50000001" stroke-width=".5"/>
+    <path d="m262.61 181.57c8.4127 0 16.825 0 21.031 1.097 4.2061 1.097 4.2061 3.2907 4.2061 5.4842" stroke-dasharray="0.5, 0.5" stroke-width=".5"/>
+   </g>
+  </g>
+ </g>
+</svg>

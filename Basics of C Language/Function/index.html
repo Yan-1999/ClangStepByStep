@@ -95,6 +95,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#_7">全局变量</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_8">本章练习</a>
+    </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../Array/">数组</a>
@@ -286,6 +288,21 @@ return的表达式的计算值就是返回的值。当然，如果这个函数�
 <p class="admonition-title"><code>printf()</code>的返回值是什么？</p>
 <p>写出的字符数，或者当出现错误时返回负值。</p>
 </div>
+<p>下面的一个例子展示了如何使用函数调用作为副作用：</p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+
+void PrintHelloWorld(void)
+{
+    printf(&quot;Hello, world!&quot;);
+}
+
+int main(void)
+{
+    PrintHelloWorld();
+    return 0;
+}
+</code></pre>
+<p>我们通过函数的副作用打印了<code>Hello, world!</code>。</p>
 <h3 id="argument">实际参数（Argument）<a class="headerlink" href="#argument" title="Permanent link">#</a></h3>
 <p><em>实际参数</em>指在函数调用运算符中传入的值。在一次调用中，
 <strong>实际参数</strong>为函数的<strong>形式参数</strong>进行<strong>初始化</strong>。
@@ -461,7 +478,7 @@ Return from function. i is 0.
 声明项由类型和标识符构成，或<strong>只有类型</strong>。</p>
 <p>注：若想让一个声明项组成完整声明，需要后附<code>;</code>分号。</p>
 </div>
-<p>函数声明声明了一个函数，如下所示：</p>
+<p>函数声明，顾名思义，声明了一个函数，如下所示：</p>
 <pre><code class="language-C">int MyFunc(int a);
 </code></pre>
 <p>函数声明如同变量声明，给一个标识符指定了一个类型。由函数声明指定的类型就是<em>函数类型</em>。
@@ -514,7 +531,7 @@ int Func(int param)
 <div class="admonition hint">
 <p class="admonition-title">声明和定义的区别</p>
 <p><strong>声明</strong>给出了一个标识符的<strong>类型</strong>，而<strong>定义</strong>给出了标识符的具体<strong>内容</strong>（如函数）。
-而对于变量来说，变量的声明就是变量的定义。</p>
+而对于变量来说，变量的声明就是变量的定义。尤其是<strong>带有初始化</strong>的声明。</p>
 </div>
 <p>对于两个互相调用的函数函数来说，函数声明是必要的，因为总有一个函数要在另外一个函数之后定义。
 如下的例子：</p>
@@ -549,7 +566,58 @@ int main(void)
 如<code>&lt;stdio.h&gt;</code>含有<code>printf()</code>的声明。
 这些函数的定义在别处，编译器会把这些函数的定义链接进来。</p>
 <h2 id="_7">全局变量<a class="headerlink" href="#_7" title="Permanent link">#</a></h2>
-<p>(TODO)</p>
+<p>如同函数可以定义在文件层级，变量也可以定义在文件层级。定义在文件层级的变量通常称<em>全局变量</em>，
+因为它们不隶属于某个函数，不会随着函数的返回而终止生命期，而且可以跨函数使用。
+如同函数的声明，全局变量的声明作用域是也从声明的那一行开始，到文件结尾结束。</p>
+<pre><code class="language-c">#include &lt;stdio&gt;
+
+int global_val = 1;
+
+void AddOne(void)
+{
+    global_val++;
+}
+
+int main(void)
+{
+    AddOne();
+    printf(&quot;%d&quot;, global_val);
+    return 0;
+}
+</code></pre>
+<p>这段程序会打印2。在<code>AddOne()</code>和<code>main()</code>中，<code>global_val</code>都是可以用的。
+<code>AddOne()</code>对<code>global_val</code>做了更改，而<code>main()</code>读取了这个变量。</p>
+<h2 id="_8">本章练习<a class="headerlink" href="#_8" title="Permanent link">#</a></h2>
+<div class="admonition exercise">
+<p class="admonition-title">Exercise</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">问题</label><div class="tabbed-content">
+<p>标准输入指的是键盘等外部环境向程序的输入。通过他我们可以在程序运行时，向程序输入内容。
+getchar函数返回标准输入的一个字符。每次调用getchar都会从标准输入读取一个字符。</p>
+<p>读取一串字符串，并转换为int类型量，再输出。</p>
+<p>提示：在ASCII码中，字符0~9的对应整数值相连，并与数字0~9的顺序相同。</p>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">参考实现</label><div class="tabbed-content">
+<pre><code>#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    char ch;
+    int input = 0;
+    while ((ch = getchar()) &gt; 0)
+    {
+        if (ch &lt; '0' || ch &gt; '9')
+        {
+            break;
+        }
+        input *= 10;
+        input += ch - '0';
+    }
+    printf("%d", input);
+}
+</code></pre>
+</div>
+</div>
+</div>
 <div class="footnote">
 <hr />
 <ol>

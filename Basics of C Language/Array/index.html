@@ -73,6 +73,16 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">数组</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">数组声明与数组类型</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#int-constexpr">整数常量表达式</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">下标运算符</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">列表初始化</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">多维数组</a>
+    </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../Preprocessing%20Directive/">预处理指令</a>
@@ -129,13 +139,136 @@
           <div role="main">
             <div class="section">
               
-                <h3 id="int-constexpr">整数常量表达式<a class="headerlink" href="#int-constexpr" title="Permanent link">#</a></h3>
+                <h1 id="_1">数组<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
+<p>数组是一个<strong>连续</strong>存储<strong>同种</strong>类型对象的复合类型。这种复合类型将许多值组成一个列表，
+在存储同类型的值的时候特别有用。</p>
+<h2 id="_2">数组声明与数组类型<a class="headerlink" href="#_2" title="Permanent link">#</a></h2>
+<p>数组声明声明了一个数组。数组的类型由以下属性确定：</p>
+<ul>
+<li>元素类型</li>
+<li>数组大小（长度）</li>
+<li>下面就是一个典型的数组声明：</li>
+</ul>
+<pre><code class="language-C">int my_ints[16];
+</code></pre>
+<p>在多数编译器的要求中，数组的大小是<strong>整数常量表达式</strong>。也就是说，
+数组的大小在<strong>声明</strong>的时候就会确定，且<strong>不可更改</strong>。</p>
+<p>数组本身<strong>不能被赋值</strong>。但是它的元素可能可以。</p>
+<h2 id="int-constexpr">整数常量表达式<a class="headerlink" href="#int-constexpr" title="Permanent link">#</a></h2>
 <p>整数常量表达式可以有以下方式构成：</p>
 <ul>
 <li>整数字面量、字符字面量、立即转型为整数的浮点字面量（如：<code>(int)1.0f</code>）</li>
 <li>整数常量表达式以赋值、自增、自减、函数调用或逗号以外的运算符构成的表达式。</li>
 <li>以及其他</li>
 </ul>
+<h2 id="_3">下标运算符<a class="headerlink" href="#_3" title="Permanent link">#</a></h2>
+<div class="admonition grammar">
+<p class="admonition-title">下标运算符</p>
+<p class="gram"><em>数组名</em>[<em>表达式</em>]</p>
+<p><em>数组名</em>是一个数组名<sup id="fnref:index-op"><a class="footnote-ref" href="#fn:index-op">1</a></sup></p>
+</div>
+<p>下标运算符提供了访问数组内元素的方法。下标运算符的返回值是<strong>左值</strong>。也就是说，
+你可以对下标运算符的结果赋值。这代表在某个元素的位置写入一个值。如：</p>
+<pre><code class="language-C">my_array[0] = 1;
+</code></pre>
+<p>在C语言中，对于一个数组而言，下标的合法范围是从<strong>0</strong>开始，到这个数组<strong>长度-1</strong>为止。</p>
+<div class="admonition undefined-behavior">
+<p class="admonition-title">Undefined-behavior</p>
+<p>超出数组范围的下标访问是未定义行为。这种行为又被叫做<em>越界访问</em>。</p>
+</div>
+<p>尽管C语言的语法不禁止越界访问，也不会检查是否进行了越界访问（因为C语言的数组不会存储长度）。
+但是越界访问会造成程序访问了它<strong>不应该访问的位置</strong>。</p>
+<p>下面的例子为一个数组每个元素都赋值为其下标值：</p>
+<pre><code class="language-c">int my_ints[16];
+for (int i = 0; i &lt; 16; i++)
+{
+    my_ints[i] = i;
+}
+</code></pre>
+<p>下面的例子将一个数组复制到另一个：</p>
+<pre><code class="language-c">int source[16];
+int dest[16];
+for (int i = 0; i &lt; 16; i++)
+{
+    dest[i] = source[i];
+}
+</code></pre>
+<p>下面的例子：</p>
+<pre><code class="language-C">int A[16];
+for (int i = 1; i &lt; 16; i++)
+{
+    A[i] = A[i - 1] + A[i];
+}
+</code></pre>
+<p>改变了A数组。我们一步一步看这个循环的过程。
+我们记赋值后的数组为<span class="arithmatex">\(A'\)</span>，赋值后的</p>
+<div class="arithmatex">\[
+A'[1]=A[0]+A[1]=\sum_{t=0}^1 A[t],
+\]</div>
+<p>而
+$$
+A'[2]=A[2]+A'[1]=\sum_{t=0}^2 A[t],
+$$</p>
+<div class="arithmatex">\[
+A'[i]=A[i]+A'[i - 1]=\sum_{t=0}^i A[t].
+\]</div>
+<p>如此迭代下去，我们发现<code>A[i]</code>被赋值为原来<code>A[0]</code>到<code>A[i]</code>的和。你可以试试以下的例子验证这点：</p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int A[16];
+    for (int i = 0; i &lt; 16; i++)
+    {
+        A[i] = i * i;
+    }
+    for (int i = 1; i &lt; 16; i++)
+    {
+        A[i] = A[i - 1] + A[i];
+    }
+    for (int i = 0; i &lt; 16; i++)
+    {
+        printf(&quot;%d &quot;, A[i]);
+    }
+    return 0;
+}
+</code></pre>
+<p>打印的应该是一系列的平方和：</p>
+<pre><code class="language-text">0 1 5 14 30 55 91 140 204 285 385 506 650 819 1015 1240
+</code></pre>
+<h2 id="_4">列表初始化<a class="headerlink" href="#_4" title="Permanent link">#</a></h2>
+<p>从上面的例子我们可以看到，对整个数组进行赋值需要一个循环，不是考一个赋值运算符就能解决的。
+但是在刚刚<strong>声明</strong>的时候，我们可以将整个数组所有/部分元素不需要循环<strong>一起初始化</strong>。
+这就是列表初始化。例如以下的例子：</p>
+<pre><code class="language-C">int my_ints[4] = { 2, 1, 3 };
+</code></pre>
+<p>在列表初始化中，也可以跳过开头，直接指派下标对应元素的值：</p>
+<pre><code class="language-C">int my_ints[4] = { [2] = 3 };
+</code></pre>
+<p>这两种初始化项合适可以混合使用。如果在指派下标项过后又有一般的初始化项，
+那么这个一般初始化项所对应的下标是从<strong>指定下标+1</strong>开始的。如：</p>
+<pre><code class="language-C">int my_ints[5] = { [2] = 3, 4 };
+</code></pre>
+<p>数组的值是0, 0, 3, 4, 0。
+在数组的初始化中，对于数值类型元素，在没有被指定初始值的时候，其值会被初始化为0。
+如下面的初始化不指定任何值：</p>
+<pre><code class="language-C">int my_ints[4] = {};
+</code></pre>
+<p>如果只是单纯的声明而不初始化数组，当数组为全局变量时，其所有值都会被初始化为0，
+而对于局部变量，其值<strong>不确定</strong>。</p>
+<h2 id="_5">多维数组<a class="headerlink" href="#_5" title="Permanent link">#</a></h2>
+<p>多维数组类型就是用一位数组的类型进行嵌套。
+如下面的例子：</p>
+<p>int matrix[4][4];</p>
+<p>声明了一个4*4的矩阵（二维数组）。</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:index-op">
+<p>准确地来说，这里应当是指针表达式，由数组向指针的隐式转换，所以这里能够如此表达。&#160;<a class="footnote-backref" href="#fnref:index-op" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
               
             </div>
           </div>
